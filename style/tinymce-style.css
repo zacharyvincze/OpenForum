@@ -1,0 +1,24 @@
+/*
+Stylesheet for tinymce text editor
+*/
+
+* {
+    font-family: 'Helvetica', 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #252525;
+}
+
+p {
+    padding: 0;
+    margin: 2px 0;
+}
+
+a {
+    text-decoration: none;
+    color: #FF3B3F;
+    font-weight: bold;
+}
+
+ol, ul {
+    margin-left: 20px;
+}

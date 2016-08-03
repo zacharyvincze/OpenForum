@@ -1,0 +1,76 @@
+/*
+Stylesheet for text elements
+*/
+
+/* Text sizing */
+.tiny-text {
+    font-size: 13px;
+}
+
+@media (min-width: 700px) {
+    .tiny-text {
+        font-size: 14px;
+    }
+}
+
+.small-text {
+    font-size: 14px;
+}
+
+.normal-text {
+    font-size: 16px;
+}
+
+.big-text {
+    font-size: 20px;
+}
+
+/* Text colors */
+.gray {
+    color: #868686;
+}
+
+.black {
+    color: #141414;
+}
+
+.red {
+    color: #FF3B3F;
+}
+
+.white {
+    color: white;
+}
+
+.lightblack {
+    color: #34495e;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+/* Title styling (headers) */
+.title {
+    text-align: left;
+    display: block;
+    margin-bottom: 50px;
+}
+
+.title h2 {
+    font-weight: 400;
+    color: #212121;
+    margin-bottom: -20px;
+}
+
+.title h4 {
+    font-weight: 400;
+    color: #212121;
+}
+
+/* Other styles */
+.big-number {
+    font-size: 25px;
+    font-weight: 100;
+    color: #303030;
+}

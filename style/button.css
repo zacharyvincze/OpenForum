@@ -1,0 +1,55 @@
+/*
+CSS stylesheet for different button elements.
+*/
+
+.button {
+    display: inline-block;
+    text-align: center;
+    background-color: white;
+    text-decoration: none;
+    padding: 15px 32px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 200px;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+}
+
+.button:focus {
+    outline-width: 0;
+}
+
+/* Button size */
+.button.tiny {
+    padding: 5px 10px;
+}
+
+.button.small {
+    padding: 10px 20px;
+}
+
+.button.normal {
+    padding: 15px 30px;
+}
+
+.button.large {
+    padding: 30px 60px;
+}
+
+/* Button background color */
+.button.red {
+    background-color: #FF3B3F;
+    color: white;
+    border: 2px solid #FF3B3F;
+}
+
+.button.red:hover {
+    background-color: white;
+    color: #FF3B3F;
+}
+
+.button.white {
+    background-color: white;
+    color: #FF3B3F;
+}
