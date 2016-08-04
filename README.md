@@ -35,7 +35,6 @@ Simple MySQL and PHP forum.
       user_level INT(8) NOT NULL,
       user_icon VARCHAR(255) NOT NULL,
       user_key VARCHAR(255) NOT NULL,
-      user_confirmed INT(1) NOT NULL DEFAULT 0,
       user_about TEXT NOT NULL,
       UNIQUE INDEX user_name_unique (user_name)
       );
