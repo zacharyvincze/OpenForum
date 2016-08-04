@@ -1,7 +1,7 @@
 # Website-Forum
 Simple MySQL and PHP forum.
 
-Table schemas:
+# Table schemas
 
     CREATE TABLE categories(
       cat_id INT(8) NOT NULL AUTO_INCREMENT PRIMARY KEY,
