@@ -1,13 +1,13 @@
 # Website-Forum
 Simple MySQL and PHP forum.
 
-Table schemas:
+# Table schemas
 
     CREATE TABLE categories(
       cat_id INT(8) NOT NULL AUTO_INCREMENT PRIMARY KEY,
       cat_name VARCHAR(255) NOT NULL,
       cat_description VARCHAR(255) NOT NULL,
-      UNIQUE INDEX cat_name_unqiue (cat_name),
+      UNIQUE INDEX cat_name_unqiue (cat_name)
       );
 
     CREATE TABLE topics(
@@ -35,7 +35,6 @@ Table schemas:
       user_level INT(8) NOT NULL,
       user_icon VARCHAR(255) NOT NULL,
       user_key VARCHAR(255) NOT NULL,
-      user_confirmed INT(1) NOT NULL DEFAULT 0,
       user_about TEXT NOT NULL,
       UNIQUE INDEX user_name_unique (user_name)
       );
