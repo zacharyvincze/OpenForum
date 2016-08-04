@@ -35,17 +35,31 @@ form .text-field {
     -webkit-border-radius:0px;
     -webkit-appearance: none;
     display: block;
-    margin-right: auto;
-    margin-left: auto;
-    width: 200px;
     background-color: transparent;
-    margin-top: 20px;
     border: none;
     border-bottom: solid 2px #F2F2F2;
     transition: border 0.3s;
     text-align: left;
 }
 
+form .text-field.dropdown-form {
+    width: 200px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form .text-field.page {
+    width: 300px;
+    margin-bottom: 30px;
+    height: 40px;
+}
+
 form .text-field:focus {
     outline-width: 0;
+}
+
+.error-icon {
+    height: 40px;
+    width: 40px;
 }

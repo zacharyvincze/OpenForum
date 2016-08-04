@@ -22,7 +22,6 @@ sec_session_start();
         <link rel="stylesheet" href="/style/navbar.css">
         <link rel="stylesheet" href="/style/table.css">
         <link rel="stylesheet" href="/style/editors.css">
-        <link rel="stylesheet" href="/style/titles.css">
         <link rel="stylesheet" href="/style/post.css">
         <link rel="stylesheet" href="/style/profile.css">
         <link rel="stylesheet" href="/style/text.css">
@@ -48,7 +47,7 @@ sec_session_start();
                 <div id="userbar">
                 <?php
 if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) {
-    echo '<img class="profile-picture icon" src="/assets/icons/' . $_SESSION['user_icon'] . '">
+    echo '<img class="profile-picture icon" src="/assets/profile-pictures/' . $_SESSION['user_icon'] . '">
           <div class="dropdown">
             <button class="dropbtn">' . $_SESSION['user_name'] . '</button>
             <div id="user-dropdown" class="dropdown-content">
@@ -62,9 +61,9 @@ if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) {
             <button class="dropbtn">Sign In</button>
             <div id="user-dropdown" class="dropdown-content">
               <p class="big-text lightblack"><strong>Sign In</strong></p>
-              <form method="post" autocomplete="off" onsubmit="return false" id="login-form">
-                <input class="small-text lightblack text-field" placeholder="Username" type="text" name="user_name" />
-                <input class="small-text lightblack text-field" placeholder="Password" type="password" name="user_pass" />
+              <form method="post" autocomplete="off" onsubmit="return false" id="dropdown-login-form">
+                <input class="small-text lightblack text-field dropdown-form" placeholder="Username" type="text" name="user_name" />
+                <input class="small-text lightblack text-field dropdown-form" placeholder="Password" type="password" name="user_pass" />
                 <p class="error-noenter tiny-text red">Please fill in all fields!</p>
                 <p class="error-invalid tiny-text red">Invalid username or password!</p>
                 <input class="button small red" type="submit" value="Login" />

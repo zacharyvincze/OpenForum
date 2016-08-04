@@ -50,9 +50,20 @@ Stylesheet for text elements
     font-weight: bold;
 }
 
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: center;
+}
+
+.left {
+    text-align: left;
+}
+
 /* Title styling (headers) */
 .title {
-    text-align: left;
     display: block;
     margin-bottom: 50px;
 }

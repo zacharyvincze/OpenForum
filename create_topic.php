@@ -8,7 +8,9 @@ include 'header.php';
 include 'includes/connect.php';
 
 echo '<div class="form-container">';
-echo '<h2 class="title">Create a Topic</h2>';
+echo '<div class="title">';
+echo '<h2 class="big-text lightblack bold center">Create a Topic</h2>';
+echo '</div>';
 echo '</div>';
 
 if($_SESSION['signed_in'] == false) {

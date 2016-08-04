@@ -109,14 +109,14 @@ if(!$stmt) {
 
                     echo '<div class="post">
                             <div class="mobile-profile-info">
-                              <img class="profile-picture tiny" src="/assets/icons/' . $row['user_icon'] . '">
+                              <img class="profile-picture tiny" src="/assets/profile-pictures/' . $row['user_icon'] . '">
                               <span class="big-text black"><strong>' . $row['user_name'] . '</strong></span>
                               <span class="small-text gray">' . $user_level . '</span>
                             </div>
                             <div class="profile-info">
                               <p class="big-text black"><strong>' . $row['user_name'] . '</strong></p>
                               <p class="small-text gray">' . $user_level . '</p>
-                              <div class="profile-picture small center" style="background-image: url(/assets/icons/' . $row['user_icon']. ')"></div>
+                              <div class="profile-picture small center" style="background-image: url(/assets/profile-pictures/' . $row['user_icon']. ')"></div>
                               <p class="tiny-text gray">' . getUserPosts($row['user_id']) . ' posts</p>
                             </div><div class="post-content">
                               <p class="tiny-text gray">Posted on ' . date('j F, Y', strtotime($row['post_date'])) . ' at ' . date('g:i A', strtotime($row['post_date'])) . '</p>
@@ -141,7 +141,7 @@ if(!$stmt) {
             }
 
             if(!isset($_SESSION['signed_in']) && !$_SESSION['signed_in']) {
-                echo '<div class="table-size">
+                echo '<div class="container">
                         <p class="small-text gray">You must be <a href="/signin.php">signed in</a> to reply.</p>
                       </div>';
             } else {

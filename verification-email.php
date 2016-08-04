@@ -20,7 +20,7 @@ function sendEmail($user_email, $user_key, $user_name) {
     $mail->IsHTML(true);
     $mail->SMTPSecure = 'tls';
     $mail->SMTPAuth = true;
-    $mail->Username = "zacharyvincze@gmail.com";
+    $mail->Username = EMAIL;
     $mail->Password = EMAILPASS;
     $mail->setFrom(EMAIL, 'Forum Confirmation');
     $mail->addAddress($user_email);
