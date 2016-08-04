@@ -7,7 +7,7 @@ Table schemas:
       cat_id INT(8) NOT NULL AUTO_INCREMENT PRIMARY KEY,
       cat_name VARCHAR(255) NOT NULL,
       cat_description VARCHAR(255) NOT NULL,
-      UNIQUE INDEX cat_name_unqiue (cat_name),
+      UNIQUE INDEX cat_name_unqiue (cat_name)
       );
 
     CREATE TABLE topics(
