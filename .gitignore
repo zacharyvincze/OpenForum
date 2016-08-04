@@ -1,8 +1,6 @@
 
 includes/psl-config.php
 
-assets/icons/f2b479569e6ddb5a996b32d22fe0d47f.png
+assets/profile-pictures/
 
-assets/icons/f2b479569e6ddb5a996b32d22fe0d47f.gif
-
-assets/icons/dd2e2bf698a94d0694b57ec8cddce782.png
+!/assets/profile-pictures/default.png
