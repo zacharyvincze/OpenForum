@@ -64,8 +64,7 @@ if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) {
               <form method="post" autocomplete="off" onsubmit="return false" id="dropdown-login-form">
                 <input class="small-text lightblack text-field dropdown-form" placeholder="Username" type="text" name="user_name" />
                 <input class="small-text lightblack text-field dropdown-form" placeholder="Password" type="password" name="user_pass" />
-                <p class="error-noenter tiny-text red">Please fill in all fields!</p>
-                <p class="error-invalid tiny-text red">Invalid username or password!</p>
+                <p class="error tiny-text red"></p>
                 <input class="button small red" type="submit" value="Login" />
               </form>
               <p class="tiny-text gray" style="margin-top:10px">Haven\'t registered yet?  Do it <a href="signup.php">here</a>!</p>

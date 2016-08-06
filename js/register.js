@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    
+
     $("#register-form").on('submit', function(e) {
         $.ajax({
             type: 'post',
@@ -9,28 +9,32 @@ $(document).ready(function() {
                 if(html == 'true') {
                     alert('Email was sent!');
                 }
-                
+
+                else if(html == 'username_long') {
+                    alert('The username must be less than 30 characters.');
+                }
+
                 else if(html == 'email_exists') {
                     alert('That email is already being used!');
                 }
-                
+
                 else if(html == 'noenter') {
                     alert('Please fill in all fields.');
                 }
-                
+
                 else if(html == 'username_exists') {
-                    alert('The username also exists.');
+                    alert('The username already exists.');
                 }
-                
+
                 else if(html == 'invalid_pass') {
                     alert('Passwords do not match.');
                 }
-                
+
                 else {
-                    alert(html);
+                    alert('There was a problem processing your request, try again later.');
                 }
             }
         });
     });
-    
+
 });

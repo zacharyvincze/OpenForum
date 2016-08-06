@@ -9,41 +9,60 @@ include 'includes/connect.php';
 
 echo '<div class="container">';
 
+$error = array();
 $email = $_GET['email'];
 $key = $_GET['key'];
 
-$query = "SELECT * FROM users WHERE user_email=? AND user_key=?";
+//Check if email and userkey matches
+$query = "SELECT * FROM temp_users WHERE temp_user_key=? AND temp_user_email=?";
 $stmt = $connect->prepare($query);
-$stmt->bind_param('ss', $email, $key);
+$stmt->bind_param('ss', $key, $email);
 $stmt->execute();
 $result = $stmt->get_result();
 
-$numrows = $result->num_rows;
+if($result->num_rows == 0) {
+    $error[] = 'There was a problem with the verification, please try again later.';
+}
 
-if($numrows == 0) {
-    echo '<p class="normal-text bold lightblack">Verification failed.  Please try again later or resend the email.</p>';
+if($stmt->error) {
+    $error[] = 'There was an error connecting with the database.';
+}
+
+if(!empty($error)) {
+    foreach ($error as $value) {
+        echo $value . '<br>';
+    }
 } else {
-
     while($row = $result->fetch_assoc()) {
-        $username = $row['user_name'];
-        $confirmed = $row['user_confirmed'];
+        $username = $row['temp_user_name'];
+        $password = $row['temp_user_pass'];
+        $email = $row['temp_user_email'];
+        $icon = $row['temp_user_icon'];
+        $date = $row['temp_user_date'];
     }
-    if($confirmed != 0) {
-        echo '<p class="normal-text bold lightblack">You\'ve already been confirmed.  What are you doing here?</p>';
-    } else {
-        $query = "UPDATE users
-                  SET user_confirmed = 1
-                  WHERE user_key=?";
-        $stmt = $connect->prepare($query);
-        $stmt->bind_param('s', $key);
-        $stmt->execute();
 
-        if(!$stmt) {
-            echo '<p class="normal-text bold lightblack">Verification failed.  Please try again later or resend the email.</p>';
-        } else {
-            echo '<p class="normal-text bold lightblack">Verification successful.  Welcome to the forums '.$username.'!</p>';
-        }
-    }
+    //Insert temp user into users
+    $query = "INSERT INTO users(
+            user_name,
+            user_pass,
+            user_email,
+            user_icon,
+            user_level,
+            user_date,
+            user_about)
+        VALUES (?, ?, ?, ?, default, ?, 'Tell us a little about yourself.')";
+    $stmt = $connect->prepare($query);
+    $stmt->bind_param('sssss', $username, $password, $email, $icon, $date);
+    $stmt->execute();
+
+    //Delete temp user row
+    $query = "DELETE FROM temp_users WHERE temp_user_key=?";
+    $stmt = $connect->prepare($query);
+    $stmt->bind_param('s', $key);
+    $stmt->execute();
+
+    echo 'You have been verified ' . $username . '.  Welcome to the forums!';
+
 }
 
 echo '</div>';

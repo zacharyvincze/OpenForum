@@ -22,8 +22,7 @@ if($_SESSION['signed_in']) {
       <input class="small-text lightblack text-field page" type="text" name="user_name" />
       <p class="small-text lightblack bold" style="text-align: left">Password</p>
       <input class="small-text lightblack text-field page" type="password" name="user_pass" />
-      <p class="error-noenter tiny-text red">Please fill in all fields!</p>
-      <p class="error-invalid tiny-text red">Invalid username or password!</p>
+      <p class="error tiny-text red left"></p>
       <input class="button small red" type="submit" value="Login" />
     </form>';
 }

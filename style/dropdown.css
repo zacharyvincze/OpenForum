@@ -62,12 +62,7 @@ CSS stylesheet for dropdown menus
     display: block;
 }
 
-.error-noenter {
-    display: none;
-    margin-top: 10px;
-}
-
-.error-invalid {
+.error {
     display: none;
     margin-top: 10px;
 }

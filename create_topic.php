@@ -14,7 +14,9 @@ echo '</div>';
 echo '</div>';
 
 if($_SESSION['signed_in'] == false) {
+    echo '<div class="container">';
     echo 'Sorry, you must be <a href="signin.php">signed in</a> to create a topic.';
+    echo '</div>';
 } else {
     if($_SERVER['REQUEST_METHOD'] != 'POST') {
         $query = "SELECT cat_id, cat_name, cat_description FROM categories";

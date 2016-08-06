@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     $("#login-form").submit(function(e) {
 
         $.ajax({
@@ -6,18 +7,28 @@ $(document).ready(function() {
             url: '/ajax_signin.php',
             data: $('#login-form').serialize(),
             success: function(html) {
-                if(html == 'true') {
+                if(html == true) {
                     window.location.reload();
                 }
 
                 else if(html == 'no_enter') {
-                    $(".error-noenter").fadeIn(10);
-                    $(".error-invalid").fadeOut(10);
+                    $(".error").fadeIn(10);
+                    $(".error").text("Fill in all fields.");
+                }
+
+                else if(html == 'incorrect') {
+                    $(".error").fadeIn(10);
+                    $(".error").text("Invalid username or password.");
+                }
+
+                else if(html == 'not_confirmed') {
+                    $(".error").fadeIn(10);
+                    $(".error").text("You are not confirmed yet.");
                 }
 
                 else {
-                    $(".error-invalid").fadeIn(10);
-                    $(".error-noenter").fadeOut(10);
+                    $(".error").fadeIn(10);
+                    $(".error").text("Database error.");
                 }
             }
         });
@@ -30,18 +41,28 @@ $(document).ready(function() {
            url: '/ajax_signin.php',
            data: $('#dropdown-login-form').serialize(),
            success: function(html) {
-               if(html == 'true') {
+               if(html == true) {
                    window.location.reload();
                }
 
                else if(html == 'no_enter') {
-                   $(".error-noenter").fadeIn(10);
-                   $(".error-invalid").fadeOut(10);
+                   $(".error").fadeIn(10);
+                   $(".error").text("Fill in all fields.");
+               }
+
+               else if(html == 'incorrect') {
+                   $(".error").fadeIn(10);
+                   $(".error").text("Invalid username or password.");
+               }
+
+               else if(html == 'not_confirmed') {
+                   $(".error").fadeIn(10);
+                   $(".error").text("You are not confirmed yet.");
                }
 
                else {
-                   $(".error-invalid").fadeIn(10);
-                   $(".error-noenter").fadeOut(10);
+                   $(".error").fadeIn(10);
+                   $(".error").text("Database error.");
                }
            }
        });
