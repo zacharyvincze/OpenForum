@@ -7,7 +7,7 @@ $(document).ready(function() {
             url: '/ajax_signin.php',
             data: $('#login-form').serialize(),
             success: function(html) {
-                if(html == true) {
+                if(html == 'true') {
                     window.location.reload();
                 }
 
@@ -41,7 +41,7 @@ $(document).ready(function() {
            url: '/ajax_signin.php',
            data: $('#dropdown-login-form').serialize(),
            success: function(html) {
-               if(html == true) {
+               if(html == 'true') {
                    window.location.reload();
                }
 
