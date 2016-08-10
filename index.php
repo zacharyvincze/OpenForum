@@ -10,16 +10,14 @@ include 'includes/query-functions.php';
 
 date_default_timezone_set('America/Toronto');
 
-$query = "SELECT
-            c.cat_name, c.cat_description, t.topic_subject, t.topic_date, c.cat_id, t.topic_id
-          FROM categories c
-          LEFT JOIN topics t ON c.cat_id = t.topic_cat
-          WHERE topic_date = (
-            SELECT MAX(t2.topic_date)
-            FROM topics t2
-            WHERE t2.topic_cat = t.topic_cat
-          )
-          ORDER BY c.cat_id";
+$query = "SELECT cat_id, cat_description, cat_name, topic_subject, topic_id, latest as topic_date
+FROM categories c
+LEFT JOIN (
+    SELECT topic_subject, topic_id, topic_cat, MAX(topic_date) latest
+    FROM topics
+    GROUP BY topic_cat, topic_id, topic_subject, topic_date
+     ) as t
+ON c.cat_id = t.topic_cat";
 $stmt = $connect->query($query);
 
 echo $connect->error;
@@ -45,7 +43,9 @@ while($row = $stmt->fetch_assoc()) {
             echo '<p class="big-number">' . getTopicCount($row['cat_id']) . '</p><p class="small-text-gray"> ' . $topic . '</p>';
         echo '</td>';
         echo '<td class="rightpart" id="last-topic">';
-            echo '<a href="topic.php?topic_id=' . $row['topic_id'] . '&page=1">' . $row['topic_subject'] . '<br></a><p class="small-text"> at ' . date('g:i a', strtotime($row['topic_date'])) . ' on ' . date('d M, Y', strtotime($row['topic_date'])) . '</p>';
+            if(isset($row['topic_id'])) {
+                echo '<a href="topic.php?topic_id=' . $row['topic_id'] . '&page=1">' . $row['topic_subject'] . '<br></a><p class="small-text"> at ' . date('g:i a', strtotime($row['topic_date'])) . ' on ' . date('d M, Y', strtotime($row['topic_date'])) . '</p>';
+            }
         echo '</td>';
     echo '</tr>';
 }
