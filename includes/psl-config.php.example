@@ -2,7 +2,10 @@
 // Rename this file to 'psl-config.php', then configure each setting.
 
 // Main Configuration
-define('FORUM_NAME', ''); // the title of the forum
+define('FORUM_NAME', 'Example Forum'); // the title of the forum
+define('FORUM_DESCRIPTION', 'An example forum.'); /// the description of the forum
+define('FORUM_KEYWORDS', 'test, example, forum, computer, html, css, javascript, php'); // SEO keywords
+define('FORUM_LANGUAGE', 'en'); // content language
 define('DEVELOPMENT_MODE', TRUE); // development mode will make all users temporarily admin, no email verification, and enables logging
 
 // Database Configuration
