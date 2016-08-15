@@ -17,9 +17,18 @@ define('MESSAGE_CATEGORY_UNAUTHORIZED', 'You must be an admin to create a catego
 define('MESSAGE_CATEGORY_EXISTS', 'There is already a category with that name.');
 define('MESSAGE_CATEGORY_SUCCESS', 'New category successfully added.');
 define('MESSAGE_CATEGORY_EMPTY', 'All the fields must be filled in.');
+define('MESSAGE_TOPIC_SIGNOUT', 'You must be <a href="signin.php">signed in</a> to create a topic.');
+define('MESSAGE_TOPIC_CATEGORY', 'You have not created any categories yet.');
+define('MESSAGE_TOPIC_SUPERCATEGORY', 'Before you can post a topic, an admin must create a category.');
+define('MESSAGE_TOPIC_SUCCESS', 'You have successfully created <a href="topic.php?topic_id=%topic_id%&page=1">your new topic</a>.'); // %topic_id% is replaced with 
+define('MESSAGE_TOPIC_EMPTY', 'All the fields must be filled in.');
+
 
 // Short Strings
 define('SHORT_CATEGORY_CREATE', 'Create a Category');
 define('SHORT_CATEGORY_NAME', 'Category name');
 define('SHORT_CATEGORY_ADD', 'Add Category');
+define('SHORT_TOPIC_CREATE', 'Create a Topic');
+define('SHORT_TOPIC_BUTTON', 'Create Topic');
+define('SHORT_TOPIC_SUBJECT', 'Topic subject');
 ?>
