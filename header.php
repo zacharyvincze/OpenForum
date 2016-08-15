@@ -15,7 +15,7 @@ sec_session_start();
         <meta name="keywords" content="<?php echo FORUM_KEYWORDS; ?>" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title><?php echo FORUM_NAME; ?></title>
+        <title><?php echo FORUM_NAME . (DEVELOPMENT_MODE ? ' / Dev Mode' : ''); ?></title>
 
         <!-- Stylesheets -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
@@ -76,7 +76,7 @@ if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) {
 }
                 ?>
                 </div>
-                <h1 class="logo"><?php echo FORUM_NAME; ?></h1>
+                <h1 class="logo"><?php echo FORUM_NAME . (DEVELOPMENT_MODE ? ' / <font color="red">Development Mode</font>' : ''); ?></h1>
             </div>
             <div class="content">
                 <div class="content-nav">
