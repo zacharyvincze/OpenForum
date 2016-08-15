@@ -5,12 +5,12 @@ List topics from a category
 */
 
 include 'header.php';
-include 'includes/strings.php'
 include 'includes/connect.php';
-include 'includes/psl-config.php';
 include 'includes/query-functions.php';
 
 date_default_timezone_set(TIMEZONE);
+
+echo '<div class="container">';
 
 $query = "SELECT cat_id, cat_name, cat_description FROM categories WHERE cat_id=?";
 $stmt = $connect->prepare($query);
@@ -27,13 +27,11 @@ if(!$stmt) {
         echo MESSAGE_CATEGORY_NONEXISTANT;
     } else {
 
-        echo "<div class='container title'>";
+        echo "<div class='header'>";
 
         while($row = $result->fetch_assoc()) {
-            echo '<h2>' . $row['cat_name'] . '</h2><br><h4>' . $row['cat_description'] . '</h4>';
+            echo '<p class="title">' . $row['cat_name'] . '</p><br><p class="description">' . $row['cat_description'] . '</p>';
         }
-
-
 
         echo '</div>';
 
@@ -71,7 +69,6 @@ if(!$stmt) {
                 else $topic = 'topics';
 
                 echo '<div class="status-bar"><p class="small-text white">' . getTopicCount($_GET['cat_id']) . ' ' . $topic . ' in this category</p></div>';
-                echo '<div class="container">';
                 echo '<table>';
 
                 $x = 0;
@@ -97,6 +94,7 @@ if(!$stmt) {
                 }
 
                 echo '</table>';
+                echo '</div>';
                 echo '</div>';
             }
         }
