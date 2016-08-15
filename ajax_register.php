@@ -6,12 +6,13 @@ Registration through AJAX
 
 include 'includes/connect.php';
 include 'includes/functions.php';
+include 'includes/strings.php';
 include 'verification-email.php';
 
 sec_session_start();
 
 if($_SERVER['REQUEST_METHOD'] != 'POST') {
-    echo 'This file cannot be accessed directly.';
+    echo ERROR_INVALID_ACCESS;
 } else {
     $error = array();
     $username = $_POST['user_name'];
