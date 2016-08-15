@@ -62,21 +62,21 @@ Stylesheet for text elements
     text-align: left;
 }
 
-/* Title styling (headers) */
-.title {
+/* Styling for page headers */
+.header {
     display: block;
     margin-bottom: 50px;
 }
 
-.title h2 {
-    font-weight: 400;
-    color: #212121;
-    margin-bottom: -20px;
+.title {
+    color: #34495e;
+    font-size: 24px;
+    font-weight: bold;
 }
 
-.title h4 {
-    font-weight: 400;
-    color: #212121;
+.description {
+    color: #868686;
+    font-size: 14px;
 }
 
 /* Other styles */
