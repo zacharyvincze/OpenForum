@@ -12,7 +12,7 @@ include 'includes/query-functions.php';
 
 date_default_timezone_set(TIMESTAMP);
 
-$query = "SELECT topic_id, topic_subject FROM topics WHERE topic_id=?";
+$query = "SELECT topic_id, topic_subject, topic_by FROM topics WHERE topic_id=?";
 $stmt = $connect->prepare($query);
 $stmt->bind_param('i', $_GET['topic_id']);
 $stmt->execute();
@@ -31,7 +31,10 @@ if(!$stmt) {
         echo '<div class="container">';
 
         while($row = $result->fetch_assoc()) {
-                echo '<h2 class="title">' . $row['topic_subject'] . '</h2>';
+            echo '<div class="header">';
+            echo '<p class="title">' . $row['topic_subject'] . '</p>';
+            echo '<br><p class="description">Created by <strong>' . getTopicUsername($row['topic_by']) . '</strong></p>';
+            echo '</div>';
         }
 
         if(isset($_GET['page'])) {
@@ -119,7 +122,7 @@ if(!$stmt) {
                               <p class="big-text black"><strong>' . $row['user_name'] . '</strong></p>
                               <p class="small-text gray">' . $user_level . '</p>
                               <div class="profile-picture small center" style="background-image: url(/assets/profile-pictures/' . $row['user_icon']. ')"></div>
-                              <p class="tiny-text gray">' . str_replace('%posts%', '' . getUserPosts($row['user_id']), MESSAGE_USER_POSTS) . '</p>
+                              <p class="tiny-text gray">' . str_replace('%posts%', '' . getUserPosts($row['user_id']), MESSAGE_USER_POSTS) . ' ' . $posts . '</p>
                             </div><div class="post-content">
                               <p class="tiny-text gray">' . str_replace('%time%', '' . date('g:i A', strtotime($row['post_date'])), str_replace('%date%', '' . date('j F, Y', strtotime($row['post_date'])), MESSAGE_TOPIC_DATE)) . '</p>
                               <div class="tiny-text black">' . $row['post_content'] . '</div>
