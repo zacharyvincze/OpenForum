@@ -6,11 +6,11 @@ Login through AJAX
 
 include 'includes/functions.php';
 include 'includes/connect.php';
-
+include 'includes/strings.php';
 sec_session_start();
 
 if($_SERVER['REQUEST_METHOD'] != 'POST') {
-    echo 'Cannot access file directly.';
+    echo ERROR_INVALID_ACCESS;
 } else {
     $error = array();
     $username = $_POST['user_name'];
