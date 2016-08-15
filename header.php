@@ -8,6 +8,15 @@ sec_session_start();
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
+
+         <!-- Chrome, Firefox OS and Opera -->
+         <meta name="theme-color" content="#4285f4">
+         <!-- Windows Phone -->
+         <meta name="msapplication-navbutton-color" content="#4285f4">
+         <!-- iOS Safari -->
+         <meta name="apple-mobile-web-app-capable" content="yes"> 
+         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
         <!-- Document information -->
         <meta http-equiv="content-language" content="<?php echo FORUM_LANGUAGE; ?>">
         <meta http-equiv="content-type" content="text/html"; charset="UTF-8" />
@@ -81,7 +90,7 @@ if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) {
             <div class="content">
                 <div class="content-nav">
                     <a class="item" href="/index.php"><?php echo SHORT_NAV_HOME; ?></a>
-                    <a class="item" href="<?php if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) echo '/create_topic.php'; else echo '/signin.php' ?>"><?php ?></a>
+                    <a class="item" href="<?php if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) echo '/create_topic.php'; else echo '/signin.php' ?>"><?php if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) echo SHORT_TOPIC_CREATE; else echo 'Login' ?></a>
                     <?php if(isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1) echo '<a class="item" href="/create_cat.php">' . SHORT_CATEGORY_CREATE . '</a>'; ?>
                 </div>
                 <div class="under-content-nav">
