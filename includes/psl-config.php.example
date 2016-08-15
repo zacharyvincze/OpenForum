@@ -18,7 +18,7 @@ define('DATABASE', 'website_forum'); // database name (default:website_forum)
 define('TIMEZONE', 'America/Toronto'); // current timezone
 
 // Email Configuration
-define('VERIFY_EMAIL', FALSE); // verify email or not
+define('VERIFY_EMAIL', FALSE); // verify email or not. If false, EMAIL and EMAILPASS do not have to be set.
 define('EMAIL', ''); // email to use
 define('EMAILPASS', ''); // email password
 ?>
