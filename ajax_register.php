@@ -92,7 +92,7 @@ if($_SERVER['REQUEST_METHOD'] != 'POST') {
                     user_level,
                     user_date,
                     user_about)
-                VALUES (?, ?, ?, 'default.png', default, NOW(), 'Tell us a little about yourself.')";
+                VALUES (?, ?, ?, 'default.png', default, NOW(), '" . MESSAGE_USER_DESCRIPTION . "')";
             $stmt = $connect->prepare($query);
             $stmt->bind_param('sss', $username, $password_hash, $email);
             $stmt->execute();
@@ -124,7 +124,7 @@ if($_SERVER['REQUEST_METHOD'] != 'POST') {
     
             echo $stmt->error;
     
-            sendEmail($email, $key, $username);
+            sendEmail($email, $key, $username) or die(ERROR_VERIFICATION_FAILED);
     
             //Everything is good
             echo 'true';
