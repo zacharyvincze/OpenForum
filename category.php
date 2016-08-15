@@ -24,7 +24,7 @@ if(!$stmt) {
     $numrows = $result->num_rows;
 
     if($numrows == 0) {
-        echo ERROR_CATEGORY_NONEXISTANT;
+        echo MESSAGE_CATEGORY_NONEXISTANT;
     } else {
 
         echo "<div class='container title'>";
