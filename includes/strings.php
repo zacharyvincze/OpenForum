@@ -8,7 +8,7 @@ define('ERROR_CATEGORY_NONEXISTANT', 'That category doesn\'t exist.');
 
 
 // Message Strings
-define('MESSAGE_WELCOME_STRINGS', 'Welcome!/Aloha!/Hello!/Welcome back!/Hey!/Hi!/Bonjour!/Howdy!'); // andomly chosen from the list of strings separated by '/'
+define('MESSAGE_WELCOME_STRINGS', 'Welcome!/Aloha!/Hello!/Welcome back!/Hey!/Hi!/Bonjour!/Howdy!'); // randomly chosen from the list of strings separated by '/'
 define('MESSAGE_NOT_REGISTERED', 'Haven\'t registered yet?  Do it <a href="signup.php">here</a>!');
 define('MESSAGE_WELCOME_SIGNUP', 'Welcome to the site.  Just fill in the fields and you should be good to go!');
 define('MESSAGE_CATEGORY_EMPTY', 'There are no topics in this category yet.');
