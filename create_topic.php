@@ -5,17 +5,18 @@ Topic creation
 */
 
 include 'header.php';
+include 'includes/strings.php';
 include 'includes/connect.php';
 
 echo '<div class="form-container">';
 echo '<div class="title">';
-echo '<h2 class="big-text lightblack bold center">Create a Topic</h2>';
+echo '<h2 class="big-text lightblack bold center">' . SHORT_TOPIC_CREATE . '</h2>';
 echo '</div>';
 echo '</div>';
 
 if($_SESSION['signed_in'] == false) {
     echo '<div class="container">';
-    echo 'Sorry, you must be <a href="signin.php">signed in</a> to create a topic.';
+    echo MESSAGE_TOPIC_SIGNOUT;
     echo '</div>';
 } else {
     if($_SERVER['REQUEST_METHOD'] != 'POST') {
@@ -26,9 +27,9 @@ if($_SESSION['signed_in'] == false) {
 
         if($numrows == 0) {
             if($_SESSION['user_level'] == 1) {
-                echo 'You have not created any categories yet.';
+                echo MESSAGE_TOPIC_CATEGORY;
             } else {
-                echo 'Before you can post a topic, an admin must create a category.';
+                echo MESSAGE_TOPIC_SUPERCATEGORY;
             }
         } else {
 
@@ -58,25 +59,25 @@ if($_SESSION['signed_in'] == false) {
             }
             echo '</select>';
 
-            echo '<input autocomplete="off" id="title" class="normal-text lightblack bold" placeholder="Topic subject" type="text" name="topic_subject" /><br>
+            echo '<input autocomplete="off" id="title" class="normal-text lightblack bold" placeholder="' . SHORT_TOPIC_SUBJECT . '" type="text" name="topic_subject" /><br>
                   <textarea id="editor" autocomplete="off" name="post_content"></textarea><br>
-                  <input class="button small red" type="submit" value="Create Topic" />
+                  <input class="button small red" type="submit" value="' . SHORT_TOPIC_BUTTON . '" />
                 </form>
                 </div>';
         }
     } else {
 
-        $query = "BEGIN WORK";
+        $query = "BEGIN WORK"; // lol
         $stmt = $connect->query($query);
 
         if(!$stmt) {
-            echo 'An error occured while creating your topic.  Please try again later.';
+            echo ERROR_CONNECTION_FAILED;
         } else {
             $topic_cat = $_POST['topic_cat'];
             $topic_subject = $_POST['topic_subject'];
 
             if(!$topic_subject) {
-                echo "There must be a title to post a topic.";
+                echo MESSAGE_TOPIC_EMPTY;
             } else {
                 $query = "INSERT INTO topics(topic_subject, topic_date, topic_cat, topic_by) VALUES (?, NOW(), ?, ?)";
                 $stmt = $connect->prepare($query);
@@ -84,7 +85,7 @@ if($_SESSION['signed_in'] == false) {
                 $stmt->execute();
 
                 if(!$stmt) {
-                    echo 'An error occured while inserting the data.  Please try again later.';
+                    echo ERROR_CONNECTION_FAILED;
                     $query = "ROLLBACK";
                     $stmt = $connect->query($query);
                 } else {
@@ -92,7 +93,7 @@ if($_SESSION['signed_in'] == false) {
                     $post_content = $_POST['post_content'];
 
                     if(!$post_content) {
-                        echo 'Make sure to actually write something before posting.';
+                        echo MESSAGE_TOPIC_EMPTY;
                     } else {
                         $query = "INSERT INTO posts(post_content, post_date, post_topic, post_by) VALUES (?, NOW(), ?, ?)";
                         $stmt = $connect->prepare($query);
@@ -100,7 +101,7 @@ if($_SESSION['signed_in'] == false) {
                         $stmt->execute();
 
                         if(!$stmt) {
-                            echo 'An error occured while inserting your post.  Please try again later.';
+                            echo ERROR_CONNECTION_FAILED;
                             $query = "ROLLBACK";
                             $stmt = $connect->query("ROLLBACK");
                         }
@@ -110,7 +111,7 @@ if($_SESSION['signed_in'] == false) {
                             $stmt = $connect->query($query);
 
                             //Yay! the query works!
-                            echo 'You have successfully created <a href="topic.php?topic_id=' . $topicid . '&page=1">your new topic</a>.';
+                            echo str_replace('%topic_id%', $topicid, MESSAGE_TOPIC_SUCCESS); // replace %topic_id% with $topicid
                         }
                     }
                 }

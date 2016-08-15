@@ -5,10 +5,12 @@ List categories (Home page)
 */
 
 include 'includes/connect.php';
-include 'header.php';
+include 'inlcudes/psl-config.php';
+include 'inlcudes/strings.php';
 include 'includes/query-functions.php';
+include 'header.php';
 
-date_default_timezone_set('America/Toronto');
+date_default_timezone_set(TIMEZONE);
 
 $query = "SELECT cat_id, cat_description, cat_name, topic_subject, topic_id, latest as topic_date
 FROM categories c
@@ -20,7 +22,7 @@ LEFT JOIN (
 ON c.cat_id = t.topic_cat";
 $stmt = $connect->query($query);
 
-echo $connect->error;
+echo (DEVELOPMENT_MODE ? $connect->error : ERROR_CONNECTION_FAILED);
 
 echo '<div class="container">';
 echo '<table>';
@@ -29,8 +31,8 @@ $x = 0;
 
 while($row = $stmt->fetch_assoc()) {
 
-    if(getTopicCount($row['cat_id']) == 1) $topic = 'topic';
-    else $topic = 'topics';
+    if(getTopicCount($row['cat_id']) == 1) $topic = SHORT_TOPIC_SINGULAR;
+    else $topic = SHORT_TOPIC_PLURAL;
     $x++;
 
     $class = ($x%2 == 0)? 'whiteBackground' : 'grayBackground';

@@ -1,13 +1,14 @@
 <?php
 
 include 'verification-email.php';
+include 'includes/strings.php';
 
 $email = $_GET['email'];
 $key = $_GET['key'];
 $error = array();
 
 if(!$email || !$key) {
-    $error[] = 'This user does not exist.';
+    $error[] = MESSAGE_USER_NONEXISTANT;
 }
 
 if(!empty($error)) {
@@ -21,11 +22,11 @@ if(!empty($error)) {
     $result = $stmt->get_result();
 
     if($stmt->error) {
-        $error[] = 'Database error, try again later.';
+        $error[] = ERROR_CONNECTION_FAILED;
     }
 
     if($result->num_rows == 0) {
-        $error[] = 'That user does not exist.';
+        $error[] = MESSAGE_USER_NONEXISTANT;
     }
 
     if(!empty($error)) {
@@ -37,9 +38,9 @@ if(!empty($error)) {
             $username = $row['temp_user_name'];
         }
 
-        sendEmail($email, $key, $username);
+        sendEmail($email, $key, $username) or die(ERROR_VERIFICATION_FAILED);
 
-        echo '<p class="small-text lightblack">Email was sent.</p>';
+        echo '<p class="small-text lightblack">' . MESSAGE_USER_SENT . '</p>';
     }
 }
 

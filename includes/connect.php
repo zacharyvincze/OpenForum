@@ -1,11 +1,9 @@
 <?php
 
-//psl-config file must be added in the includes/ directory
+//psl-config.php file must be added in the includes/ directory
 
-/*
-You must define HOST, USER, PASSWORD, DATABASE, EMAIL and EMAILPASS
-*/
 include 'psl-config.php';
+include 'strings.php';
 
 /*
 PHP file to connect to the database
@@ -14,7 +12,7 @@ PHP file to connect to the database
 $connect = new mysqli(HOST, USER, PASSWORD, DATABASE);
 
 if ($connect->connect_error) {
-    die('Connection failed: ' . $connect->connect_error);
+    die((DEVELOPMENT_MODE ? 'Connection failed: ' . $connect->connect_error : ERROR_CONNECTION_FAILED));
 }
 
 $GLOBALS["connect"] = $connect;

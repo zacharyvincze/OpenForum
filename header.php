@@ -1,5 +1,7 @@
 <?php
-include "includes/functions.php";
+include 'includes/strings.php';
+include 'includes/psl-config.php';
+include 'includes/functions.php';
 
 sec_session_start();
 ?>
@@ -7,13 +9,13 @@ sec_session_start();
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
         <!-- Document information -->
-        <meta http-equiv="content-language" content="en">
+        <meta http-equiv="content-language" content="<?php echo FORUM_LANGUAGE; ?>">
         <meta http-equiv="content-type" content="text/html"; charset="UTF-8" />
-        <meta name="description" content="Welcome to the test forum!" />
-        <meta name="keywords" content="forum, computer, html, css, javascript, php" />
+        <meta name="description" content="<?php echo FORUM_DESCRIPTION; ?>" />
+        <meta name="keywords" content="<?php echo FORUM_KEYWORDS; ?>" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Zach's Forum</title>
+        <title><?php echo FORUM_NAME; ?></title>
 
         <!-- Stylesheets -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
@@ -51,36 +53,36 @@ if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) {
           <div class="dropdown">
             <button class="dropbtn">' . $_SESSION['user_name'] . '</button>
             <div id="user-dropdown" class="dropdown-content">
-              <a class="block-link" href="#">Edit Profile</a>
-              <a class="block-link" href="/profile.php?user_id='.$_SESSION['user_id'].'">Profile Overview</a>
-              <a class="block-link" href="/signout.php">Sign Out</a>
+              <a class="block-link" href="#">' . SHORT_USER_DESCRIPTION . '</a>
+              <a class="block-link" href="/profile.php?user_id='.$_SESSION['user_id'].'">' . SHORT_USER_OVERVIEW . '</a>
+              <a class="block-link" href="/signout.php">' . SHORT_USER_SIGNOUT . '</a>
             </div>
           </div>';
 } else {
     echo '<div class="dropdown">
-            <button class="dropbtn">Sign In</button>
+            <button class="dropbtn">' . SHORT_USER_SIGNIN . '</button>
             <div id="user-dropdown" class="dropdown-content">
-              <p class="big-text lightblack"><strong>Sign In</strong></p>
+              <p class="big-text lightblack"><strong>' . SHORT_USER_SIGNIN . '</strong></p>
               <form method="post" autocomplete="off" onsubmit="return false" id="dropdown-login-form">
-                <input class="small-text lightblack text-field dropdown-form" placeholder="Username" type="text" name="user_name" />
-                <input class="small-text lightblack text-field dropdown-form" placeholder="Password" type="password" name="user_pass" />
+                <input class="small-text lightblack text-field dropdown-form" placeholder="' . SHORT_USER_USERNAME . '" type="text" name="user_name" />
+                <input class="small-text lightblack text-field dropdown-form" placeholder="' . SHORT_USER_PASSWORD . '" type="password" name="user_pass" />
                 <p class="error tiny-text red"></p>
                 <input class="button small red" type="submit" value="Login" />
               </form>
-              <p class="tiny-text gray" style="margin-top:10px">Haven\'t registered yet?  Do it <a href="signup.php">here</a>!</p>
+              <p class="tiny-text gray" style="margin-top:10px">' . MESSAGE_NOT_REGISTERED . '</p>
             </div>
           </div>
-        <a href="/signup.php" class="item">Register</a>';
+        <a href="/signup.php" class="item">' . SHORT_USER_REGISTER . '</a>';
 }
                 ?>
                 </div>
-                <h1 class="logo">Forum Logo</h1>
+                <h1 class="logo"><?php echo FORUM_NAME; ?></h1>
             </div>
             <div class="content">
                 <div class="content-nav">
-                    <a class="item" href="/index.php">Home</a>
-                    <a class="item" href="/create_topic.php">Create a topic</a>
-                    <a class="item" href="/create_cat.php">Create a category</a>
+                    <a class="item" href="/index.php"><?php echo SHORT_NAV_HOME; ?></a>
+                    <a class="item" href="<?php if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) echo '/create_topic.php'; else echo '/signin.php' ?>"><?php ?></a>
+                    <?php if(isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1) echo '<a class="item" href="/create_cat.php">' . SHORT_CATEGORY_CREATE . '</a>'; ?>
                 </div>
                 <div class="under-content-nav">
                 </div>

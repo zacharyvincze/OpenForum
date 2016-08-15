@@ -62,3 +62,7 @@ Stylesheet for navigation bars and statusbars
     margin-left: 20px;
     font-size: 14px;
 }
+
+h1.logo {
+   margin-top: 1% !important;
+}
