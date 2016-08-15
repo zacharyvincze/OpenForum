@@ -5,17 +5,18 @@ Category creation
 */
 
 include 'header.php';
+include 'includes/strings.php';
 include 'includes/connect.php';
 
 echo '<div class="form-container">';
-echo '<h2 class="title">Create a Category</h2>';
+echo '<h2 class="title">' . SHORT_CATEGORY_CREATE . '</h2>';
 
 if(!$_SESSION['signed_in']) {
-    echo 'Admins must be <a href="signin.php">signed in</a> to create a category.';
+    echo MESSAGE_CATEGORY_SIGNOUT;
 } else {
 
     if($_SESSION['user_level'] != 1) {
-        echo 'You must be an admin to create a category.';
+        echo MESSAGE_CATEGORY_UNAUTHORIZED;
     } else {
         if($_SERVER['REQUEST_METHOD'] != 'POST') {
 
@@ -39,9 +40,9 @@ if(!$_SESSION['signed_in']) {
             **/
             echo '
                     <form method="post" action="">
-                      <input id="title" class="normal-text lightblack bold" placeholder="Category name" autocomplete="off" type="text" name="cat_name" /><br>
+                      <input id="title" class="normal-text lightblack bold" placeholder="' . SHORT_CATEGORY_NAME . '" autocomplete="off" type="text" name="cat_name" /><br>
                       <textarea id="editor" autocomplete="off" name="cat_description"></textarea><br>
-                      <input class="button small red" type="submit" value="Add Category" />
+                      <input class="button small red" type="submit" value="' . SHORT_CATEGORY_ADD . '" />
                     </form>';
         } else {
 
@@ -60,17 +61,17 @@ if(!$_SESSION['signed_in']) {
                 $numrows = $stmt->num_rows;
 
                 if($numrows != 0) {
-                    echo 'There is already a category with that name.';
+                    echo MESSAGE_CATEGORY_EXISTS;
                 } else {
                     $query = "INSERT INTO categories(cat_name, cat_description) VALUES (?, ?)";
                     $stmt = $connect->prepare($query);
                     $stmt->bind_param('ss', $cat_name, $cat_description);
                     $stmt->execute();
 
-                    echo 'New category successfully added!';
+                    echo MESSAGE_CATEGORY_SUCCESS;
                 }
             } else {
-                echo 'All the fields must be filled in.';
+                echo MESSAGE_CATEGORY_EMPTY;
             }
         }
     }
