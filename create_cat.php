@@ -15,7 +15,7 @@ if(!$_SESSION['signed_in']) {
     echo MESSAGE_CATEGORY_SIGNOUT;
 } else {
 
-    if($_SESSION['user_level'] != 1) {
+    if($_SESSION['user_level'] != 1 && !DEVELOPMENT_MODE) {
         echo MESSAGE_CATEGORY_UNAUTHORIZED;
     } else {
         if($_SERVER['REQUEST_METHOD'] != 'POST') {
