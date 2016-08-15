@@ -5,10 +5,12 @@ List topics from a category
 */
 
 include 'header.php';
+include 'includes/strings.php'
 include 'includes/connect.php';
+include 'includes/psl-config.php';
 include 'includes/query-functions.php';
 
-date_default_timezone_set('America/Toronto');
+date_default_timezone_set(TIMEZONE);
 
 $query = "SELECT cat_id, cat_name, cat_description FROM categories WHERE cat_id=?";
 $stmt = $connect->prepare($query);
@@ -17,12 +19,12 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if(!$stmt) {
-    echo 'The category could not be displayed, please try again later.';
+    echo ERROR_CONNECTION_FAILED;
 } else {
     $numrows = $result->num_rows;
 
     if($numrows == 0) {
-        echo 'This category does not exist.';
+        echo ERROR_CATEGORY_NONEXISTANT;
     } else {
 
         echo "<div class='container title'>";
@@ -57,12 +59,12 @@ if(!$stmt) {
         $result = $stmt->get_result();
 
         if(!$stmt) {
-            echo 'The topics could not be displayed, please try again later.';
+            echo ERROR_CONNECTION_FAILED;
         } else {
             $numrows = $result->num_rows;
 
             if($numrows == 0) {
-                echo 'There are no topics in this category yet.';
+                echo MESSAGE_CATEGORY_EMPTY;
             } else {
 
                 if(getTopicCount($_GET['cat_id']) == 1) $topic = 'topic';
