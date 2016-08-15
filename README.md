@@ -1,46 +1,12 @@
-# Website-Forum
-Simple MySQL and PHP forum.
+# Description
+Website-Forum is an in-development simple, user-friendly forum software. 
 
-# Table schemas
+# Installation
+1. Make sure you have php5+ and mysql installed. [ TODO: Add more details and link to tutorial for installing ] 
+2. Clone or Download this repository and start the web server.
+3. Import database schematic file `website_forum.sql` into database using phpMyAdmin or CLI.
+4. Rename the file `psl-config.php.example` in the `includes` folder to `psl-config.php`.
+5. Edit the file `psl-config.php` and configure.
+6. Open your browser and head to the site.
 
-    CREATE TABLE categories(
-      cat_id INT(8) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-      cat_name VARCHAR(255) NOT NULL,
-      cat_description VARCHAR(255) NOT NULL,
-      UNIQUE INDEX cat_name_unqiue (cat_name)
-      );
-
-    CREATE TABLE topics(
-      topic_id INT(8) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-      topic_subject VARCHAR(255) NOT NULL,
-      topic_date DATETIME NOT NULL,
-      topic_cat INT(8) NOT NULL,
-      topic_by INT(8) NOT NULL
-      );
-
-    CREATE TABLE posts (
-      post_id INT(8) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-      post_content TEXT NOT NULL,
-      post_date DATETIME NOT NULL,
-      post_topic INT(8) NOT NULL,
-      post_by INT(8) NOT NULL
-      );
-
-    CREATE TABLE users (
-      user_id INT(8) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-      user_name VARCHAR(30) NOT NULL,
-      user_pass VARCHAR(255) NOT NULL,
-      user_email VARCHAR(255) NOT NULL,
-      user_date DATETIME NOT NULL,
-      user_level INT(8) NOT NULL,
-      user_icon VARCHAR(255) NOT NULL,
-      user_key VARCHAR(255) NOT NULL,
-      user_about TEXT NOT NULL,
-      UNIQUE INDEX user_name_unique (user_name)
-      );
-
-And some foreign keys...
-
-    ALTER TABLE topics ADD FOREIGN KEY(topic_by) REFERENCES users(user_id) ON DELETE RESTRICT ON UPDATE CASCADE;
-    ALTER TABLE posts ADD FOREIGN KEY(post_topic) REFERENCES topics(topic_id) ON DELETE CASCADE ON UPDATE CASCADE;
-    ALTER TABLE posts ADD FOREIGN KEY(post_by) REFERENCES users(user_id) ON DELETE RESTRICT ON UPDATE CASCADE;
+Congratulations, if you've gotten this far, you have successfully set up the site!

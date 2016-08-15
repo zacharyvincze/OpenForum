@@ -80,29 +80,55 @@ if($_SERVER['REQUEST_METHOD'] != 'POST') {
         //There have been some errors, echo the first one
         echo $error[0];
     } else {
-        //All is good, insert into temp_users table
-        $key = md5(rand(0, 100000) . $email . rand(0, 1000000));
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
-
-        $query = "INSERT INTO temp_users(
-                    temp_user_name,
-                    temp_user_pass,
-                    temp_user_email,
-                    temp_user_date,
-                    temp_user_level,
-                    temp_user_icon,
-                    temp_user_key)
-                  VALUES (?, ?, ?, NOW(), default, 'default.png', ?)";
-        $stmt = $connect->prepare($query);
-        $stmt->bind_param('ssss', $username, $password_hash, $email, $key);
-        $stmt->execute();
-
-        echo $stmt->error;
-
-        sendEmail($email, $key, $username);
-
-        //Everything is good
-        echo 'true';
+        
+        if(DEVELOPMENT_MODE || !VERIFY_EMAIL) {
+            $query = "
+                INSERT INTO users(
+                    user_name,
+                    user_pass,
+                    user_email,
+                    user_icon,
+                    user_level,
+                    user_date,
+                    user_about)
+                VALUES (?, ?, ?, 'default.png', default, NOW(), '" . MESSAGE_USER_DESCRIPTION . "')";
+            $stmt = $connect->prepare($query);
+            $stmt->bind_param('sss', $username, $password_hash, $email);
+            $stmt->execute();
+        
+            //Delete temp user row
+            $query = "DELETE FROM temp_users WHERE temp_user_key=?";
+            $stmt = $connect->prepare($query);
+            $stmt->bind_param('s', $key);
+            $stmt->execute();
+            
+            //Everything is good
+            echo 'true';
+        } else {
+            //All is good, insert into temp_users table
+            $key = md5(rand(0, 100000) . $email . rand(0, 1000000));
+    
+            $query = "INSERT INTO temp_users(
+                        temp_user_name,
+                        temp_user_pass,
+                        temp_user_email,
+                        temp_user_date,
+                        temp_user_level,
+                        temp_user_icon,
+                        temp_user_key)
+                      VALUES (?, ?, ?, NOW(), default, 'default.png', ?)";
+            $stmt = $connect->prepare($query);
+            $stmt->bind_param('ssss', $username, $password_hash, $email, $key);
+            $stmt->execute();
+    
+            echo $stmt->error;
+    
+            sendEmail($email, $key, $username) or die(ERROR_VERIFICATION_FAILED);
+    
+            //Everything is good
+            echo 'true';
+        }
     }
 }
 

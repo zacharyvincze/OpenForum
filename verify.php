@@ -21,11 +21,11 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if($result->num_rows == 0) {
-    $error[] = 'There was a problem with the verification, please try again later.';
+    $error[] = ERROR_VERIFICATION_FAILED;
 }
 
 if($stmt->error) {
-    $error[] = 'There was an error connecting with the database.';
+    $error[] = ERROR_CONNECTION_FAILED;
 }
 
 if(!empty($error)) {
@@ -50,7 +50,7 @@ if(!empty($error)) {
             user_level,
             user_date,
             user_about)
-        VALUES (?, ?, ?, ?, default, ?, 'Tell us a little about yourself.')";
+        VALUES (?, ?, ?, ?, default, ?, '" . MESSAGE_USER_DESCRIPTION . "')";
     $stmt = $connect->prepare($query);
     $stmt->bind_param('sssss', $username, $password, $email, $icon, $date);
     $stmt->execute();
@@ -61,7 +61,7 @@ if(!empty($error)) {
     $stmt->bind_param('s', $key);
     $stmt->execute();
 
-    echo 'You have been verified ' . $username . '.  Welcome to the forums!';
+    echo str_replace('%user%', $username, MESSAGE_USER_VERIFIED);
 
 }
 

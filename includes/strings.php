@@ -7,11 +7,13 @@ define('ERROR_USER_NONEXISTANT', 'That user doesn\'t exist.'); // trying to figu
 
 
 // Message Strings
-define('MESSAGE_WELCOME_STRINGS', 'Welcome!/Aloha!/Hello!/Welcome back!/Hey!/Hi!/Bonjour!/Howdy!'); // andomly chosen from the list of strings separated by '/'
+define('MESSAGE_WELCOME_STRINGS', 'Welcome!/Aloha!/Hello!/Welcome back!/Hey!/Hi!/Bonjour!/Howdy!'); // randomly chosen from the list of strings separated by '/'
 define('MESSAGE_NOT_REGISTERED', 'Haven\'t registered yet?  Do it <a href="signup.php">here</a>!');
 define('MESSAGE_WELCOME_SIGNUP', 'Welcome to the site.  Just fill in the fields and you\'re good to go!');
+define('MESSAGE_USER_DESCRIPTION', 'Tell us a little bit about yourself.'); // default description
 define('MESSAGE_USER_NONEXISTANT', 'That user doesn\'t exist.');
 define('MESSAGE_USER_SENT', 'Email was sent.');
+define('MESSAGE_USER_VERIFIED', 'You have been verified %user%.  Welcome to the forums!'); // %user% is replaced by the username
 define('MESSAGE_USER_SIGNIN', 'You are already signed in, you can <a href="/signout.php">sign out</a> if you want to switch users.');
 define('MESSAGE_USER_POSTS', '%posts% posts/'); // %posts% is replaced with the number of user posts
 define('MESSAGE_CATEGORY_EMPTY', 'There are no topics in this category yet.');
