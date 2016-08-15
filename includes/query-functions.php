@@ -48,4 +48,20 @@ function getUserPosts($user_id) {
 
     return $user_post_count;
 }
+
+//Getting username from topic_by
+function getTopicUsername($topic_id) {
+    $query = "SELECT user_name
+              FROM users
+              WHERE user_id=?";
+    $stmt = $GLOBALS['connect']->prepare($query);
+
+    $stmt->bind_param('i', $topic_id);
+    $stmt->execute();
+    $stmt->store_result();
+    $stmt->bind_result($username);
+    $stmt->fetch();
+
+    return $username;
+}
 ?>
