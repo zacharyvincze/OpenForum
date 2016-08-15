@@ -3,7 +3,7 @@
 
 // Main Configuration
 define('FORUM_NAME', ''); // the title of the forum
-define('DEVELOPMENT_MODE', 'TRUE'); // development mode will make all users temporarily admin, no email verification, and enables logging
+define('DEVELOPMENT_MODE', TRUE); // development mode will make all users temporarily admin, no email verification, and enables logging
 
 // Database Configuration
 define('HOST', ''); // database host
@@ -15,7 +15,7 @@ define('DATABASE', 'website_forum'); // database name
 define('TIMEZONE', 'America/Toronto'); // current timezone
 
 // Email Configuration
-define('VERIFY_EMAIL', 'FALSE'); // verify email or not
+define('VERIFY_EMAIL', FALSE); // verify email or not
 define('EMAIL', ''); // email to use
 define('EMAILPASS', ''); // email password
 ?>
