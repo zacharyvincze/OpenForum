@@ -36,20 +36,3 @@ CSS stylesheet for different button elements.
 .button.large {
     padding: 30px 60px;
 }
-
-/* Button background color */
-.button.red {
-    background-color: #FF3B3F;
-    color: white;
-    border: 2px solid #FF3B3F;
-}
-
-.button.red:hover {
-    background-color: white;
-    color: #FF3B3F;
-}
-
-.button.white {
-    background-color: white;
-    color: #FF3B3F;
-}

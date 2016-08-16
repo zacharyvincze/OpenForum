@@ -10,12 +10,14 @@ define('ERROR_INVALID_ACCESS', 'Error: File cannot be accessed directly.');
 define('MESSAGE_WELCOME_STRINGS', 'Welcome!/Aloha!/Hello!/Welcome back!/Hey!/Hi!/Bonjour!/Howdy!'); // randomly chosen from the list of strings separated by '/'
 define('MESSAGE_NOT_REGISTERED', 'Haven\'t registered yet?  Do it <a href="signup.php">here</a>!');
 define('MESSAGE_WELCOME_SIGNUP', 'Welcome to the site.  Just fill in the fields and you\'re good to go!');
+
 define('MESSAGE_USER_DESCRIPTION', 'Tell us a little bit about yourself.'); // default description
 define('MESSAGE_USER_NONEXISTANT', 'That user doesn\'t exist.');
 define('MESSAGE_USER_SENT', 'Email was sent.');
 define('MESSAGE_USER_VERIFIED', 'You have been verified %user%.  Welcome to the forums!'); // %user% is replaced by the username
 define('MESSAGE_USER_SIGNIN', 'You are already signed in, you can <a href="/signout.php">sign out</a> if you want to switch users.');
 define('MESSAGE_USER_POSTS', '%posts%'); // %posts% is replaced with the number of user posts
+
 define('MESSAGE_CATEGORY_EMPTY', 'There are no topics in this category yet.');
 define('MESSAGE_CATEGORY_SIGNOUT', 'Admins must be <a href="signin.php">signed in</a> to create a category.');
 define('MESSAGE_CATEGORY_UNAUTHORIZED', 'You must be an admin to create a category.');
@@ -23,6 +25,8 @@ define('MESSAGE_CATEGORY_EXISTS', 'There is already a category with that name.')
 define('MESSAGE_CATEGORY_NONEXISTANT', 'That category doesn\'t exist.');
 define('MESSAGE_CATEGORY_SUCCESS', 'New category successfully added.');
 define('MESSAGE_CATEGORY_EMPTY', 'All the fields must be filled in.');
+define('MESSAGE_CATEGORY_CREATE_DESCRIPTION', 'Create a category to store topics in.');
+
 define('MESSAGE_TOPIC_DESCRIPTION', 'Created by %username% on %date% at %time%');
 define('MESSAGE_TOPIC_SIGNOUT', 'You must be <a href="signin.php">signed in</a> to create a topic.');
 define('MESSAGE_TOPIC_CATEGORY', 'You have not created any categories yet.');

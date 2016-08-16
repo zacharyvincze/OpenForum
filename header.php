@@ -72,21 +72,21 @@ if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) {
     echo '<div class="dropdown">
             <button class="dropbtn">' . SHORT_USER_SIGNIN . '</button>
             <div id="user-dropdown" class="dropdown-content">
-              <p class="big-text lightblack"><strong>' . SHORT_USER_SIGNIN . '</strong></p>
+              <p class="big-text title-text-color"><strong>' . SHORT_USER_SIGNIN . '</strong></p>
               <form method="post" autocomplete="off" onsubmit="return false" id="dropdown-login-form">
-                <input class="small-text lightblack text-field dropdown-form" placeholder="' . SHORT_USER_USERNAME . '" type="text" name="user_name" />
-                <input class="small-text lightblack text-field dropdown-form" placeholder="' . SHORT_USER_PASSWORD . '" type="password" name="user_pass" />
-                <p class="error tiny-text red"></p>
-                <input class="button small red" type="submit" value="Login" />
+                <input class="small-text title-text-color text-field dropdown-form" placeholder="' . SHORT_USER_USERNAME . '" type="text" name="user_name" />
+                <input class="small-text title-text-color text-field dropdown-form" placeholder="' . SHORT_USER_PASSWORD . '" type="password" name="user_pass" />
+                <p class="error tiny-text error-text-color"></p>
+                <input class="button small primary-button-color" type="submit" value="Login" />
               </form>
-              <p class="tiny-text gray" style="margin-top:10px">' . MESSAGE_NOT_REGISTERED . '</p>
+              <p class="tiny-text faded-text-color" style="margin-top:10px">' . MESSAGE_NOT_REGISTERED . '</p>
             </div>
           </div>
         <a href="/signup.php" class="item">' . SHORT_USER_REGISTER . '</a>';
 }
                 ?>
                 </div>
-                <h1 class="logo"><?php echo FORUM_NAME . (DEVELOPMENT_MODE ? ' / <font color="red">Development Mode</font>' : ''); ?></h1>
+                <h1 class="logo inverted-text-color"><?php echo FORUM_NAME . (DEVELOPMENT_MODE ? ' / <font color="red">Development Mode</font>' : ''); ?></h1>
             </div>
             <div class="content">
                 <div class="content-nav">

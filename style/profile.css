@@ -4,7 +4,6 @@ Stylsheet for user profile related elements
 
 .profile-picture {
     border-radius: 50%;
-    background-color: white;
     background-size: cover;
 }
 

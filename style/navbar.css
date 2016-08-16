@@ -3,12 +3,11 @@ Stylesheet for navigation bars and statusbars
 */
 
 .logo {
-    color: white;
+    /**/
 }
 
 #userbar {
     float: right;
-    color: white;
     display: table-cell;
     margin-top: 10px;
 }

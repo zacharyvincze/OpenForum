@@ -45,5 +45,42 @@
 /* Link Colors */
 
 /* Button Colors */
+.primary-button-color {
+    background-color: #FF3B3F;
+    color: #ffffff;
+    border: 2px solid #FF3B3F;
+}
+
+.primary-button-color:hover {
+    background-color: #ffffff;
+    color: #FF3B3F;
+}
+
+.inverted-button-color {
+    background-color: #ffffff;
+    color: #FF3B3F;
+    border: 2px solid #ffffff;
+}
+
+.inverted-button-color:hover {
+    background-color: #FF3B3F;
+    color: #ffffff;
+}
 
 /* Nav Colors */
+
+/* Page indicators */
+.current-page-index {
+    background-color: #C40C0E;
+    color: #ffffff;
+}
+
+.page-index:hover {
+    background-color: white;
+    color: #FF3B3F;
+}
+
+.page-index {
+    background-color: #FF3B3F;
+    color: white;
+}
