@@ -6,7 +6,7 @@ Function to send verification email
 
 function sendEmail($user_email, $user_key, $user_name) {
     require 'includes/PHPMailerAutoload.php';
-    require 'includes/class.phpmailer.php';
+    require 'includes/phpmailer/class.phpmailer.php';
 
     date_default_timezone_set('America/Toronto');
 
