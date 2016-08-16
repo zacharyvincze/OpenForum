@@ -1,11 +1,12 @@
 $(document).ready(function() {
-    
+
     $("#reply-form").on("submit", function(e) {
-        
+
         var editorContent = tinyMCE.get('editor').getContent({format: 'text'});
-        
+
         if($.trim(editorContent) == '') {
-            alert('empty!');
+            $(".error").fadeIn(10);
+            $(".error").text("The text field is empty!");
         } else {
             $.ajax({
                 type: 'post',
@@ -15,15 +16,16 @@ $(document).ready(function() {
                     if(html == 'true') {
                         window.location.reload();
                     }
-                
+
                     else {
-                        alert("Something went wrong.  Please try again later.");
+                        $(".error").fadeIn(10);
+                        $(".error").text(html);
                     }
-                }  
-            
+                }
+
             });
         }
-        
+
     });
-    
+
 });

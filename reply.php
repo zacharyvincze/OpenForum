@@ -31,9 +31,9 @@ if($_SERVER['REQUEST_METHOD'] != 'POST') {
             $stmt = $connect->prepare($query);
             $stmt->bind_param('sii', $reply_content, $topic_id, $_SESSION['user_id']);
             $stmt->execute();
-    
+
             if(!$stmt) {
-                echo 'false';
+                echo ERROR_CONNECTION_FAILED;
             } else {
                 echo 'true';
                 $stmt->close();

@@ -6,7 +6,6 @@ Stylesheet for posts
 Box to store user posts
 */
 .topic-box {
-    background-color: #F2F2F2;
     margin-left: 0;
     margin-right: 0;
     padding-left: 0;
@@ -17,7 +16,6 @@ Box to store user posts
 
 /* Styling for the actual posts */
 .post {
-    background-color: white;
     margin-bottom: 5px;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -33,7 +31,6 @@ Box to store user posts
 
 .mobile-profile-info {
     display: flex;
-    border-bottom: 2px solid #F2F2F2;
     margin-bottom: 20px;
     padding-bottom: 20px;
 }

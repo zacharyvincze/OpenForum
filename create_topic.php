@@ -12,7 +12,6 @@ echo '<div class="form-container">';
 echo '<div class="title">';
 echo '<h2 class="big-text lightblack bold center">' . SHORT_TOPIC_CREATE . '</h2>';
 echo '</div>';
-echo '</div>';
 
 if($_SESSION['signed_in'] == false) {
     echo '<div class="container">';
@@ -62,12 +61,12 @@ if($_SESSION['signed_in'] == false) {
             echo '<input autocomplete="off" id="title" class="normal-text lightblack bold" placeholder="' . SHORT_TOPIC_SUBJECT . '" type="text" name="topic_subject" /><br>
                   <textarea id="editor" autocomplete="off" name="post_content"></textarea><br>
                   <input type="hidden" name="csrf_token" value="' . $_SESSION['csrf_token'] . '" />
-                  <input class="button small red" type="submit" value="' . SHORT_TOPIC_BUTTON . '" />
+                  <input class="button small primary-button-color" type="submit" value="' . SHORT_TOPIC_BUTTON . '" />
                 </form>
                 </div>';
         }
     } else if ($_POST['csrf_token'] != $_SESSION['csrf_token']){
-        die(ERROR_INVALID_CSRF);
+        die('<p class="center bold error-text-color">' . ERROR_INVALID_CSRF . '</p>');
     } else {
         $query = "BEGIN WORK"; // lol
         $stmt = $connect->query($query);
@@ -121,7 +120,7 @@ if($_SESSION['signed_in'] == false) {
         }
     }
 }
-
+echo '</div>';
 include 'footer.php';
 
 ?>

@@ -6,19 +6,12 @@ Stylesheet for page indexing
     height: 20px;
     width: 20px;
     display: inline-block;
-    background-color: #FF3B3F;
-    color: white;
     font-size: 12px;
     text-align: center;
     line-height: 20px;
     margin-left: 2px;
     margin-right: 2px;
     border: 1px solid #FF3B3F;
-}
-
-.page-index:hover {
-    background-color: white;
-    color: #FF3B3F;
 }
 
 .current-page-index {
@@ -30,8 +23,6 @@ Stylesheet for page indexing
     text-align: center;
     line-height: 20px;
     border: 1px solid #C40C0E;
-    background-color: #C40C0E;
-    color: white;
     display: inline-block;
     margin-left: 2px;
     margin-right: 2px;

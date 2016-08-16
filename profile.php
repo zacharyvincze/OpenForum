@@ -27,7 +27,7 @@ $numrows = $result->num_rows;
 
 if($numrows == 0) {
     //User doesn't exist
-    echo '<p class="small-text lightblack">' . MESSAGE_USER_NONEXISTANT . '</p>';
+    echo '<p class="small-text primary-text-color">' . MESSAGE_USER_NONEXISTANT . '</p>';
 } else {
     //Fetching user data
     while($row = $result->fetch_assoc()) {
@@ -41,17 +41,17 @@ if($numrows == 0) {
     }
 
     //Basic user page setup
-    echo '<div class="profile-banner">
-            <img class="profile-picture big" src="/assets/icons/'.$user_icon.'">
+    echo '<div class="profile-banner faded-color">
+            <img class="profile-picture inverted-color big" src="/assets/profile-pictures/'.$user_icon.'">
           </div>
-          <div class="profile-statistics">
+          <div class="profile-statistics primary-color">
             <div class="posts">
-              <p class="small-text white bold">' . SHORT_USER_POSTS . '</p>
-              <p class="small-text white">'.getUserPosts($user_id).'</p>
+              <p class="small-text inverted-text-color bold">' . SHORT_USER_POSTS . '</p>
+              <p class="small-text inverted-text-color">'.getUserPosts($user_id).'</p>
             </div>
             <div class="joined">
-              <p class="small-text white bold">' . SHORT_USER_JOINED . '</p>
-              <p class="small-text white">'.date('j F, Y', strtotime($user_date)).'</p>
+              <p class="small-text inverted-text-color bold">' . SHORT_USER_JOINED . '</p>
+              <p class="small-text inverted-text-color">'.date('j F, Y', strtotime($user_date)).'</p>
             </div>
           </div>';
 

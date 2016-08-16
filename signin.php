@@ -9,12 +9,11 @@ include 'includes/strings.php';
 include 'includes/connect.php';
 
 echo '<div class="form-container">';
-echo '<div class="title">';
-echo '<h3 class="center big-text lightblack">' . SHORT_USER_SIGNIN . '</h3>';
-echo '<p class="text-small gray center">' . MESSAGE_NOT_REGISTERED . '</p>';
+echo '<div class="header">';
+echo '<h3 class="title center">' . SHORT_USER_SIGNIN . '</h3>';
+echo '<p class="description center">' . MESSAGE_NOT_REGISTERED . '</p>';
 echo '</div>';
 
-echo '<div class="form-container">';
 if($_SESSION['signed_in']) {
     echo MESSAGE_USER_SIGNIN;
 } else {

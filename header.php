@@ -10,11 +10,11 @@ sec_session_start();
     <head>
 
          <!-- Chrome, Firefox OS and Opera -->
-         <meta name="theme-color" content="#4285f4">
+         <meta name="theme-color" content="#FF3B3F">
          <!-- Windows Phone -->
-         <meta name="msapplication-navbutton-color" content="#4285f4">
+         <meta name="msapplication-navbutton-color" content="#FF3B3F">
          <!-- iOS Safari -->
-         <meta name="apple-mobile-web-app-capable" content="yes"> 
+         <meta name="apple-mobile-web-app-capable" content="yes">
          <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
         <!-- Document information -->
@@ -39,19 +39,20 @@ sec_session_start();
         <link rel="stylesheet" href="/style/button.css">
         <link rel="stylesheet" href="/style/dropdown.css">
         <link rel="stylesheet" href="/style/page-index.css">
+        <link rel="stylesheet" href="/style/themes/red-theme.css">
 
         <!-- Javascript -->
         <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
         <script src="/js/dropdown.js"></script>
-        <script src="/js/login.js"></script>
+        <script src="/js/authentication/login.js"></script>
         <script src="/js/editor-validation.js"></script>
-        <script src="/js/register.js"></script>
+        <script src="/js/authentication/register.js"></script>
     </head>
 
     <body>
-        <div id="background-style">
+        <div id="background-style" class="secondary-color">
         </div>
         <div id="wrapper">
             <div id="menu">
@@ -71,27 +72,27 @@ if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) {
     echo '<div class="dropdown">
             <button class="dropbtn">' . SHORT_USER_SIGNIN . '</button>
             <div id="user-dropdown" class="dropdown-content">
-              <p class="big-text lightblack"><strong>' . SHORT_USER_SIGNIN . '</strong></p>
+              <p class="big-text title-text-color"><strong>' . SHORT_USER_SIGNIN . '</strong></p>
               <form method="post" autocomplete="off" onsubmit="return false" id="dropdown-login-form">
-                <input class="small-text lightblack text-field dropdown-form" placeholder="' . SHORT_USER_USERNAME . '" type="text" name="user_name" />
-                <input class="small-text lightblack text-field dropdown-form" placeholder="' . SHORT_USER_PASSWORD . '" type="password" name="user_pass" />
-                <p class="error tiny-text red"></p>
-                <input class="button small red" type="submit" value="Login" />
+                <input class="small-text title-text-color text-field dropdown-form" placeholder="' . SHORT_USER_USERNAME . '" type="text" name="user_name" />
+                <input class="small-text title-text-color text-field dropdown-form" placeholder="' . SHORT_USER_PASSWORD . '" type="password" name="user_pass" />
+                <p class="error tiny-text error-text-color"></p>
+                <input class="button small primary-button-color" type="submit" value="Login" />
               </form>
-              <p class="tiny-text gray" style="margin-top:10px">' . MESSAGE_NOT_REGISTERED . '</p>
+              <p class="tiny-text faded-text-color" style="margin-top:10px">' . MESSAGE_NOT_REGISTERED . '</p>
             </div>
           </div>
         <a href="/signup.php" class="item">' . SHORT_USER_REGISTER . '</a>';
 }
                 ?>
                 </div>
-                <h1 class="logo"><?php echo FORUM_NAME . (DEVELOPMENT_MODE ? ' / <font color="red">Development Mode</font>' : ''); ?></h1>
+                <h1 class="logo inverted-text-color"><?php echo FORUM_NAME . (DEVELOPMENT_MODE ? ' / <font color="red">Development Mode</font>' : ''); ?></h1>
             </div>
-            <div class="content">
-                <div class="content-nav">
-                    <a class="item" href="/index.php"><?php echo SHORT_NAV_HOME; ?></a>
-                    <a class="item" href="<?php if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) echo '/create_topic.php'; else echo '/signin.php' ?>"><?php if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) echo SHORT_TOPIC_CREATE; else echo 'Login' ?></a>
-                    <?php if(isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1) echo '<a class="item" href="/create_cat.php">' . SHORT_CATEGORY_CREATE . '</a>'; ?>
+            <div class="content inverted-color">
+                <div class="content-nav inverted-text-color primary-color">
+                    <a class="item inverted-text-color" href="/index.php"><?php echo SHORT_NAV_HOME; ?></a>
+                    <a class="item inverted-text-color" href="<?php if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) echo '/create_topic.php'; else echo '/signin.php' ?>"><?php if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) echo SHORT_TOPIC_CREATE; else echo 'Login' ?></a>
+                    <?php if(isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1) echo '<a class="item inverted-text-color" href="/create_cat.php">' . SHORT_CATEGORY_CREATE . '</a>'; ?>
                 </div>
-                <div class="under-content-nav">
+                <div class="under-content-nav faded-color">
                 </div>

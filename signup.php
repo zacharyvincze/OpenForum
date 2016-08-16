@@ -9,9 +9,9 @@ include 'includes/strings.php';
 include 'includes/connect.php';
 
 echo '<div class="form-container">';
-echo '<div class="title">';
-echo '<h3 class="big-text lightblack center">' . SHORT_USER_SIGNUP . '</h3>';
-echo '<p class="gray small-text center">' . MESSAGE_WELCOME_SIGNUP . '</p>';
+echo '<div class="header">';
+echo '<h3 class="title center">' . SHORT_USER_SIGNUP . '</h3>';
+echo '<p class="description center">' . MESSAGE_WELCOME_SIGNUP . '</p>';
 echo '</div>';
 
 echo '<form method="post" onsubmit="return false" autocomplete="off" id="register-form">

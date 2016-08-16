@@ -17,7 +17,8 @@ FROM categories c
 LEFT JOIN (
     SELECT topic_subject, topic_id, topic_cat, MAX(topic_date) latest
     FROM topics
-    GROUP BY topic_cat, topic_id, topic_subject, topic_date
+    GROUP BY topic_date, topic_cat, topic_id, topic_subject
+    LIMIT 1
      ) as t
 ON c.cat_id = t.topic_cat";
 $stmt = $connect->query($query);
@@ -35,11 +36,11 @@ while($row = $stmt->fetch_assoc()) {
     else $topic = SHORT_TOPIC_PLURAL;
     $x++;
 
-    $class = ($x%2 == 0)? 'whiteBackground' : 'grayBackground';
+    $class = ($x%2 == 0)? 'inverted-color' : 'faded-color';
 
     echo "<tr class='$class'>";
         echo '<td class="leftpart">';
-            echo '<h3><a href="/category.php?cat_id=' . $row['cat_id'] . '">' . $row['cat_name'] . '</a></h3><p class="small-text">' . ($row['cat_description']) . '</p>';
+            echo '<h3><a href="/category.php?cat_id=' . $row['cat_id'] . '">' . $row['cat_name'] . '</a></h3><p class="small-text primary-text-color">' . ($row['cat_description']) . '</p>';
         echo '</td>';
         echo '<td class="middle" id="last-topic">';
             echo '<p class="big-number">' . getTopicCount($row['cat_id']) . '</p><p class="small-text-gray"> ' . $topic . '</p>';

@@ -2,14 +2,9 @@
 Stylesheet for table styling
 */
 td a {
-    color: #FF3B3F;
     font-weight: 900;
     font-size: 15px;
     transition: color 0.2s ease;
-}
-
-td a:hover {
-    color: #C40C0E;
 }
 
 .middle {
@@ -28,10 +23,6 @@ table {
     width: 100%;
 }
 
-tr {
-    background-color: white;
-}
-
 td {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -48,14 +39,6 @@ td {
 .leftpart {
     padding-left: 10%;
     padding-right: 10%;
-}
-
-.whiteBackground {
-    background-color: white;
-}
-
-.grayBackground {
-    background-color: #F7F7F7;
 }
 
 @media (min-width: 1200px) {
