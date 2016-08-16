@@ -15,6 +15,8 @@ if($_SERVER['REQUEST_METHOD'] != 'POST') {
 } else {
     if(!$_SESSION['signed_in']) {
         echo MESSAGE_REPLY_SIGNOUT;
+    } else if ($_POST['csrf_token'] != $_SESSION['csrf_token']){
+        die(ERROR_INVALID_CSRF);
     } else {
 
         $reply_content = $_POST['reply-content'];

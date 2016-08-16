@@ -53,7 +53,7 @@ if($_SESSION['signed_in'] == false) {
                     <form method="post" action="">
                     Category: ';
 
-            echo '<select name="topic_cat">';
+            echo '<select name="topic_cat" style="background-color: #ffffff; border-color: #FF3B3F; border-width: 2px; border-radius: 3px; font-family: \'Helvetiva Neue\', \'Helvetica\', \'Roboto\', sans-serif;">';
             while($row = $stmt->fetch_assoc()) {
                 echo '<option value="' . $row['cat_id'] . '">' . $row['cat_name'] . '</option>';
             }
@@ -61,12 +61,14 @@ if($_SESSION['signed_in'] == false) {
 
             echo '<input autocomplete="off" id="title" class="normal-text lightblack bold" placeholder="' . SHORT_TOPIC_SUBJECT . '" type="text" name="topic_subject" /><br>
                   <textarea id="editor" autocomplete="off" name="post_content"></textarea><br>
+                  <input type="hidden" name="csrf_token" value="' . $_SESSION['csrf_token'] . '" />
                   <input class="button small red" type="submit" value="' . SHORT_TOPIC_BUTTON . '" />
                 </form>
                 </div>';
         }
+    } else if ($_POST['csrf_token'] != $_SESSION['csrf_token']){
+        die(ERROR_INVALID_CSRF);
     } else {
-
         $query = "BEGIN WORK"; // lol
         $stmt = $connect->query($query);
 
