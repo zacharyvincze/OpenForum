@@ -10,7 +10,7 @@ include 'includes/query-functions.php';
 
 date_default_timezone_set(TIMESTAMP);
 
-$query = "SELECT topic_id, topic_subject, topic_by, topic_date FROM topics WHERE topic_id=?";
+$query = "SELECT * FROM topics WHERE topic_id=?";
 $stmt = $connect->prepare($query);
 $stmt->bind_param('i', $_GET['topic_id']);
 $stmt->execute();
@@ -25,14 +25,22 @@ if(!$stmt) {
     if($numrows == 0) {
         echo MESSAGE_TOPIC_NONEXISTANT;
     } else {
-
         echo '<div class="container">';
 
         while($row = $result->fetch_assoc()) {
-            echo '<div class="header">';
-            echo '<p class="title title-text-color">' . $row['topic_subject'] . '</p>';
-            echo '<br><p class="description faded-text-color">' . str_replace('%time%', '' . date('g:i A', strtotime($row['topic_date'])), str_replace('%date%', '' . date('j F, Y', strtotime($row['topic_date'])), str_replace('%username%', '' . getTopicUsername($row['topic_by']), MESSAGE_TOPIC_DESCRIPTION))) . '</p>';
-            echo '</div>';
+            if($row['topic_visible'] || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1) || DEVELOPMENT_MODE) {
+                echo '<div class="header">';
+                
+                // `Delete` button. Put in separate variable because otherwise, the if statement would be wayyyy too long, even with indents.
+                $buttondata = '<input id="delete" class="button red normal" type="button" value="' . SHORT_TOPIC_DELETE . '" name="delete" style="float: right !important;">';
+                // Really complicated if statement in one line to check if the button is allowed to echo
+                echo (DEVELOPMENT_MODE || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_id'] == $row['topic_by']) || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1) ? $buttondata : '');
+                echo '<p class="title title-text-color">' . $row['topic_subject'] . '</p>';
+                echo '<br><p class="description faded-text-color">' . str_replace('%time%', '' . date('g:i A', strtotime($row['topic_date'])), str_replace('%date%', '' . date('j F, Y', strtotime($row['topic_date'])), str_replace('%username%', '' . getTopicUsername($row['topic_by']), MESSAGE_TOPIC_DESCRIPTION))) . '</p>';
+                echo '</div>';
+            } else {
+                die(MESSAGE_TOPIC_NONEXISTANT);
+            }
         }
 
         if(isset($_GET['page'])) {
@@ -41,7 +49,7 @@ if(!$stmt) {
             $intStart = ($currentPage * $totalPerPage);
             $limit = $totalPerPage;
         } else {
-            die("This page does not exist!");
+            die(MESSAGE_TOPIC_NONE);
         }
 
         //Get amount of posts in topic
