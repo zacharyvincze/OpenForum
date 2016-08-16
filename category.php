@@ -35,20 +35,9 @@ if(!$stmt) {
 
         echo '</div>';
 
-        $query = "SELECT
-                    t.topic_id,
-                    t.topic_subject,
-                    t.topic_date,
-                    t.topic_cat,
-                    t.topic_visible
-                    u.user_id,
-                    u.user_name
+        $query = "SELECT *
                   FROM
-                    topics t
-                  LEFT JOIN
-                    users u
-                  ON
-                    t.topic_by = u.user_id
+                    topics
                   WHERE
                     topic_cat=?" . (DEVELOPMENT_MODE || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1) ? '' : " AND topic_visible='TRUE'" ) . "
                   ORDER BY topic_date DESC";
@@ -86,7 +75,7 @@ if(!$stmt) {
                     echo "<tr class='$class'" . ($row['topic_visible'] ? '' : ' style="background-color: #ffa1a1 !important"') . ">";
                         echo '<td class="leftpart">';
                             echo '<h3><a href="/topic.php?topic_id=' . $row['topic_id'] . '&page=1">' . $row['topic_subject'] . '</a></h3>';
-                            echo '<p class="small-text faded-text-color">By ' . $row['user_name'] . ', ' . date('F j', strtotime($row['topic_date'])) . ' at ' . date('g:i A', strtotime($row['topic_date'])) . '</p>';
+                            echo '<p class="small-text faded-text-color">By ' . getTopicUsername($row['topic_by']) . ', ' . date('F j', strtotime($row['topic_date'])) . ' at ' . date('g:i A', strtotime($row['topic_date'])) . '</p>';
                         echo '</td>';
                         echo '<td class="rightpart">';
                             echo '<p class="small-text faded-text-color">' . (getPostCount($row['topic_id']) - 1) . ' ' . $reply . "</p>";
