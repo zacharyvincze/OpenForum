@@ -6,8 +6,6 @@ List posts from a topic
 
 include 'header.php';
 include 'includes/connect.php';
-include 'includes/psl-config.php';
-include 'includes/strings.php';
 include 'includes/query-functions.php';
 
 date_default_timezone_set(TIMESTAMP);
@@ -34,6 +32,8 @@ if(!$stmt) {
             echo '<div class="header">';
             echo '<p class="title">' . $row['topic_subject'] . '</p>';
             echo '<br><p class="description">Created by <strong><a href="profile.php?user_id=' . $row['topic_by'] . '">' . getTopicUsername($row['topic_by']) . '</a></strong></p>';
+            echo '<p class="title title-text-color">' . $row['topic_subject'] . '</p>';
+            echo '<br><p class="description faded-text-color">Created by <strong>' . getTopicUsername($row['topic_by']) . '</strong></p>';
             echo '</div>';
         }
 
@@ -115,16 +115,21 @@ if(!$stmt) {
                     echo '<div class="post">
                             <div class="mobile-profile-info">
                               <img class="profile-picture tiny" src="/assets/profile-pictures/' . $row['user_icon'] . '">
+<<<<<<< Updated upstream
                               <span class="big-text black"><strong><a href="profile.php?user_id=' . $row['user_id'] . '">' . $row['user_name'] . '</a></strong></span>
                               <span class="small-text gray">' . $user_level . '</span>
+=======
+                              <span class="big-text title-text-color"><strong>' . $row['user_name'] . '</strong></span>
+                              <span class="small-text faded-text-color">' . $user_level . '</span>
+>>>>>>> Stashed changes
                             </div>
                             <div class="profile-info">
-                              <p class="big-text black"><strong>' . $row['user_name'] . '</strong></p>
-                              <p class="small-text gray">' . $user_level . '</p>
+                              <p class="big-text title-text-color"><strong>' . $row['user_name'] . '</strong></p>
+                              <p class="small-text faded-text-color">' . $user_level . '</p>
                               <div class="profile-picture small center" style="background-image: url(/assets/profile-pictures/' . $row['user_icon']. ')"></div>
-                              <p class="tiny-text gray">' . str_replace('%posts%', '' . getUserPosts($row['user_id']), MESSAGE_USER_POSTS) . ' ' . $posts . '</p>
+                              <p class="tiny-text faded-text-color">' . str_replace('%posts%', '' . getUserPosts($row['user_id']), MESSAGE_USER_POSTS) . ' ' . $posts . '</p>
                             </div><div class="post-content">
-                              <p class="tiny-text gray">' . str_replace('%time%', '' . date('g:i A', strtotime($row['post_date'])), str_replace('%date%', '' . date('j F, Y', strtotime($row['post_date'])), MESSAGE_TOPIC_DATE)) . '</p>
+                              <p class="tiny-text faded-text-color">' . str_replace('%time%', '' . date('g:i A', strtotime($row['post_date'])), str_replace('%date%', '' . date('j F, Y', strtotime($row['post_date'])), MESSAGE_TOPIC_DATE)) . '</p>
                               <div class="tiny-text black">' . $row['post_content'] . '</div>
                             </div>
                           </div>';
@@ -173,6 +178,7 @@ if(!$stmt) {
 
                 //Reply form
                 echo '<div class="form-container" style="margin-top: 20px">
+                        <p class="error-text-color small-text error">Test</p>
                         <form id="reply-form" method="post" onsubmit="return false" autocomplete="false">
                           <textarea id="editor" autocomplete="off" name="reply-content"></textarea>
                           <input type="hidden" name="csrf_token" value="' . $_SESSION['csrf_token'] . '" />
