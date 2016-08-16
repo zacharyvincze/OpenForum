@@ -40,7 +40,7 @@ if(!$_SESSION['signed_in']) {
             **/
             echo '
                     <form method="post" action="">
-                      <input type="hidden" name="token" value="' . $_SESSION['csrf_token'] . '" />
+                      <input type="hidden" name="csrf_token" value="' . $_SESSION['csrf_token'] . '" />
                       <input id="title" class="normal-text lightblack bold" placeholder="' . SHORT_CATEGORY_NAME . '" autocomplete="off" type="text" name="cat_name" /><br>
                       <textarea id="editor" autocomplete="off" name="cat_description"></textarea><br>
                       <input class="button small red" type="submit" value="' . SHORT_CATEGORY_ADD . '" />
