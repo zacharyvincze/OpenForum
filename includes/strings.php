@@ -1,6 +1,7 @@
 <?php
 // Error Strings
 define('ERROR_CONNECTION_FAILED', 'Error: Connection to database failed.');
+define('ERROR_CSRF_FAILED', 'Error: CSRF authentication failed. If this keeps happening, try <a href="signout.php">signing out</a> and back in again.');
 define('ERROR_VERIFICATION_FAILED', 'Error: Email verification failed.');
 define('ERROR_INVALID_ACCESS', 'Error: File cannot be accessed directly.');
 define('ERROR_USER_NONEXISTANT', 'That user doesn\'t exist.'); // trying to figure out where this is used, but it should be a MESSAGE. will remove when I find it so it doesn't break anything
