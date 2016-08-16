@@ -9,8 +9,9 @@ include 'includes/strings.php';
 include 'includes/connect.php';
 
 echo '<div class="form-container">';
-echo '<div class="title">';
-echo '<h2 class="big-text lightblack bold center">' . SHORT_TOPIC_CREATE . '</h2>';
+echo '<div class="header">';
+echo '<h2 class="title title-text-color center">' . SHORT_TOPIC_CREATE . '</h2>';
+echo '<p class="description center faded-text-color">Create a topic for discussion</p>';
 echo '</div>';
 
 if($_SESSION['signed_in'] == false) {
@@ -58,7 +59,7 @@ if($_SESSION['signed_in'] == false) {
             }
             echo '</select>';
 
-            echo '<input autocomplete="off" id="title" class="normal-text lightblack bold" placeholder="' . SHORT_TOPIC_SUBJECT . '" type="text" name="topic_subject" /><br>
+            echo '<input autocomplete="off" id="title" class="normal-text title-text-color" placeholder="' . SHORT_TOPIC_SUBJECT . '" type="text" name="topic_subject" /><br>
                   <textarea id="editor" autocomplete="off" name="post_content"></textarea><br>
                   <input type="hidden" name="csrf_token" value="' . $_SESSION['csrf_token'] . '" />
                   <input class="button small primary-button-color" type="submit" value="' . SHORT_TOPIC_BUTTON . '" />

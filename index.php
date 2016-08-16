@@ -17,10 +17,11 @@ FROM categories c
 LEFT JOIN (
     SELECT topic_subject, topic_id, topic_cat, MAX(topic_date) latest
     FROM topics
-    GROUP BY topic_date, topic_cat, topic_id, topic_subject
+    GROUP BY topic_id DESC
     LIMIT 1
      ) as t
-ON c.cat_id = t.topic_cat";
+ON c.cat_id = t.topic_cat
+ORDER BY c.cat_id";
 $stmt = $connect->query($query);
 
 echo (DEVELOPMENT_MODE ? $connect->error : ERROR_CONNECTION_FAILED);
