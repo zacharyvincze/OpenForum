@@ -14,7 +14,7 @@ sec_session_start();
          <!-- Windows Phone -->
          <meta name="msapplication-navbutton-color" content="#4285f4">
          <!-- iOS Safari -->
-         <meta name="apple-mobile-web-app-capable" content="yes"> 
+         <meta name="apple-mobile-web-app-capable" content="yes">
          <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
         <!-- Document information -->
@@ -39,15 +39,16 @@ sec_session_start();
         <link rel="stylesheet" href="/style/button.css">
         <link rel="stylesheet" href="/style/dropdown.css">
         <link rel="stylesheet" href="/style/page-index.css">
+        <link rel="stylesheet" href="/style/themes/red-theme.css">
 
         <!-- Javascript -->
         <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
         <script src="/js/dropdown.js"></script>
-        <script src="/js/login.js"></script>
+        <script src="/js/authentication/login.js"></script>
         <script src="/js/editor-validation.js"></script>
-        <script src="/js/register.js"></script>
+        <script src="/js/authentication/register.js"></script>
     </head>
 
     <body>
