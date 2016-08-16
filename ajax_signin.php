@@ -7,6 +7,7 @@ Login through AJAX
 include 'includes/functions.php';
 include 'includes/connect.php';
 include 'includes/strings.php';
+
 sec_session_start();
 
 if($_SERVER['REQUEST_METHOD'] != 'POST') {
@@ -91,6 +92,7 @@ if($_SERVER['REQUEST_METHOD'] != 'POST') {
                     $_SESSION['user_level'] = $level;
                     $_SESSION['user_id'] = $id;
                     $_SESSION['signed_in'] = true;
+                    $_SESSION['csrf_token'] = md5(uniqid(rand(), TRUE));
                 }
             }
 
