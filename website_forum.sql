@@ -46,6 +46,7 @@ CREATE TABLE `posts` (
   `post_date` datetime NOT NULL,
   `post_topic` int(8) NOT NULL,
   `post_by` int(8) NOT NULL,
+  `post_visible` VARCHAR(5) NOT NULL DEFAULT 'TRUE'
   PRIMARY KEY (`post_id`),
   KEY `delete_post_topic` (`post_topic`),
   KEY `delete_post_user` (`post_by`),
