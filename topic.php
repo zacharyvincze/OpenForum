@@ -175,6 +175,7 @@ if(!$stmt) {
                 echo '<div class="form-container" style="margin-top: 20px">
                         <form id="reply-form" method="post" onsubmit="return false" autocomplete="false">
                           <textarea id="editor" autocomplete="off" name="reply-content"></textarea>
+                          <input type="hidden" name="csrf_token" value="' . $_SESSION['csrf_token'] . '" />
                           <input type="hidden" name="topic-id" value="' . $_GET['topic_id'] . '">
                           <p class="error-noenter tiny-text red"></p>
                           <input id="submit" class="button red normal" type="submit" value="' . SHORT_REPLY_BUTTON . '" />
