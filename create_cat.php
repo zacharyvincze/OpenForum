@@ -44,8 +44,9 @@ if(!$_SESSION['signed_in']) {
                       <textarea id="editor" autocomplete="off" name="cat_description"></textarea><br>
                       <input class="button small red" type="submit" value="' . SHORT_CATEGORY_ADD . '" />
                     </form>';
+        } else if ($_POST['token'] != $_SESSION['token']){
+            die(ERROR_INVALID_CSRF);
         } else {
-
             $cat_name = $_POST['cat_name'];
             $cat_description = $_POST['cat_description'];
 
