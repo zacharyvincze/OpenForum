@@ -46,7 +46,6 @@ CREATE TABLE `posts` (
   `post_date` datetime NOT NULL,
   `post_topic` int(8) NOT NULL,
   `post_by` int(8) NOT NULL,
-  `post_visible` VARCHAR(5) NOT NULL DEFAULT 'TRUE'
   PRIMARY KEY (`post_id`),
   KEY `delete_post_topic` (`post_topic`),
   KEY `delete_post_user` (`post_by`),
@@ -89,6 +88,7 @@ CREATE TABLE `topics` (
   `topic_date` datetime NOT NULL,
   `topic_cat` int(8) NOT NULL,
   `topic_by` int(8) NOT NULL,
+  `topic_visible` VARCHAR(5) NOT NULL DEFAULT 'TRUE',
   PRIMARY KEY (`topic_id`),
   KEY `topic_cat` (`topic_cat`),
   KEY `delete_topic` (`topic_by`),
