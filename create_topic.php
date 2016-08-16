@@ -80,7 +80,7 @@ if($_SESSION['signed_in'] == false) {
             if(!$topic_subject) {
                 echo MESSAGE_TOPIC_EMPTY;
             } else {
-                $query = "INSERT INTO topics(topic_subject, topic_date, topic_cat, topic_by) VALUES (?, NOW(), ?, ?)";
+                $query = "INSERT INTO topics(topic_subject, topic_date, topic_cat, topic_by, topic_visible) VALUES (?, NOW(), ?, ?, 'TRUE')";
                 $stmt = $connect->prepare($query);
                 $stmt->bind_param('sii', $topic_subject, $topic_cat, $_SESSION['user_id']);
                 $stmt->execute();
