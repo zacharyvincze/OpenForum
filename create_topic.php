@@ -53,7 +53,7 @@ if($_SESSION['signed_in'] == false) {
                     <form method="post" action="">
                     Category: ';
 
-            echo '<select name="topic_cat">';
+            echo '<select name="topic_cat" style="background-color: #ffffff; border-color: #FF3B3F; border-width: 2px; border-radius: 3px; font-family: \'Helvetiva Neue\', \'Helvetica\', \'Roboto\', sans-serif;">';
             while($row = $stmt->fetch_assoc()) {
                 echo '<option value="' . $row['cat_id'] . '">' . $row['cat_name'] . '</option>';
             }
