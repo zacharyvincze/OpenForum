@@ -61,8 +61,3 @@ CSS stylesheet for dropdown menus
 .show {
     display: block;
 }
-
-.error {
-    display: none;
-    margin-top: 10px;
-}

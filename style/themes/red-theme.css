@@ -1,0 +1,49 @@
+/* Red CSS theme */
+
+/* Main coloring */
+.primary-color {
+    background-color: #FF3B3F;
+}
+
+.secondary-color {
+    background-color: #C40C0E;
+}
+
+.faded-color {
+    background-color: #F7F7F7;
+}
+
+.inverted-color {
+    background-color: #ffffff;
+}
+
+/* Text Colors */
+.primary-text-color {
+    color: #141414;
+}
+
+.secondary-text-color {
+    color: #FF3B3F;
+}
+
+.title-text-color {
+    color: #34495e;
+}
+
+.faded-text-color {
+    color: #868686;
+}
+
+.inverted-text-color {
+    color: #ffffff;
+}
+
+.error-text-color {
+    color: #FF3B3F;
+}
+
+/* Link Colors */
+
+/* Button Colors */
+
+/* Nav Colors */

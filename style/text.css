@@ -25,27 +25,6 @@ Stylesheet for text elements
     font-size: 20px;
 }
 
-/* Text colors */
-.gray {
-    color: #868686;
-}
-
-.black {
-    color: #141414;
-}
-
-.red {
-    color: #FF3B3F;
-}
-
-.white {
-    color: white;
-}
-
-.lightblack {
-    color: #34495e;
-}
-
 .bold {
     font-weight: bold;
 }
@@ -69,13 +48,11 @@ Stylesheet for text elements
 }
 
 .title {
-    color: #34495e;
     font-size: 24px;
     font-weight: bold;
 }
 
 .description {
-    color: #868686;
     font-size: 14px;
 }
 
@@ -84,4 +61,10 @@ Stylesheet for text elements
     font-size: 25px;
     font-weight: 100;
     color: #303030;
+}
+
+.error {
+    display: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
