@@ -65,8 +65,9 @@ if($_SESSION['signed_in'] == false) {
                 </form>
                 </div>';
         }
+    } else if ($_POST['token'] != $_SESSION['token']){
+        die(ERROR_INVALID_CSRF);
     } else {
-
         $query = "BEGIN WORK"; // lol
         $stmt = $connect->query($query);
 
