@@ -50,7 +50,7 @@ if(!$stmt) {
                   ON
                     t.topic_by = u.user_id
                   WHERE
-                    topic_cat=?" . (!DEVELOPMENT_MODE || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1) ? '' : " AND topic_visible='TRUE'" ) . "
+                    topic_cat=?" . (DEVELOPMENT_MODE || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1) ? '' : " AND topic_visible='TRUE'" ) . "
                   ORDER BY topic_date DESC";
         $stmt = $connect->prepare($query);
         $stmt->bind_param('i', $_GET['cat_id']);
