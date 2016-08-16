@@ -40,6 +40,7 @@ if(!$stmt) {
                     t.topic_subject,
                     t.topic_date,
                     t.topic_cat,
+                    t.topic_visible
                     u.user_id,
                     u.user_name
                   FROM
@@ -49,7 +50,7 @@ if(!$stmt) {
                   ON
                     t.topic_by = u.user_id
                   WHERE
-                    topic_cat=?
+                    topic_cat=?" . (DEVELOPMENT_MODE || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1) ? '' : " AND topic_visible='TRUE'" ) . "
                   ORDER BY topic_date DESC";
         $stmt = $connect->prepare($query);
         $stmt->bind_param('i', $_GET['cat_id']);
@@ -82,7 +83,7 @@ if(!$stmt) {
 
                     $class = ($x%2 == 0)? 'faded-color' : 'inverted-color';
 
-                    echo "<tr class='$class'>";
+                    echo "<tr class='$class'" . ($row['topic_visible'] ? '' : ' style="background-color: #ffa1a1 !important"') . ">";
                         echo '<td class="leftpart">';
                             echo '<h3><a href="/topic.php?topic_id=' . $row['topic_id'] . '&page=1">' . $row['topic_subject'] . '</a></h3>';
                             echo '<p class="small-text faded-text-color">By ' . $row['user_name'] . ', ' . date('F j', strtotime($row['topic_date'])) . ' at ' . date('g:i A', strtotime($row['topic_date'])) . '</p>';
