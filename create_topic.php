@@ -61,7 +61,7 @@ if($_SESSION['signed_in'] == false) {
 
             echo '<input autocomplete="off" id="title" class="normal-text lightblack bold" placeholder="' . SHORT_TOPIC_SUBJECT . '" type="text" name="topic_subject" /><br>
                   <textarea id="editor" autocomplete="off" name="post_content"></textarea><br>
-                  <input type="hidden" name="token" value="' . $_SESSION['csrf_token'] . '" />
+                  <input type="hidden" name="csrf_token" value="' . $_SESSION['csrf_token'] . '" />
                   <input class="button small red" type="submit" value="' . SHORT_TOPIC_BUTTON . '" />
                 </form>
                 </div>';
