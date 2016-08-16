@@ -27,7 +27,7 @@ define('MESSAGE_CATEGORY_SUCCESS', 'New category successfully added.');
 define('MESSAGE_CATEGORY_EMPTY', 'All the fields must be filled in.');
 define('MESSAGE_CATEGORY_CREATE_DESCRIPTION', 'Create a category to store topics in.');
 
-define('MESSAGE_TOPIC_DESCRIPTION', 'Created by %username% on %date% at %time%');
+define('MESSAGE_TOPIC_DESCRIPTION', 'Created by %username% at %time% on %date%');
 define('MESSAGE_TOPIC_SIGNOUT', 'You must be <a href="signin.php">signed in</a> to create a topic.');
 define('MESSAGE_TOPIC_CATEGORY', 'You have not created any categories yet.');
 define('MESSAGE_TOPIC_SUPERCATEGORY', 'Before you can post a topic, an admin must create a category.');

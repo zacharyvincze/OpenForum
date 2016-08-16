@@ -4,7 +4,6 @@ Main stylesheet for basic elements.
 
 html {
     font-family: 'Helvetiva Neue', 'Helvetica', 'Roboto', sans-serif;
-    background-color: #F2F2F2;
 }
 
 /* Reset basic elements to default value */
@@ -22,7 +21,6 @@ dl, dd, ol, ul, figure {
 
 /* Container for holding page content */
 .content {
-    background-color: white;
     margin-top: 100px;
     overflow: hidden;
 }
@@ -36,7 +34,6 @@ dl, dd, ol, ul, figure {
 
 
 #background-style {
-    background-color: #C40C0E;
     position: absolute;
     top: 0;
     width: 100%;

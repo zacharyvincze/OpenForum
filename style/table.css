@@ -2,14 +2,9 @@
 Stylesheet for table styling
 */
 td a {
-    color: #FF3B3F;
     font-weight: 900;
     font-size: 15px;
     transition: color 0.2s ease;
-}
-
-td a:hover {
-    color: #C40C0E;
 }
 
 .middle {

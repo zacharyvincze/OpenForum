@@ -10,7 +10,7 @@ include 'includes/query-functions.php';
 
 date_default_timezone_set(TIMESTAMP);
 
-$query = "SELECT topic_id, topic_subject, topic_by FROM topics WHERE topic_id=?";
+$query = "SELECT topic_id, topic_subject, topic_by, topic_date FROM topics WHERE topic_id=?";
 $stmt = $connect->prepare($query);
 $stmt->bind_param('i', $_GET['topic_id']);
 $stmt->execute();
@@ -31,7 +31,7 @@ if(!$stmt) {
         while($row = $result->fetch_assoc()) {
             echo '<div class="header">';
             echo '<p class="title title-text-color">' . $row['topic_subject'] . '</p>';
-            echo '<br><p class="description faded-text-color">Created by <strong>' . getTopicUsername($row['topic_by']) . '</strong></p>';
+            echo '<br><p class="description faded-text-color">' . str_replace('%time%', '' . date('g:i A', strtotime($row['topic_date'])), str_replace('%date%', '' . date('j F, Y', strtotime($row['topic_date'])), str_replace('%username%', '' . getTopicUsername($row['topic_by']), MESSAGE_TOPIC_DESCRIPTION))) . '</p>';
             echo '</div>';
         }
 
@@ -102,7 +102,7 @@ if(!$stmt) {
                 echo '<div class="status-bar post-header">
                         <p>' . str_replace('%noun%', $posts, str_replace('%posts%', $totalPosts, MESSAGE_TOPIC_POSTS)) . '</p>
                       </div>';
-                echo '<div class="topic-box">';
+                echo '<div class="topic-box faded-color">';
 
                 while($row = $result->fetch_assoc()) {
 
@@ -110,16 +110,11 @@ if(!$stmt) {
                     if($row['user_level'] == 0) $user_level = SHORT_USER_MEMBER;
                     else $user_level = SHORT_USER_ADMIN;
 
-                    echo '<div class="post">
+                    echo '<div class="post inverted-color">
                             <div class="mobile-profile-info">
                               <img class="profile-picture tiny" src="/assets/profile-pictures/' . $row['user_icon'] . '">
-<<<<<<< Updated upstream
-                              <span class="big-text black"><strong><a href="profile.php?user_id=' . $row['user_id'] . '">' . $row['user_name'] . '</a></strong></span>
-                              <span class="small-text gray">' . $user_level . '</span>
-=======
                               <span class="big-text title-text-color"><strong>' . $row['user_name'] . '</strong></span>
                               <span class="small-text faded-text-color">' . $user_level . '</span>
->>>>>>> Stashed changes
                             </div>
                             <div class="profile-info">
                               <p class="big-text title-text-color"><strong>' . $row['user_name'] . '</strong></p>
@@ -128,7 +123,7 @@ if(!$stmt) {
                               <p class="tiny-text faded-text-color">' . str_replace('%posts%', '' . getUserPosts($row['user_id']), MESSAGE_USER_POSTS) . ' ' . $posts . '</p>
                             </div><div class="post-content">
                               <p class="tiny-text faded-text-color">' . str_replace('%time%', '' . date('g:i A', strtotime($row['post_date'])), str_replace('%date%', '' . date('j F, Y', strtotime($row['post_date'])), MESSAGE_TOPIC_DATE)) . '</p>
-                              <div class="tiny-text black">' . $row['post_content'] . '</div>
+                              <div class="tiny-text primary-text-color">' . $row['post_content'] . '</div>
                             </div>
                           </div>';
                 }

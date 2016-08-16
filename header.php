@@ -10,9 +10,9 @@ sec_session_start();
     <head>
 
          <!-- Chrome, Firefox OS and Opera -->
-         <meta name="theme-color" content="#4285f4">
+         <meta name="theme-color" content="#FF3B3F">
          <!-- Windows Phone -->
-         <meta name="msapplication-navbutton-color" content="#4285f4">
+         <meta name="msapplication-navbutton-color" content="#FF3B3F">
          <!-- iOS Safari -->
          <meta name="apple-mobile-web-app-capable" content="yes">
          <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -52,7 +52,7 @@ sec_session_start();
     </head>
 
     <body>
-        <div id="background-style">
+        <div id="background-style" class="secondary-color">
         </div>
         <div id="wrapper">
             <div id="menu">
@@ -88,11 +88,11 @@ if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) {
                 </div>
                 <h1 class="logo inverted-text-color"><?php echo FORUM_NAME . (DEVELOPMENT_MODE ? ' / <font color="red">Development Mode</font>' : ''); ?></h1>
             </div>
-            <div class="content">
-                <div class="content-nav">
-                    <a class="item" href="/index.php"><?php echo SHORT_NAV_HOME; ?></a>
-                    <a class="item" href="<?php if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) echo '/create_topic.php'; else echo '/signin.php' ?>"><?php if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) echo SHORT_TOPIC_CREATE; else echo 'Login' ?></a>
-                    <?php if(isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1) echo '<a class="item" href="/create_cat.php">' . SHORT_CATEGORY_CREATE . '</a>'; ?>
+            <div class="content inverted-color">
+                <div class="content-nav inverted-text-color primary-color">
+                    <a class="item inverted-text-color" href="/index.php"><?php echo SHORT_NAV_HOME; ?></a>
+                    <a class="item inverted-text-color" href="<?php if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) echo '/create_topic.php'; else echo '/signin.php' ?>"><?php if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) echo SHORT_TOPIC_CREATE; else echo 'Login' ?></a>
+                    <?php if(isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1) echo '<a class="item inverted-text-color" href="/create_cat.php">' . SHORT_CATEGORY_CREATE . '</a>'; ?>
                 </div>
-                <div class="under-content-nav">
+                <div class="under-content-nav faded-color">
                 </div>

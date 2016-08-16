@@ -1,6 +1,11 @@
 /* Red CSS theme */
 
 /* Main coloring */
+
+html {
+    background-color: #F2F2F2;
+}
+
 .primary-color {
     background-color: #FF3B3F;
 }
@@ -43,6 +48,13 @@
 }
 
 /* Link Colors */
+td a:hover {
+    color: #C40C0E;
+}
+
+td a {
+    color: #FF3B3F;
+}
 
 /* Button Colors */
 .primary-button-color {
@@ -68,6 +80,10 @@
 }
 
 /* Nav Colors */
+.content-nav .item:hover {
+    background-color: #F2F2F2;
+    color: #FF3B3F;
+}
 
 /* Page indicators */
 .current-page-index {
@@ -83,4 +99,10 @@
 .page-index {
     background-color: #FF3B3F;
     color: white;
+}
+
+/* Others */
+/* Mobile post border */
+.mobile-profile-info {
+    border-bottom: 2px solid #F2F2F2;
 }

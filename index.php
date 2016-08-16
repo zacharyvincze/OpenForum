@@ -40,7 +40,7 @@ while($row = $stmt->fetch_assoc()) {
 
     echo "<tr class='$class'>";
         echo '<td class="leftpart">';
-            echo '<h3><a href="/category.php?cat_id=' . $row['cat_id'] . '">' . $row['cat_name'] . '</a></h3><p class="small-text">' . ($row['cat_description']) . '</p>';
+            echo '<h3><a href="/category.php?cat_id=' . $row['cat_id'] . '">' . $row['cat_name'] . '</a></h3><p class="small-text primary-text-color">' . ($row['cat_description']) . '</p>';
         echo '</td>';
         echo '<td class="middle" id="last-topic">';
             echo '<p class="big-number">' . getTopicCount($row['cat_id']) . '</p><p class="small-text-gray"> ' . $topic . '</p>';
