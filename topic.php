@@ -30,8 +30,6 @@ if(!$stmt) {
 
         while($row = $result->fetch_assoc()) {
             echo '<div class="header">';
-            echo '<p class="title">' . $row['topic_subject'] . '</p>';
-            echo '<br><p class="description">Created by <strong><a href="profile.php?user_id=' . $row['topic_by'] . '">' . getTopicUsername($row['topic_by']) . '</a></strong></p>';
             echo '<p class="title title-text-color">' . $row['topic_subject'] . '</p>';
             echo '<br><p class="description faded-text-color">Created by <strong>' . getTopicUsername($row['topic_by']) . '</strong></p>';
             echo '</div>';
