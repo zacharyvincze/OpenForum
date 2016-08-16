@@ -24,7 +24,7 @@ if(!$stmt) {
         echo MESSAGE_TOPIC_NONEXISTANT;
     } else {
         while($row = $result->fetch_assoc()) {
-            if($_SESSION['user_level'] != 1 && !DEVELOPMENT_MODE && $_SESSION['user_id'] != $row['user_id']) {
+            if($_SESSION['user_level'] == 1 && DEVELOPMENT_MODE && $_SESSION['user_id'] == $row['user_id']) {
                 $query = "UPDATE topics SET topic_visible='FALSE' WHERE topic_id=?"; // It doesn't *actually* delete them, just hides them.
                 $stmt = $connect->prepare($query);
                 $stmt->bind_param('i', $_POST['topic_id']);
