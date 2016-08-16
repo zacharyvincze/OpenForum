@@ -12,7 +12,6 @@ echo '<div class="form-container">';
 echo '<div class="title">';
 echo '<h2 class="big-text lightblack bold center">' . SHORT_TOPIC_CREATE . '</h2>';
 echo '</div>';
-echo '</div>';
 
 if($_SESSION['signed_in'] == false) {
     echo '<div class="container">';
@@ -121,7 +120,7 @@ if($_SESSION['signed_in'] == false) {
         }
     }
 }
-
+echo '</div>';
 include 'footer.php';
 
 ?>
