@@ -11,7 +11,7 @@ include 'includes/connect.php';
 echo '<div class="form-container">';
 echo '<div class="header">';
 echo '<h2 class="title title-text-color center">' . SHORT_TOPIC_CREATE . '</h2>';
-echo '<p class="description center faded-text-color">Create a topic for discussion</p>';
+echo '<p class="description center faded-text-color">' . MESSAGE_TOPIC_CREATE . '</p>';
 echo '</div>';
 
 if($_SESSION['signed_in'] == false) {
@@ -97,7 +97,7 @@ if($_SESSION['signed_in'] == false) {
                     if(!$post_content) {
                         echo MESSAGE_TOPIC_EMPTY;
                     } else {
-                        $query = "INSERT INTO posts(post_content, post_date, post_topic, post_by) VALUES (?, NOW(), ?, ?)";
+                        $query = "INSERT INTO posts(post_content, post_date, post_topic, post_by, post_visible) VALUES (?, NOW(), ?, ?, 'TRUE')";
                         $stmt = $connect->prepare($query);
                         $stmt->bind_param('sii', $post_content, $topicid, $_SESSION['user_id']);
                         $stmt->execute();
