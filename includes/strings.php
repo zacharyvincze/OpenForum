@@ -1,4 +1,16 @@
 <?php
+
+/*
+ * This file contains all of the strings on the site.
+ * 
+ * You may find a specific string and edit it to make
+ * it change on the site too.
+ * 
+ * Tip: Use Ctrl+F (or ⌘+F on OSX) to find a specific
+ * string.
+ *
+ */
+
 // Error Strings
 define('ERROR_CONNECTION_FAILED', 'Error: Connection to database failed.');
 define('ERROR_VERIFICATION_FAILED', 'Error: Email verification failed.');
@@ -34,6 +46,7 @@ define('MESSAGE_TOPIC_CATEGORY', 'You have not created any categories yet.');
 define('MESSAGE_TOPIC_SUPERCATEGORY', 'Before you can post a topic, an admin must create a category.');
 define('MESSAGE_TOPIC_NONEXISTANT', 'That topic doesn\'t exist.');
 define('MESSAGE_TOPIC_POSTS', '%posts% %noun% in this topic.');
+define('MESSAGE_TOPIC_CREATE', 'Create a topic for discussion');
 define('MESSAGE_TOPIC_SUCCESS', 'You have successfully created <a href="topic.php?topic_id=%topic_id%&page=1">your new topic</a>.'); // %topic_id% is replaced with the id
 define('MESSAGE_TOPIC_DATE', 'Posted on %date% at %time%'); // %date% and %time% are also replaced with the appropriate values
 define('MESSAGE_TOPIC_EMPTY', 'All the fields must be filled in.');
@@ -59,17 +72,22 @@ define('SHORT_USER_POSTS', 'Post Count');
 define('SHORT_USER_JOINED', 'Joined');
 define('SHORT_USER_MEMBER', 'Member');
 define('SHORT_USER_ADMIN', 'Admin');
+
 define('SHORT_CATEGORY_CREATE', 'Create a Category');
 define('SHORT_CATEGORY_NAME', 'Category name');
 define('SHORT_CATEGORY_ADD', 'Add Category');
+
 define('SHORT_TOPIC_CREATE', 'Create a Topic');
 define('SHORT_TOPIC_DELETE', 'Delete');
 define('SHORT_TOPIC_BUTTON', 'Create Topic');
 define('SHORT_TOPIC_SUBJECT', 'Topic subject');
 define('SHORT_TOPIC_SINGULAR', 'topic');
 define('SHORT_TOPIC_PLURAL', 'topics');
+
 define('SHORT_POST_SINGULAR', 'post');
 define('SHORT_POST_PLURAL', 'posts');
+
 define('SHORT_REPLY_BUTTON', 'Reply');
+
 define('SHORT_NAV_HOME', 'Home');
 ?>
