@@ -1,8 +1,9 @@
 <?php
 // Error Strings
 define('ERROR_CONNECTION_FAILED', 'Error: Connection to database failed.');
-define('ERROR_INVALID_CSRF', 'Error: CSRF authentication failed. If this keeps happening, try <a href="signout.php">signing out</a> and back in again.');
 define('ERROR_VERIFICATION_FAILED', 'Error: Email verification failed.');
+define('ERROR_INVALID_CSRF', 'Error: CSRF authentication failed. If this keeps happening, try <a href="signout.php">signing out</a> and back in again.');
+define('ERROR_INVALID_DATA', 'Error: Invalid data.');
 define('ERROR_INVALID_ACCESS', 'Error: File cannot be accessed directly.');
 
 
