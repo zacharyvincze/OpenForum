@@ -28,6 +28,7 @@ define('MESSAGE_USER_DESCRIPTION', 'Tell us a little bit about yourself.'); // d
 define('MESSAGE_USER_NONEXISTANT', 'That user doesn\'t exist.');
 define('MESSAGE_USER_SENT', 'Email was sent.');
 define('MESSAGE_USER_VERIFIED', 'You have been verified %user%.  Welcome to the forums!'); // %user% is replaced by the username
+define('MESSAGE_USER_SIGNOUT', 'You must be <a href="signin.php">signed in</a> to do that.');
 define('MESSAGE_USER_SIGNIN', 'You are already signed in, you can <a href="/signout.php">sign out</a> if you want to switch users.');
 define('MESSAGE_USER_POSTS', '%posts%'); // %posts% is replaced with the number of user posts
 
@@ -51,9 +52,11 @@ define('MESSAGE_TOPIC_SUCCESS', 'You have successfully created <a href="topic.ph
 define('MESSAGE_TOPIC_DATE', 'Posted on %date% at %time%'); // %date% and %time% are also replaced with the appropriate values
 define('MESSAGE_TOPIC_EMPTY', 'All the fields must be filled in.');
 define('MESSAGE_TOPIC_NONE', 'There are no posts on this page.');
+
 define('MESSAGE_REPLY_SIGNOUT', 'You must be <a href="/login">signed in</a> to reply.');
 define('MESSAGE_REPLY_EMPTY', 'All the fields must be filled in.');
 
+define('MESSAGE_MISC_NONEXISTANT', 'That %type% doesn\'t exist.'); // %type% is replaced with either topic, post, category, or user.
 
 // Short Strings
 define('SHORT_USER_SIGNIN', 'Sign In');
