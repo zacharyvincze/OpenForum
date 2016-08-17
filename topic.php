@@ -34,6 +34,7 @@ if(!$stmt) {
                 $buttondata = '<button onclick="deleteTopic(\'' . $row['topic_id'] . '\', \'' . $row['topic_by'] . '\', \'' . $_SESSION['csrf_token'] . '\', \'' . $row['topic_cat'] . '\')" class="button small primary-button-color" style="float: right !important;">' . SHORT_TOPIC_DELETE . '</button>';
                 // Really complicated `if` statement in one line to check if the button is allowed to echo
                 echo ($row['topic_visible'] && (DEVELOPMENT_MODE || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_id'] == $row['topic_by']) || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1)) ? $buttondata : '');
+                echo '<div class="header">';
                 echo '<p class="title title-text-color">' . $row['topic_subject'] . '</p>';
                 echo '<br><p class="description faded-text-color">' . str_replace('%time%', '' . date('g:i A', strtotime($row['topic_date'])), str_replace('%date%', '' . date('j F, Y', strtotime($row['topic_date'])), str_replace('%username%', '' . getTopicUsername($row['topic_by']), MESSAGE_TOPIC_DESCRIPTION))) . '</p>';
                 echo '</div>';
@@ -107,22 +108,21 @@ if(!$stmt) {
                 if($totalPosts == 1) $posts = SHORT_POST_SINGULAR;
                 else $posts = SHORT_POST_PLURAL;
 
-                echo '<div class="status-bar post-header">
+                echo '<div class="status-bar post-header primary-color">
                         <p>' . str_replace('%noun%', $posts, str_replace('%posts%', $totalPosts, MESSAGE_TOPIC_POSTS)) . '</p>
                       </div>';
                 echo '<div class="topic-box faded-color">';
 
                 while($row = $result->fetch_assoc()) {
-                    if($row['post_visible'] || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1) || DEVELOPMENT_MODE) {
+                    if($row['post_visible'] == 'TRUE' || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1) || DEVELOPMENT_MODE) {
                         //Get user title
                         if($row['user_level'] == 0) $user_level = SHORT_USER_MEMBER;
                         else $user_level = SHORT_USER_ADMIN;
 
-                        echo '<div class="post inverted-color"' . ($row['post_visible'] ? '' : ' style="background-color: #ffa1a1 !important"') . '>';
+                        echo '<div class="post inverted-color">';
                                         // `Delete` button. Put in separate variable because otherwise, the `if` statement would be wayyyy too long, even with indents.
-                        $buttondata = '<button onclick="deletePost(\'' . $row['post_id'] . '\', \'' . $row['post_by'] . '\', \'' . $_SESSION['csrf_token'] . '\', \'' . $row['post_cat'] . '\')" class="button small primary-button-color" style="float: right !important;">' . SHORT_TOPIC_DELETE . '</button>';
+                        $buttondata = '<button onclick="deletePost(\'' . $row['post_id'] . '\', \'' . $row['post_by'] . '\', \'' . $_SESSION['csrf_token'] . '\', \'' . $row['post_cat'] . '\')" class="button small primary-button-color" style="float: right">' . SHORT_TOPIC_DELETE . '</button>';
                         // Really complicated `if` statement in one line to check if the button is allowed to echo
-                        echo ($row['post_visible'] && (DEVELOPMENT_MODE || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_id'] == $row['post_by']) || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1)) ? $buttondata : '');
                         echo '<div class="mobile-profile-info">
                                   <img class="profile-picture tiny" src="/assets/profile-pictures/' . $row['user_icon'] . '">
                                   <span class="big-text title-text-color"><strong>' . $row['user_name'] . '</strong></span>
@@ -133,9 +133,12 @@ if(!$stmt) {
                                   <p class="small-text faded-text-color">' . $user_level . '</p>
                                   <div class="profile-picture small center" style="background-image: url(/assets/profile-pictures/' . $row['user_icon']. ')"></div>
                                   <p class="tiny-text faded-text-color">' . str_replace('%posts%', '' . getUserPosts($row['user_id']), MESSAGE_USER_POSTS) . ' ' . $posts . '</p>
-                                </div><div class="post-content">
-                                  <p class="tiny-text faded-text-color">' . str_replace('%time%', '' . date('g:i A', strtotime($row['post_date'])), str_replace('%date%', '' . date('j F, Y', strtotime($row['post_date'])), MESSAGE_TOPIC_DATE)) . '</p>
-                                  <div class="tiny-text primary-text-color">' . $row['post_content'] . '</div>
+                                </div><div class="post-content">';
+                                  echo ($row['post_visible'] && (DEVELOPMENT_MODE || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_id'] == $row['post_by']) || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1)) ? $buttondata : '');
+                                  echo '<p class="tiny-text faded-text-color">' . str_replace('%time%', '' . date('g:i A', strtotime($row['post_date'])), str_replace('%date%', '' . date('j F, Y', strtotime($row['post_date'])), MESSAGE_TOPIC_DATE)) . '</p>';
+                                  echo '<div class="tiny-text primary-text-color">' . $row['post_content'];
+                                  if($row['post_visible'] != 'TRUE') echo '<p class="text-tiny bold error-text-color">This post is hidden!</p>';
+                                  echo '</div>
                                 </div>
                               </div>';
                     }

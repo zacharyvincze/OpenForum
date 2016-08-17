@@ -21,4 +21,7 @@ define('TIMEZONE', 'America/Toronto'); // current timezone
 define('VERIFY_EMAIL', FALSE); // verify email or not. If false, EMAIL and EMAILPASS do not have to be set.
 define('EMAIL', ''); // email to use
 define('EMAILPASS', ''); // email password
+
+// Theme Configuration
+define('COLOR_THEME', 'red-theme'); // color themes are located in /style/themes/
 ?>

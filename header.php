@@ -39,7 +39,7 @@ sec_session_start();
         <link rel="stylesheet" href="/style/button.css">
         <link rel="stylesheet" href="/style/dropdown.css">
         <link rel="stylesheet" href="/style/page-index.css">
-        <link rel="stylesheet" href="/style/themes/red-theme.css">
+        <link rel="stylesheet" href="/style/themes/<?php echo COLOR_THEME ?>.css">
 
         <!-- Javascript -->
         <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>

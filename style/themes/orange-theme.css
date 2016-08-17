@@ -1,0 +1,109 @@
+/* Red CSS theme */
+
+/* Main coloring */
+
+html {
+    background-color: #F2F2F2;
+}
+
+.primary-color {
+    background-color: #FF9800;
+}
+
+.secondary-color {
+    background-color: #FF5722;
+}
+
+.faded-color {
+    background-color: #F7F7F7;
+}
+
+.inverted-color {
+    background-color: #ffffff;
+}
+
+/* Text Colors */
+.primary-text-color {
+    color: #141414;
+}
+
+.secondary-text-color {
+    color: #FF9800;
+}
+
+.title-text-color {
+    color: #34495e;
+}
+
+.faded-text-color {
+    color: #868686;
+}
+
+.inverted-text-color {
+    color: #ffffff;
+}
+
+.error-text-color {
+    color: #FF3B3F;
+}
+
+/* Link Colors */
+td a:hover {
+    color: #FF5722;
+}
+
+td a {
+    color: #FF9800;
+}
+
+/* Button Colors */
+.primary-button-color {
+    background-color: #FF9800;
+    color: #ffffff;
+    border: 2px solid #FF9800;
+}
+
+.primary-button-color:hover {
+    background-color: #ffffff;
+    color: #FF9800;
+}
+
+.inverted-button-color {
+    background-color: #ffffff;
+    color: #FF9800;
+    border: 2px solid #ffffff;
+}
+
+.inverted-button-color:hover {
+    background-color: #FF9800;
+    color: #ffffff;
+}
+
+/* Nav Colors */
+.content-nav .item:hover {
+    background-color: #F2F2F2;
+    color: #FF9800;
+}
+
+/* Page indicators */
+.current-page-index {
+    background-color: #FF5722;
+    color: #ffffff;
+    border-color: #FF5722;
+}
+
+.page-index:hover {
+    background-color: white;
+    color: #FF9800;
+}
+
+.page-index {
+    background-color: #FF9800;
+    color: white;
+}
+
+/* Others */
+/* Mobile post border */
+.mobile-profile-info {
+    border-bottom: 2px solid #F2F2F2;
+}
