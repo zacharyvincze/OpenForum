@@ -30,9 +30,9 @@ if(!$stmt) {
         while($row = $result->fetch_assoc()) {
             if($row['topic_visible'] || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1) || DEVELOPMENT_MODE) {
                 echo '<div class="header">';
-                
+
                 // `Delete` button. Put in separate variable because otherwise, the if statement would be wayyyy too long, even with indents.
-                $buttondata = '<input id="delete" class="button red normal" type="button" value="' . SHORT_TOPIC_DELETE . '" name="delete" style="float: right !important;">';
+                $buttondata = '<button onclick="deleteTopic(\'' . $row['topic_id'] . '\', \'' . $row['topic_by'] . '\', \'' . $_SESSION['csrf_token'] . '\', \'' . $row['topic_cat'] . '\')" class="button small primary-button-color" style="float: right !important;">' . SHORT_TOPIC_DELETE . '</button>';
                 // Really complicated if statement in one line to check if the button is allowed to echo
                 echo (DEVELOPMENT_MODE || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_id'] == $row['topic_by']) || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1) ? $buttondata : '');
                 echo '<p class="title title-text-color">' . $row['topic_subject'] . '</p>';
@@ -153,7 +153,7 @@ if(!$stmt) {
 
             if(!isset($_SESSION['signed_in']) && !$_SESSION['signed_in']) {
                 echo '<div class="container">
-                        <p class="small-text gray">' . MESSAGE_REPLY_SIGNOUT . '</p>
+                        <p class="small-text faded-text-color">' . MESSAGE_REPLY_SIGNOUT . '</p>
                       </div>';
             } else {
 
@@ -184,8 +184,8 @@ if(!$stmt) {
                           <textarea id="editor" autocomplete="off" name="reply-content"></textarea>
                           <input type="hidden" name="csrf_token" value="' . $_SESSION['csrf_token'] . '" />
                           <input type="hidden" name="topic-id" value="' . $_GET['topic_id'] . '">
-                          <p class="error-noenter tiny-text red"></p>
-                          <input id="submit" class="button red normal" type="submit" value="' . SHORT_REPLY_BUTTON . '" />
+                          <p class="error-noenter tiny-text error-text-color"></p>
+                          <input id="submit" class="button primary-button-color normal" type="submit" value="' . SHORT_REPLY_BUTTON . '" />
                         </form>
                       </div>';
             }

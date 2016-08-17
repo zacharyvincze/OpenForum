@@ -49,6 +49,8 @@ sec_session_start();
         <script src="/js/authentication/login.js"></script>
         <script src="/js/editor-validation.js"></script>
         <script src="/js/authentication/register.js"></script>
+        <script src="/js/delete/delete_topic.js"></script>
+        <script src="/js/delete/delete_post.js"></script>
     </head>
 
     <body>
