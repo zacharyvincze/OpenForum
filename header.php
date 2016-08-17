@@ -1,6 +1,6 @@
 <?php
 include 'includes/strings.php';
-include 'includes/psl-config.php';
+include 'includes/config.php';
 include 'includes/functions.php';
 
 sec_session_start();

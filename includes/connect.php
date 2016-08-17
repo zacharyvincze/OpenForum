@@ -1,8 +1,8 @@
 <?php
 
-//psl-config.php file must be added in the includes/ directory
+//config.php file must be added in the includes/ directory
 
-include 'psl-config.php';
+include 'config.php';
 include 'strings.php';
 
 /*

@@ -29,7 +29,6 @@ if(!$stmt) {
 
         while($row = $result->fetch_assoc()) {
             if($row['topic_visible'] || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1) || DEVELOPMENT_MODE) {
-                echo '<div class="header"' . (!$row['topic_visible'] ? ' style="background-color: #ffa1a1 !important"') . '>';
 
                 // `Delete` button. Put in separate variable because otherwise, the `if` statement would be wayyyy too long, even with indents.
                 $buttondata = '<button onclick="deleteTopic(\'' . $row['topic_id'] . '\', \'' . $row['topic_by'] . '\', \'' . $_SESSION['csrf_token'] . '\', \'' . $row['topic_cat'] . '\')" class="button small primary-button-color" style="float: right !important;">' . SHORT_TOPIC_DELETE . '</button>';
@@ -118,7 +117,7 @@ if(!$stmt) {
                         //Get user title
                         if($row['user_level'] == 0) $user_level = SHORT_USER_MEMBER;
                         else $user_level = SHORT_USER_ADMIN;
-                        
+
                         echo '<div class="post inverted-color"' . ($row['post_visible'] ? '' : ' style="background-color: #ffa1a1 !important"') . '>';
                                         // `Delete` button. Put in separate variable because otherwise, the `if` statement would be wayyyy too long, even with indents.
                         $buttondata = '<button onclick="deletePost(\'' . $row['post_id'] . '\', \'' . $row['post_by'] . '\', \'' . $_SESSION['csrf_token'] . '\', \'' . $row['post_cat'] . '\')" class="button small primary-button-color" style="float: right !important;">' . SHORT_TOPIC_DELETE . '</button>';

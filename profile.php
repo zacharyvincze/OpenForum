@@ -6,7 +6,7 @@ Display user profile information
 
 include 'header.php';
 include 'includes/strings.php';
-include 'includes/psl-config.php';
+include 'includes/config.php';
 include 'includes/connect.php';
 include 'includes/query-functions.php';
 

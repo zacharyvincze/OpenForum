@@ -5,7 +5,7 @@ List categories (Home page)
 */
 
 include 'includes/connect.php';
-include 'inlcudes/psl-config.php';
+include 'inlcudes/config.php';
 include 'inlcudes/strings.php';
 include 'includes/query-functions.php';
 include 'header.php';

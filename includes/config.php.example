@@ -1,5 +1,5 @@
 <?php
-// Rename this file to 'psl-config.php', then configure each setting.
+// Rename this file to 'config.php', then configure each setting.
 
 // Main Configuration
 define('FORUM_NAME', ''); // the title of the forum
