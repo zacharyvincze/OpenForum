@@ -30,7 +30,24 @@ CREATE TABLE `categories` (
   `cat_description` varchar(255) NOT NULL,
   PRIMARY KEY (`cat_id`),
   UNIQUE KEY `cat_name_unique` (`cat_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `likes`
+--
+
+DROP TABLE IF EXISTS `likes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `likes` (
+  `like_id` int(11) NOT NULL AUTO_INCREMENT,
+  `like_user_id` int(11) NOT NULL,
+  `like_post_id` int(11) NOT NULL,
+  PRIMARY KEY (`like_id`),
+  KEY `like_user_id` (`like_user_id`),
+  CONSTRAINT `likes_ibfk_1` FOREIGN KEY (`like_user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,13 +63,13 @@ CREATE TABLE `posts` (
   `post_date` datetime NOT NULL,
   `post_topic` int(8) NOT NULL,
   `post_by` int(8) NOT NULL,
-  `post_visible` VARCHAR(5) NOT NULL DEFAULT 'TRUE',
+  `post_visible` varchar(5) NOT NULL DEFAULT 'TRUE',
   PRIMARY KEY (`post_id`),
   KEY `delete_post_topic` (`post_topic`),
   KEY `delete_post_user` (`post_by`),
   CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`post_topic`) REFERENCES `topics` (`topic_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `posts_ibfk_2` FOREIGN KEY (`post_by`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,7 +90,7 @@ CREATE TABLE `temp_users` (
   `temp_user_key` varchar(255) NOT NULL,
   PRIMARY KEY (`temp_user_id`),
   UNIQUE KEY `temp_user_name_unique` (`temp_user_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,12 +106,12 @@ CREATE TABLE `topics` (
   `topic_date` datetime NOT NULL,
   `topic_cat` int(8) NOT NULL,
   `topic_by` int(8) NOT NULL,
-  `topic_visible` VARCHAR(5) NOT NULL DEFAULT 'TRUE',
+  `topic_visible` varchar(5) NOT NULL DEFAULT 'TRUE',
   PRIMARY KEY (`topic_id`),
   KEY `topic_cat` (`topic_cat`),
   KEY `delete_topic` (`topic_by`),
   CONSTRAINT `topics_ibfk_1` FOREIGN KEY (`topic_by`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -115,7 +132,7 @@ CREATE TABLE `users` (
   `user_about` text NOT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_name_unique` (`user_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -127,4 +144,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-08-14 18:20:03
+-- Dump completed on 2016-08-17 22:28:15

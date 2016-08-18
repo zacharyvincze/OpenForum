@@ -40,6 +40,8 @@ sec_session_start();
         <link rel="stylesheet" href="/style/dropdown.css">
         <link rel="stylesheet" href="/style/page-index.css">
         <link rel="stylesheet" href="/style/themes/<?php echo COLOR_THEME ?>.css">
+        <link rel="stylesheet" href="/style/icons/icons.css">
+        <link rel="stylesheet" href="/style/icons/icon-toolbar.css">
 
         <!-- Javascript -->
         <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
@@ -51,6 +53,7 @@ sec_session_start();
         <script src="/js/authentication/register.js"></script>
         <script src="/js/delete/delete_topic.js"></script>
         <script src="/js/delete/delete_post.js"></script>
+        <script src="/js/like-post.js"></script>
     </head>
 
     <body>

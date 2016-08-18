@@ -69,6 +69,7 @@ if(!$stmt) {
         echo '</div>';
 
         $query = "SELECT
+                    posts.post_id,
                     posts.post_topic,
                     posts.post_content,
                     posts.post_date,
@@ -134,11 +135,18 @@ if(!$stmt) {
                                   <div class="profile-picture small center" style="background-image: url(/assets/profile-pictures/' . $row['user_icon']. ')"></div>
                                   <p class="tiny-text faded-text-color">' . str_replace('%posts%', '' . getUserPosts($row['user_id']), MESSAGE_USER_POSTS) . ' ' . $posts . '</p>
                                 </div><div class="post-content">';
-                                  echo ($row['post_visible'] && (DEVELOPMENT_MODE || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_id'] == $row['post_by']) || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1)) ? $buttondata : '');
                                   echo '<p class="tiny-text faded-text-color">' . str_replace('%time%', '' . date('g:i A', strtotime($row['post_date'])), str_replace('%date%', '' . date('j F, Y', strtotime($row['post_date'])), MESSAGE_TOPIC_DATE)) . '</p>';
                                   echo '<div class="tiny-text primary-text-color">' . $row['post_content'];
                                   if($row['post_visible'] != 'TRUE') echo '<p class="text-tiny bold error-text-color">This post is hidden!</p>';
+                                  // echo ($row['post_visible'] && (DEVELOPMENT_MODE || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_id'] == $row['post_by']) || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1)) ? $buttondata : '');
+                                  //echo '<img class="icon icon-tiny icon-more-options" src="/assets/icons/more-options.svg">';
                                   echo '</div>
+                                </div>
+                              </div>
+                              <div class="post-options inverted-color">
+                                <div class="icon-toolbar">
+                                  <img class="icon icon-tiny icon-like ' . (isPostLiked($row['post_id'], $_SESSION['user_id']) ? 'icon-like-active' : 'icon-like-unactive') . '" onclick="likePost(\'' . $_SESSION['user_id'] . '\', \'' . $row['post_id'] . '\', \'' . $_SESSION['csrf_token'] . '\')">
+                                  <img class="icon icon-tiny icon-more-options">
                                 </div>
                               </div>';
                     }

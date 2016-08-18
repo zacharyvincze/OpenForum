@@ -16,7 +16,6 @@ Box to store user posts
 
 /* Styling for the actual posts */
 .post {
-    margin-bottom: 5px;
     padding-top: 20px;
     padding-bottom: 20px;
     padding-right: 20px;
@@ -60,6 +59,13 @@ Box to store user posts
     overflow: hidden;
 }
 
+.post-options {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 5px;
+    display: flex;
+}
+
 .post-content img {
     width: 100%;
     height: auto;
@@ -87,6 +93,9 @@ Box to store user posts
 
     .post {
         padding-left: 0px;
+    }
+
+    .post-options {
         margin-bottom: 10px;
     }
 
@@ -114,7 +123,8 @@ Box to store user posts
         padding-top: 20px;
     }
 
-    .post {
+    .post-options {
         margin-bottom: 20px;
     }
+
 }

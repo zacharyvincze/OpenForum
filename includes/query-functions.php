@@ -64,4 +64,16 @@ function getTopicUsername($topic_id) {
 
     return $username;
 }
+
+//Checking if post is liked
+function isPostLiked($post_id, $user_id) {
+    $query = "SELECT * FROM likes WHERE like_user_id=? AND like_post_id=?";
+    $stmt = $GLOBALS['connect']->prepare($query);
+    $stmt->bind_param('ii', $user_id, $post_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if($result->num_rows == 0) return false;
+    else return true;
+}
 ?>
