@@ -46,7 +46,7 @@ if($_SESSION['signed_in'] == false) {
                       height: 400,
                       width: "100%",
                       statusbar: false,
-                      content_css: "/style/tinymce-style.css"
+                      content_css: "/css/tinymce-style.css"
                     });
                   </script>';
 

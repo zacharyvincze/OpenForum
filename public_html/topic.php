@@ -9,7 +9,7 @@ include_once LIBRARY_PATH . '/connect.php';
 include_once LIBRARY_PATH . '/query-functions.php';
 include_once TEMPLATES_PATH . '/header.php';
 
-date_default_timezone_set(TIMESTAMP);
+date_default_timezone_set(TIMEZONE);
 
 $query = "SELECT * FROM topics WHERE topic_id=?";
 $stmt = $connect->prepare($query);
@@ -190,7 +190,7 @@ if(!$stmt) {
                           force_br_newlines: true,
                           force_p_newlines: false,
                           force_root_block: "",
-                          content_css: "/style/tinymce-style.css",
+                          content_css: "/css/tinymce-style.css",
                           object_resizing: false
                         });
                       </script>';

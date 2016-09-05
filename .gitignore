@@ -1,6 +1,6 @@
 
 resources/configuration/config.php
 
-public_html/img/content/profile-pictures/
+public_html/img/content/profile-pictures/*
 
-!/assets/profile-pictures/default.png
+!public_html/img/content/profile-pictures/default.png
