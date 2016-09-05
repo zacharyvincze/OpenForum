@@ -1,0 +1,36 @@
+.icon {
+    cursor: pointer;
+}
+
+.icon-tiny {
+    height: 30px !important;
+    width: 30px !important;
+}
+
+.icon-small {
+    height: 50px !important;
+    width: 50px !important;
+}
+
+.icon-normal {
+    height: 70px !important;
+    width: 70px !important;
+}
+
+.icon-large {
+    height: 100px !important;
+    width: 100px !important;
+}
+
+/* Icon Types */
+.icon-like-unactive {
+    content: url('/img/icon/like-unactive.svg');
+}
+
+.icon-like-active {
+    content: url('/img/icon/like-active.svg');
+}
+
+.icon-more-options {
+    content: url('/img/icon/more-options.svg');
+}
