@@ -10,6 +10,8 @@ Open is an in-development simple, user-friendly forum software.  Created using P
 
 Congratulations, if you've gotten this far, you have successfully set up the site!
 
+If you want a more detailed description about how to get your forum up and running, check out the OpenForum [quick start guide](https://github.com/zacharyvincze/OpenForum/wiki/Quick-Start).
+
 ## Usage
 A detailed description about how to use OpenForum is located in the wiki.
 
