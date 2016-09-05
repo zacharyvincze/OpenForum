@@ -1,5 +1,6 @@
 # OpenForum
-Open is an in-development simple, user-friendly forum software.  Created using PHP and MySQL.
+## About
+OpenForum is an in-development simple, user-friendly forum software.  Created using PHP and MySQL.
 
 ## Installation
 1. Ensure that you have both MySQL and PHP5+ installed.
