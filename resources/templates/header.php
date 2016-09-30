@@ -28,32 +28,36 @@ sec_session_start();
         <!-- Stylesheets -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700,500' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="css/main.css" type="text/css">
-        <link rel="stylesheet" href="css/navbar.css">
-        <link rel="stylesheet" href="css/table.css">
-        <link rel="stylesheet" href="css/editors.css">
-        <link rel="stylesheet" href="css/post.css">
-        <link rel="stylesheet" href="css/profile.css">
-        <link rel="stylesheet" href="css/text.css">
-        <link rel="stylesheet" href="css/button.css">
-        <link rel="stylesheet" href="css/dropdown.css">
-        <link rel="stylesheet" href="css/page-index.css">
-        <link rel="stylesheet" href="css/themes/<?php echo COLOR_THEME ?>.css">
-        <link rel="stylesheet" href="css/icons/icons.css">
-        <link rel="stylesheet" href="css/icons/icon-toolbar.css">
-
+        <?php
+            echo '<style>' . htmlspecialchars(file_get_contents('css/main.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/navbar.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/table.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/editors.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/post.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/profile.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/text.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/button.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/dropdown.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/page-index.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/themes/' . COLOR_THEME . '.css')) // vulnerability! to make a simple payload, set COLOR_THEME to: "../../../../../etc/passwd"
+                . ' ' . htmlspecialchars(file_get_contents('css/icons/icons.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/icons/icon-toolbar.css')) . '</style>';
+        ?>
+        
         <!-- Javascript -->
-        <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-        <script src="js/dropdown.js"></script>
-        <script src="js/authentication/login.js"></script>
-        <script src="js/editor-validation.js"></script>
-        <script src="js/authentication/register.js"></script>
-        <script src="js/authentication/logout.js"></script>
-        <script src="js/delete/delete_topic.js"></script>
-        <script src="js/delete/delete_post.js"></script>
-        <script src="js/like-post.js"></script>
+        <?php
+            echo '<script>' . file_get_contents('js/dropdown.js')
+                . ' ' . htmlspecialchars(file_get_contents('js/library/jquery.min.js'))
+                . ' ' . htmlspecialchars(file_get_contents('js/library/angular.min.js'))
+                . ' ' . htmlspecialchars(file_get_contents('js/library/tinymce.min.js'))
+                . ' ' . htmlspecialchars(file_get_contents('js/authentication/login.js'))
+                . ' ' . htmlspecialchars(file_get_contents('js/editor-validation.js'))
+                . ' ' . htmlspecialchars(file_get_contents('js/authentication/register.js'))
+                . ' ' . htmlspecialchars(file_get_contents('js/authentication/logout.js'))
+                . ' ' . htmlspecialchars(file_get_contents('js/delete/delete_topic.js'))
+                . ' ' . htmlspecialchars(file_get_contents('js/delete/delete_post.js'))
+                . ' ' . htmlspecialchars(file_get_contents('js/like-post.js')) . '</script>';
+        ?>
     </head>
 
     <body>

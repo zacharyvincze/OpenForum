@@ -9,6 +9,9 @@ include_once LIBRARY_PATH . '/strings.php';
 include_once LIBRARY_PATH . '/connect.php';
 include_once TEMPLATES_PATH . '/header.php';
 
+if($_SESSION['signed_in']) 
+    die(MESSAGE_USER_SIGNIN);
+
 echo '<div class="form-container">';
 echo '<div class="header">';
 echo '<h3 class="title title-text-color center">' . SHORT_USER_SIGNUP . '</h3>';
