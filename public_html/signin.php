@@ -5,7 +5,7 @@ Login script
 */
 
 include_once '../resources/configuration/config.php';
-include_once LIBRARY_PATH . '/strings.php';
+include_once CONFIGURATION_PATH . '/strings.php';
 include_once LIBRARY_PATH . '/connect.php';
 include_once TEMPLATES_PATH . '/header.php';
 
