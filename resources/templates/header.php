@@ -45,19 +45,17 @@ sec_session_start();
         ?>
         
         <!-- Javascript -->
-        <?php
-            echo '<script>' . file_get_contents('js/dropdown.js')
-                . ' ' . htmlspecialchars(file_get_contents('js/library/jquery.min.js'))
-                . ' ' . htmlspecialchars(file_get_contents('js/library/angular.min.js'))
-                . ' ' . htmlspecialchars(file_get_contents('js/library/tinymce.min.js'))
-                . ' ' . htmlspecialchars(file_get_contents('js/authentication/login.js'))
-                . ' ' . htmlspecialchars(file_get_contents('js/editor-validation.js'))
-                . ' ' . htmlspecialchars(file_get_contents('js/authentication/register.js'))
-                . ' ' . htmlspecialchars(file_get_contents('js/authentication/logout.js'))
-                . ' ' . htmlspecialchars(file_get_contents('js/delete/delete_topic.js'))
-                . ' ' . htmlspecialchars(file_get_contents('js/delete/delete_post.js'))
-                . ' ' . htmlspecialchars(file_get_contents('js/like-post.js')) . '</script>';
-        ?>
+        <script src="/js/library/tinymce.min.js"></script>
+        <script src="/js/library/jquery.min.js"></script>
+        <script src="/js/library/angular.min.js"></script>
+        <script src="/js/dropdown.js"></script>
+        <script src="/js/authentication/login.js"></script>
+        <script src="/js/editor-validation.js"></script>
+        <script src="/js/authentication/register.js"></script>
+        <script src="/js/authentication/logout.js"></script>
+        <script src="/js/delete/delete_topic.js"></script>
+        <script src="/js/delete/delete_post.js"></script>
+        <script src="/js/like-post.js"></script>
     </head>
 
     <body>
