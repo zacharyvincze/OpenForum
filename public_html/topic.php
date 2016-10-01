@@ -32,7 +32,7 @@ if(!$stmt) {
             if($row['topic_visible'] || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1) || DEVELOPMENT_MODE) {
 
                 // `Delete` button. Put in separate variable because otherwise, the `if` statement would be wayyyy too long, even with indents.
-                $buttondata = '<button onclick="deleteTopic(\'' . $row['topic_id'] . '\', \'' . $row['topic_by'] . '\', \'' . $_SESSION['csrf_token'] . '\', \'' . $row['topic_cat'] . '\')" class="button small primary-button-color" style="float: right !important;">' . SHORT_TOPIC_DELETE . '</button>';
+                $buttondata = '<button onclick="deleteTopic(\'' . $row['topic_id'] . '\', \'' . $row['topic_by'] . '\', \'' . $_SESSION['csrf_token'] . '\', \'' . htmlspecialchars($row['topic_cat']) . '\')" class="button small primary-button-color" style="float: right !important;">' . SHORT_TOPIC_DELETE . '</button>';
                 // Really complicated `if` statement in one line to check if the button is allowed to echo
                 echo ($row['topic_visible'] && (DEVELOPMENT_MODE || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_id'] == $row['topic_by']) || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1)) ? $buttondata : '');
                 echo '<div class="header">';
@@ -123,7 +123,7 @@ if(!$stmt) {
 
                         echo '<div class="post inverted-color">';
                                         // `Delete` button. Put in separate variable because otherwise, the `if` statement would be wayyyy too long, even with indents.
-                        $buttondata = '<button onclick="deletePost(\'' . $row['post_id'] . '\', \'' . $row['post_by'] . '\', \'' . $_SESSION['csrf_token'] . '\', \'' . $row['post_cat'] . '\')" class="button small primary-button-color" style="float: right">' . SHORT_TOPIC_DELETE . '</button>';
+                        $buttondata = '<button onclick="deletePost(\'' . $row['post_id'] . '\', \'' . $row['post_by'] . '\', \'' . $_SESSION['csrf_token'] . '\', \'' . htmlspecialchars($row['post_cat']) . '\')" class="button small primary-button-color" style="float: right">' . SHORT_TOPIC_DELETE . '</button>';
                         // Really complicated `if` statement in one line to check if the button is allowed to echo
                         echo '<div class="mobile-profile-info">
                                   <img class="profile-picture tiny" src="/img/content/profile-pictures/' . $row['user_icon'] . '">

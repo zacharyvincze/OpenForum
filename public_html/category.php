@@ -32,7 +32,7 @@ if(!$stmt) {
         echo "<div class='header'>";
 
         while($row = $result->fetch_assoc()) {
-            echo '<p class="title title-text-color">' . $row['cat_name'] . '</p><br><p class="description">' . $row['cat_description'] . '</p>';
+            echo '<p class="title title-text-color">' . htmlspecialchars($row['cat_name']) . '</p><br><p class="description">' . htmlspecialchars($row['cat_description']) . '</p>';
         }
 
         echo '</div>';
@@ -54,7 +54,7 @@ if(!$stmt) {
             $numrows = $result->num_rows;
 
             if($numrows == 0) {
-                echo MESSAGE_CATEGORY_EMPTY;
+                echo MESSAGE_CATEGORY_NONE;
             } else {
 
                 if(getTopicCount($_GET['cat_id']) == 1) $topic = 'topic';

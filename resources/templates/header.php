@@ -28,24 +28,26 @@ sec_session_start();
         <!-- Stylesheets -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700,500' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/css/main.css" type="text/css">
-        <link rel="stylesheet" href="/css/navbar.css">
-        <link rel="stylesheet" href="/css/table.css">
-        <link rel="stylesheet" href="/css/editors.css">
-        <link rel="stylesheet" href="/css/post.css">
-        <link rel="stylesheet" href="/css/profile.css">
-        <link rel="stylesheet" href="/css/text.css">
-        <link rel="stylesheet" href="/css/button.css">
-        <link rel="stylesheet" href="/css/dropdown.css">
-        <link rel="stylesheet" href="/css/page-index.css">
-        <link rel="stylesheet" href="/css/themes/<?php echo COLOR_THEME ?>.css">
-        <link rel="stylesheet" href="/css/icons/icons.css">
-        <link rel="stylesheet" href="/css/icons/icon-toolbar.css">
-
+        <?php
+            echo '<style>' . htmlspecialchars(file_get_contents('css/main.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/navbar.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/table.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/editors.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/post.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/profile.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/text.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/button.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/dropdown.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/page-index.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/themes/' . COLOR_THEME . '.css')) // vulnerability! to make a simple payload, set COLOR_THEME to: "../../../../../etc/passwd"
+                . ' ' . htmlspecialchars(file_get_contents('css/icons/icons.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/icons/icon-toolbar.css')) . '</style>';
+        ?>
+        
         <!-- Javascript -->
-        <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script src="/js/library/tinymce.min.js"></script>
+        <script src="/js/library/jquery.min.js"></script>
+        <script src="/js/library/angular.min.js"></script>
         <script src="/js/dropdown.js"></script>
         <script src="/js/authentication/login.js"></script>
         <script src="/js/editor-validation.js"></script>
@@ -69,7 +71,7 @@ if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) {
             <button class="dropbtn">' . $_SESSION['user_name'] . '</button>
             <div id="user-dropdown" class="dropdown-content">
               <a class="block-link" href="#">' . SHORT_USER_DESCRIPTION . '</a>
-              <a class="block-link" href="/profile.php?user_id='.$_SESSION['user_id'].'">' . SHORT_USER_OVERVIEW . '</a>
+              <a class="block-link" href="profile.php?user_id='.$_SESSION['user_id'].'">' . SHORT_USER_OVERVIEW . '</a>
               <a class="block-link" onclick="logout()">' . SHORT_USER_SIGNOUT . '</a>
             </div>
           </div>';
@@ -87,7 +89,7 @@ if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) {
               <p class="tiny-text faded-text-color" style="margin-top:10px">' . MESSAGE_NOT_REGISTERED . '</p>
             </div>
           </div>
-        <a href="/signup.php" class="item">' . SHORT_USER_REGISTER . '</a>';
+        <a href="signup.php" class="item">' . SHORT_USER_REGISTER . '</a>';
 }
                 ?>
                 </div>
@@ -95,9 +97,9 @@ if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) {
             </div>
             <div class="content inverted-color">
                 <div class="content-nav inverted-text-color primary-color">
-                    <a class="item inverted-text-color" href="/index.php"><?php echo SHORT_NAV_HOME; ?></a>
-                    <a class="item inverted-text-color" href="<?php if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) echo '/create_topic.php'; else echo '/signin.php' ?>"><?php if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) echo SHORT_TOPIC_CREATE; else echo 'Login' ?></a>
-                    <?php if(isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1) echo '<a class="item inverted-text-color" href="/create_cat.php">' . SHORT_CATEGORY_CREATE . '</a>'; ?>
+                    <a class="item inverted-text-color" href="index.php"><?php echo SHORT_NAV_HOME; ?></a>
+                    <a class="item inverted-text-color" href="<?php if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) echo 'create_topic.php'; else echo 'signin.php' ?>"><?php if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) echo SHORT_TOPIC_CREATE; else echo 'Login' ?></a>
+                    <?php if(isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1) echo '<a class="item inverted-text-color" href="create_cat.php">' . SHORT_CATEGORY_CREATE . '</a>'; ?>
                 </div>
                 <div class="under-content-nav faded-color">
                 </div>

@@ -5,7 +5,7 @@ Display user profile information
 */
 
 include_once '../resources/configuration/config.php';
-include_once LIBRARY_PATH . '/strings.php';
+include_once CONFIGURATION_PATH . '/strings.php';
 include_once LIBRARY_PATH . '/connect.php';
 include_once LIBRARY_PATH . '/query-functions.php';
 include_once TEMPLATES_PATH . '/header.php';
@@ -16,7 +16,7 @@ $user_id = $_GET['user_id'];
 
 echo '<div class="container">';
 
-//Check if the user exists
+//Check if the user existss
 $query = "SELECT * FROM users WHERE user_id=?";
 $stmt = $connect->prepare($query);
 $stmt->bind_param('i', $user_id);
@@ -26,10 +26,10 @@ $result = $stmt->get_result();
 $numrows = $result->num_rows;
 
 if($numrows == 0) {
-    //User doesn't exist
+    // User doesn't exist
     echo '<p class="small-text primary-text-color">' . MESSAGE_USER_NONEXISTANT . '</p>';
 } else {
-    //Fetching user data
+    // Fetching user data
     while($row = $result->fetch_assoc()) {
         $user_name = $row['user_name'];
         $user_email = $row['user_email'];
@@ -40,9 +40,9 @@ if($numrows == 0) {
         $user_date = $row['user_date'];
     }
 
-    //Basic user page setup
+    // Basic user page setup 
     echo '<div class="profile-banner faded-color">
-            <img class="profile-picture inverted-color big" src="/assets/profile-pictures/'.$user_icon.'">
+            <img class="profile-picture inverted-color big" src="/img/content/profile-pictures/'.$user_icon.'"><p class="small-text">' . htmlspecialchars($user_about) . '</p>
           </div>
           <div class="profile-statistics primary-color">
             <div class="posts">

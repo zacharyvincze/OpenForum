@@ -5,7 +5,7 @@ Ajax script for replying to posts
 */
 include_once '../resources/configuration/config.php';
 include_once LIBRARY_PATH . '/functions.php';
-include_once LIBRARY_PATH . '/strings.php';
+include_once CONFIGURATION_PATH . '/strings.php';
 include_once LIBRARY_PATH . '/connect.php';
 
 sec_session_start();
