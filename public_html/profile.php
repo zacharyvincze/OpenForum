@@ -40,7 +40,7 @@ if($numrows == 0) {
         $user_date = $row['user_date'];
     }
 
-    // Basic user page setup
+    // Basic user page setup 
     echo '<div class="profile-banner faded-color">
             <img class="profile-picture inverted-color big" src="/assets/profile-pictures/'.$user_icon.'"><p class="small-text">' . htmlspecialchars($user_about) . '</p>
           </div>
