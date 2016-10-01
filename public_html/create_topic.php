@@ -56,7 +56,7 @@ if($_SESSION['signed_in'] == false) {
 
             echo '<select name="topic_cat" style="background-color: #ffffff; border-color: #FF3B3F; border-width: 2px; border-radius: 3px; font-family: \'Helvetiva Neue\', \'Helvetica\', \'Roboto\', sans-serif;">';
             while($row = $stmt->fetch_assoc()) {
-                echo '<option value="' . $row['cat_id'] . '">' . $row['cat_name'] . '</option>';
+                echo '<option value="' . $row['cat_id'] . '">' . htmlspecialchars($row['cat_name']) . '</option>';
             }
             echo '</select>';
 
