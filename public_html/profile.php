@@ -42,7 +42,7 @@ if($numrows == 0) {
 
     //Basic user page setup
     echo '<div class="profile-banner faded-color">
-            <img class="profile-picture inverted-color big" src="/assets/profile-pictures/'.$user_icon.'">' . htmlspecialchars($user_about) . '
+            <img class="profile-picture inverted-color big" src="/assets/profile-pictures/'.$user_icon.'"><p class="small-text">' . htmlspecialchars($user_about) . '</p>
           </div>
           <div class="profile-statistics primary-color">
             <div class="posts">
