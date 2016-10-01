@@ -5,7 +5,7 @@ Display user profile information
 */
 
 include_once '../resources/configuration/config.php';
-include_once LIBRARY_PATH . '/strings.php';
+include_once CONFIGURATION_PATH . '/strings.php';
 include_once LIBRARY_PATH . '/connect.php';
 include_once LIBRARY_PATH . '/query-functions.php';
 include_once TEMPLATES_PATH . '/header.php';
@@ -16,7 +16,7 @@ $user_id = $_GET['user_id'];
 
 echo '<div class="container">';
 
-//Check if the user exists
+//Check if the user existss
 $query = "SELECT * FROM users WHERE user_id=?";
 $stmt = $connect->prepare($query);
 $stmt->bind_param('i', $user_id);
