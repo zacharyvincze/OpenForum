@@ -54,7 +54,7 @@ if(!$stmt) {
             $numrows = $result->num_rows;
 
             if($numrows == 0) {
-                echo MESSAGE_CATEGORY_EMPTY;
+                echo MESSAGE_CATEGORY_NONE;
             } else {
 
                 if(getTopicCount($_GET['cat_id']) == 1) $topic = 'topic';
