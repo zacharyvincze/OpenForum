@@ -30,32 +30,32 @@ sec_session_start();
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700,500' rel='stylesheet' type='text/css'>
         <?php
             echo '<style>' . htmlspecialchars(file_get_contents('css/main.css'))
-                . ' ' . htmlspecialchars(file_get_contents('../../public_html/css/navbar.css'))
-                . ' ' . htmlspecialchars(file_get_contents('../../public_html/css/table.css'))
-                . ' ' . htmlspecialchars(file_get_contents('../../public_html/css/editors.css'))
-                . ' ' . htmlspecialchars(file_get_contents('../../public_html/css/post.css'))
-                . ' ' . htmlspecialchars(file_get_contents('../../public_html/css/profile.css'))
-                . ' ' . htmlspecialchars(file_get_contents('../../public_html/css/text.css'))
-                . ' ' . htmlspecialchars(file_get_contents('../../public_html/css/button.css'))
-                . ' ' . htmlspecialchars(file_get_contents('../../public_html/css/dropdown.css'))
-                . ' ' . htmlspecialchars(file_get_contents('../../public_html/css/page-index.css'))
-                . ' ' . htmlspecialchars(file_get_contents('../../public_html/css/themes/' . COLOR_THEME . '.css')) // vulnerability! to make a simple payload, set COLOR_THEME to: "../../../../../etc/passwd"
-                . ' ' . htmlspecialchars(file_get_contents('../../public_html/css/icons/icons.css'))
-                . ' ' . htmlspecialchars(file_get_contents('../../public_html/css/icons/icon-toolbar.css')) . '</style>';
+                . ' ' . htmlspecialchars(file_get_contents('css/navbar.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/table.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/editors.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/post.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/profile.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/text.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/button.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/dropdown.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/page-index.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/themes/' . COLOR_THEME . '.css')) // vulnerability! to make a simple payload, set COLOR_THEME to: "../../../../../etc/passwd"
+                . ' ' . htmlspecialchars(file_get_contents('css/icons/icons.css'))
+                . ' ' . htmlspecialchars(file_get_contents('css/icons/icon-toolbar.css')) . '</style>';
         ?>
         
         <!-- Javascript -->
-        <script src="/js/library/tinymce.min.js"></script>
-        <script src="/js/library/jquery.min.js"></script>
-        <script src="/js/library/angular.min.js"></script>
-        <script src="/js/dropdown.js"></script>
-        <script src="/js/authentication/login.js"></script>
-        <script src="/js/editor-validation.js"></script>
-        <script src="/js/authentication/register.js"></script>
-        <script src="/js/authentication/logout.js"></script>
-        <script src="/js/delete/delete_topic.js"></script>
-        <script src="/js/delete/delete_post.js"></script>
-        <script src="/js/like-post.js"></script>
+        <script src="js/library/tinymce.min.js"></script>
+        <script src="js/library/jquery.min.js"></script>
+        <script src="js/library/angular.min.js"></script>
+        <script src="js/dropdown.js"></script>
+        <script src="js/authentication/login.js"></script>
+        <script src="js/editor-validation.js"></script>
+        <script src="js/authentication/register.js"></script>
+        <script src="js/authentication/logout.js"></script>
+        <script src="js/delete/delete_topic.js"></script>
+        <script src="js/delete/delete_post.js"></script>
+        <script src="js/like-post.js"></script>
     </head>
 
     <body>
@@ -66,7 +66,7 @@ sec_session_start();
                 <div id="userbar">
                 <?php
 if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) {
-    echo '<img class="profile-picture icon" src="/img/content/profile-pictures/' . $_SESSION['user_icon'] . '">
+    echo '<img class="profile-picture icon" src="img/content/profile-pictures/' . $_SESSION['user_icon'] . '">
           <div class="dropdown">
             <button class="dropbtn">' . $_SESSION['user_name'] . '</button>
             <div id="user-dropdown" class="dropdown-content">
