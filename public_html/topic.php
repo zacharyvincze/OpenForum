@@ -36,7 +36,7 @@ if(!$stmt) {
                 // Really complicated `if` statement in one line to check if the button is allowed to echo
                 echo ($row['topic_visible'] && (DEVELOPMENT_MODE || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_id'] == $row['topic_by']) || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1)) ? $buttondata : '');
                 echo '<div class="header">';
-                echo '<p class="title title-text-color">' . $row['topic_subject'] . '</p>';
+                echo '<p class="title title-text-color">' . htmlspecialchars($row['topic_subject']) . '</p>';
                 echo '<br><p class="description faded-text-color">' . str_replace('%time%', '' . date('g:i A', strtotime($row['topic_date'])), str_replace('%date%', '' . date('j F, Y', strtotime($row['topic_date'])), str_replace('%username%', '' . getTopicUsername($row['topic_by']), MESSAGE_TOPIC_DESCRIPTION))) . '</p>';
                 echo '</div>';
             } else {
@@ -131,13 +131,13 @@ if(!$stmt) {
                                   <span class="small-text faded-text-color">' . $user_level . '</span>
                                 </div>
                                 <div class="profile-info">
-                                  <p class="big-text title-text-color"><strong>' . $row['user_name'] . '</strong></p>
+                                  <p class="big-text title-text-color"><strong>' . htmlspecialchars($row['user_name']) . '</strong></p>
                                   <p class="small-text faded-text-color">' . $user_level . '</p>
                                   <div class="profile-picture small center" style="background-image: url(/img/content/profile-pictures/' . $row['user_icon']. ')"></div>
                                   <p class="tiny-text faded-text-color">' . str_replace('%posts%', '' . getUserPosts($row['user_id']), MESSAGE_USER_POSTS) . ' ' . $posts . '</p>
                                 </div><div class="post-content">';
                                   echo '<p class="tiny-text faded-text-color">' . str_replace('%time%', '' . date('g:i A', strtotime($row['post_date'])), str_replace('%date%', '' . date('j F, Y', strtotime($row['post_date'])), MESSAGE_TOPIC_DATE)) . '</p>';
-                                  echo '<div class="tiny-text primary-text-color">' . $row['post_content'];
+                                  echo '<div class="tiny-text primary-text-color">' . htmlspecialchars($row['post_content']);
                                   if($row['post_visible'] != 'TRUE') echo '<p class="text-tiny bold error-text-color">This post is hidden!</p>';
                                   // echo ($row['post_visible'] && (DEVELOPMENT_MODE || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_id'] == $row['post_by']) || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1)) ? $buttondata : '');
                                   //echo '<img class="icon icon-tiny icon-more-options" src="/assets/icons/more-options.svg">';
