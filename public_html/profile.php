@@ -39,11 +39,17 @@ if($numrows == 0) {
         $user_confirmed = $row['user_confirmed'];
         $user_date = $row['user_date'];
     }
-
+    
+    
     // Basic user page setup 
-    echo '<div class="profile-banner faded-color">
-            <img class="profile-picture inverted-color big" src="/img/content/profile-pictures/'.$user_icon.'"><p class="small-text">' . htmlspecialchars($user_about) . '</p>
-          </div>
+    echo '<div class="profile-banner faded-color"><img class="profile-picture inverted-color big" src="/img/content/profile-pictures/'.$user_icon.'">';
+    
+    if($user_name == $_SESSION['user_name'])
+        echo '<textarea class="small-text" style="border-width:0px;background-color:transparent;">' . htmlspecialchars($user_about) . '</textarea>✎';
+    else
+        echo '<p class="small-text">' . htmlspecialchars($user_about) . '</p>';
+    
+    echo '</div>
           <div class="profile-statistics primary-color">
             <div class="posts">
               <p class="small-text inverted-text-color bold">' . SHORT_USER_POSTS . '</p>
