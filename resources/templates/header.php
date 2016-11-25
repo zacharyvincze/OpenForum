@@ -56,6 +56,8 @@ sec_session_start();
         <script src="js/delete/delete_topic.js"></script>
         <script src="js/delete/delete_post.js"></script>
         <script src="js/like-post.js"></script>
+        
+        <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
 
     <body>

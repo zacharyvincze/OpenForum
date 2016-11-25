@@ -29,6 +29,11 @@ define('VERIFY_EMAIL', FALSE); // verify email or not
 define('EMAIL', ''); // email to use
 define('EMAIL_PASSWORD', ''); // email password
 
+// Registration Configuration
+define('FORCE_RECAPTCHA', FALSE); // force recaptcha on signup
+define('RECAPTCHA_PUBLIC', ""); // enter the public key
+define('RECAPTCHA_PRIVATE', ""); // enter the private key (aka secret key)
+
 // Theme Configuration
 define('COLOR_THEME', 'red-theme'); // color themes are located in public_html/css/themes/
 ?>

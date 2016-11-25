@@ -20,7 +20,18 @@ if($_SERVER['REQUEST_METHOD'] != 'POST') {
     $password = $_POST['user_pass'];
     $confirm_password = $_POST['user_pass_check'];
     $email = $_POST['user_email'];
-
+    if(FORCE_RECAPTCHA) {
+        $captcha = $_POST['g-recaptcha-response'];
+        if(!$captcha) {
+                $error[] = "recaptcha";
+            } else {
+                $response = json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . RECAPTCHA_PRIVATE . "&response=" . $captcha . "&remoteip=" . $_SERVER['REMOTE_ADDR']), true);
+                if($response['success'] == false)
+                    $error[] = "recaptcha";
+            }
+        }
+    }
+    
     //Check if all fields are entered
     if(!$password || !$username || !$confirm_password || !$email) {
         $error[] = 'noenter';
