@@ -16,9 +16,7 @@ echo '<p class="description center faded-text-color">' . MESSAGE_TOPIC_CREATE . 
 echo '</div>';
 
 if($_SESSION['signed_in'] == false) {
-    echo '<div class="container">';
-    echo MESSAGE_TOPIC_SIGNOUT;
-    echo '</div>';
+    echo '<div class="container">' . MESSAGE_TOPIC_SIGNOUT . '</div>';
 } else {
     if($_SERVER['REQUEST_METHOD'] != 'POST') {
         $query = "SELECT cat_id, cat_name, cat_description FROM categories";

@@ -17,7 +17,7 @@ $user_id = $_GET['user_id'];
 echo '<div class="container">';
 
 //Check if the user existss
-$query = "SELECT * FROM users WHERE user_id=?";
+$query = "SELECT * FROM `users` WHERE `user_id`=?";
 $stmt = $connect->prepare($query);
 $stmt->bind_param('i', $user_id);
 $stmt->execute();
@@ -40,12 +40,28 @@ if($numrows == 0) {
         $user_date = $row['user_date'];
     }
     
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
+        if($_SESSION['signed_in'] && $user_name == $_SESSION['user_name']) {
+            if($_POST['csrf_token'] != $_SESSION['csrf_token']) {
+                die('<p class="center bold error-text-color">' . ERROR_INVALID_CSRF . '</p>');
+            } else {
+                $query = 'UPDATE `users` SET `user_about`=? WHERE `user_id`=?';
+                $stmt = $connect->prepare($query);
+                $stmt->bind_param('si', $_POST['about_t'], $user_id);
+                $stmt->execute();
+                
+                $user_about = $_POST['about_t'];
+            }
+        } else {
+            echo '<div class="container">' . MESSAGE_TOPIC_SIGNOUT . '</div>';
+        }
+    
     
     // Basic user page setup 
     echo '<div class="profile-banner faded-color"><img class="profile-picture inverted-color big" src="/img/content/profile-pictures/'.$user_icon.'">';
     
     if($user_name == $_SESSION['user_name'])
-        echo '<textarea class="small-text" style="border-width:0px;background-color:transparent;">' . htmlspecialchars($user_about) . '</textarea>✎';
+        echo '<form action="profile.php?user_id=' . htmlspecialchars($_GET['user_id']) . '" method="POST"><input type="hidden" name="csrf_token" value="' . $_SESSION['csrf_token'] . '" /><textarea class="small-text" id="about_t" name="about_t" style="border-width:0px;background-color:transparent;">' . htmlspecialchars($user_about) . '</textarea>✎</form><script>$("#about_t").keypress(function (e) {if(e.which == 13 && !e.shiftKey) {$(this).closest("form").submit();e.preventDefault();return false;}});</script>';
     else
         echo '<p class="small-text">' . htmlspecialchars($user_about) . '</p>';
     
