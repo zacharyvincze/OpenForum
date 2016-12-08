@@ -58,7 +58,7 @@ if($numrows == 0) {
 
 
 	// Basic user page setup 
-	echo '<div class="profile-banner faded-color"><img class="profile-picture inverted-color big" src="/img/content/profile-pictures/'.$user_icon.'">';
+	echo '<h1>' . htmlspecialchars($user_name) . '</h1><div class="profile-banner faded-color"><img class="profile-picture inverted-color big" src="/img/content/profile-pictures/'.$user_icon.'">';
 
 	if($user_name == $_SESSION['user_name'])
 		echo '<form action="profile.php?user_id=' . htmlspecialchars($_GET['user_id']) . '" method="POST"><input type="hidden" name="csrf_token" value="' . $_SESSION['csrf_token'] . '" /><textarea class="small-text" id="about_t" name="about_t" style="border-width:0px;background-color:transparent;">' . htmlspecialchars($user_about) . '</textarea>✎</form><script>$("#about_t").keypress(function (e) {if(e.which == 13 && !e.shiftKey) {$(this).closest("form").submit();e.preventDefault();return false;}});</script>';
