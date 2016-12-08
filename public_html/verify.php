@@ -1,8 +1,8 @@
 <?php
 
 /*
-Page for user verification
-*/
+   Page for user verification
+ */
 
 include_once '../resources/configuration/config.php';
 include_once LIBRARY_PATH . '/connect.php';
@@ -22,47 +22,47 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if($result->num_rows == 0) {
-    $error[] = ERROR_VERIFICATION_FAILED;
+	$error[] = ERROR_VERIFICATION_FAILED;
 }
 
 if($stmt->error) {
-    $error[] = ERROR_CONNECTION_FAILED;
+	$error[] = ERROR_CONNECTION_FAILED;
 }
 
 if(!empty($error)) {
-    foreach ($error as $value) {
-        echo $value . '<br>';
-    }
+	foreach ($error as $value) {
+		echo $value . '<br>';
+	}
 } else {
-    while($row = $result->fetch_assoc()) {
-        $username = $row['temp_user_name'];
-        $password = $row['temp_user_pass'];
-        $email = $row['temp_user_email'];
-        $icon = $row['temp_user_icon'];
-        $date = $row['temp_user_date'];
-    }
+	while($row = $result->fetch_assoc()) {
+		$username = $row['temp_user_name'];
+		$password = $row['temp_user_pass'];
+		$email = $row['temp_user_email'];
+		$icon = $row['temp_user_icon'];
+		$date = $row['temp_user_date'];
+	}
 
-    //Insert temp user into users
-    $query = "INSERT INTO users(
-            user_name,
-            user_pass,
-            user_email,
-            user_icon,
-            user_level,
-            user_date,
-            user_about)
-        VALUES (?, ?, ?, ?, default, ?, '" . MESSAGE_USER_DESCRIPTION . "')";
-    $stmt = $connect->prepare($query);
-    $stmt->bind_param('sssss', $username, $password, $email, $icon, $date);
-    $stmt->execute();
+	//Insert temp user into users
+	$query = "INSERT INTO users(
+		user_name,
+		user_pass,
+		user_email,
+		user_icon,
+		user_level,
+		user_date,
+		user_about)
+			VALUES (?, ?, ?, ?, default, ?, '" . MESSAGE_USER_DESCRIPTION . "')";
+	$stmt = $connect->prepare($query);
+	$stmt->bind_param('sssss', $username, $password, $email, $icon, $date);
+	$stmt->execute();
 
-    //Delete temp user row
-    $query = "DELETE FROM temp_users WHERE temp_user_key=?";
-    $stmt = $connect->prepare($query);
-    $stmt->bind_param('s', $key);
-    $stmt->execute();
+	//Delete temp user row
+	$query = "DELETE FROM temp_users WHERE temp_user_key=?";
+	$stmt = $connect->prepare($query);
+	$stmt->bind_param('s', $key);
+	$stmt->execute();
 
-    echo str_replace('%user%', $username, MESSAGE_USER_VERIFIED);
+	echo str_replace('%user%', $username, MESSAGE_USER_VERIFIED);
 
 }
 

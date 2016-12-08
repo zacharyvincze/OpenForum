@@ -25,63 +25,63 @@ date_default_timezone_set(TIMEZONE);
 $type = $_POST['type'];
 $value = $_POST['value'];
 if(!(isset($value) || ($value != "TRUE" && $value != "FALSE")))
-    $value = "TRUE";
+$value = "TRUE";
 if($value == "TRUE")
-    $value = "FALSE";
+$value = "FALSE";
 else
-    $value = "TRUE";
+$value = "TRUE";
 $a_very_painful_death = ERROR_INVALID_DATA;
 
 if(!(isset($type) && is_numeric($type) && $type >= 1 && $type <= 4)) // change to set the range
-    /*I'm probably going to*/die($a_very_painful_death);//because I did this
+	/*I'm probably going to*/die($a_very_painful_death);//because I did this
 
-switch($type) {
-    case 1:
-        $type = 'topic';
-        break;
-    case 2:
-        $type = 'post';
-        break;
-    case 3:
-        die('This function is currently unavailable.'); // will be removed later
-        break;
-    case 4:
-        die('This function is currently unavailable.'); // will be removed later
-        // $type = 'user'; // support later
-        break;
-}
+	switch($type) {
+		case 1:
+			$type = 'topic';
+			break;
+		case 2:
+			$type = 'post';
+			break;
+		case 3:
+			die('This function is currently unavailable.'); // will be removed later
+			break;
+		case 4:
+			die('This function is currently unavailable.'); // will be removed later
+			// $type = 'user'; // support later
+			break;
+	}
 
 $stmt = $connect->prepare('SELECT * FROM ' . $type . 's WHERE ' . $type . '_id=?');
 $stmt->bind_param('i', $_POST[$type . '_id']);
 $stmt->execute();
 $result = $stmt->get_result();
 if(!$stmt) {
-    echo ERROR_CONNECTION_FAILED;
+	echo ERROR_CONNECTION_FAILED;
 } else if(!$_SESSION['signed_in']) {
-    echo MESSAGE_USER_SIGNOUT;
+	echo MESSAGE_USER_SIGNOUT;
 } else if($_SERVER['REQUEST_METHOD'] != 'POST') {
-    echo ERROR_INVALID_ACCESS;
+	echo ERROR_INVALID_ACCESS;
 } else if(!isset($_POST['csrf_token']) || $_SESSION['csrf_token'] != $_POST['csrf_token']) {
-    echo ERROR_INVALID_CSRF;
+	echo ERROR_INVALID_CSRF;
 } else {
-    $type_id = $_POST[$type . '_id'];
-    $numrows = $result->num_rows;
-    if($numrows == 0) {
-        echo str_replace('%type%', $type, MESSAGE_MISC_NONEXISTANT);
-    } else {
-        while($row = $result->fetch_assoc()) {
-            if($_SESSION['user_level'] == 1 || $_SESSION['user_id'] == $row['user_id']) {
-                $query = 'UPDATE `' . $type . 's` SET `' . $type . '_visible`="' . $value . '" WHERE `' . $type . '_id`=?';
-                $stmt = $connect->prepare($query);
-                $stmt->bind_param('i', $_POST[$type . '_id']);
-                $stmt->execute();
+	$type_id = $_POST[$type . '_id'];
+	$numrows = $result->num_rows;
+	if($numrows == 0) {
+		echo str_replace('%type%', $type, MESSAGE_MISC_NONEXISTANT);
+	} else {
+		while($row = $result->fetch_assoc()) {
+			if($_SESSION['user_level'] == 1 || $_SESSION['user_id'] == $row['user_id']) {
+				$query = 'UPDATE `' . $type . 's` SET `' . $type . '_visible`="' . $value . '" WHERE `' . $type . '_id`=?';
+				$stmt = $connect->prepare($query);
+				$stmt->bind_param('i', $_POST[$type . '_id']);
+				$stmt->execute();
 
-                echo "true";
-            } else {
-                echo 'unauthorized';
-            }
-        }
-    }
+				echo "true";
+			} else {
+				echo 'unauthorized';
+			}
+		}
+	}
 }
 
 ?>

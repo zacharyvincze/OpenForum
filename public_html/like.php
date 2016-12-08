@@ -12,23 +12,23 @@ $csrf_token = $_POST['csrf_token'];
 $error = array();
 
 if($_SERVER['REQUEST_METHOD'] != 'POST') {
-    $error[] = ERROR_INVALID_ACCESS;
+	$error[] = ERROR_INVALID_ACCESS;
 }
 
 if(!$_SESSION['signed_in']) {
-    $error[] = MESSAGE_USER_SIGNOUT;
+	$error[] = MESSAGE_USER_SIGNOUT;
 }
 
 if(!isset($user_id) || !isset($post_id) || !isset($csrf_token)) {
-    $error[] = ERROR_INVALID_DATA;
+	$error[] = ERROR_INVALID_DATA;
 }
 
 if(!isset($_POST['csrf_token']) || $_SESSION['csrf_token'] != $_POST['csrf_token']) {
-    $error[] = ERROR_INVALID_CSRF;
+	$error[] = ERROR_INVALID_CSRF;
 }
 
 if(!empty($error)) {
-    die($error[0]);
+	die($error[0]);
 }
 
 $query = "SELECT * FROM likes WHERE like_user_id=? AND like_post_id=?";
@@ -38,34 +38,34 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if($stmt->error) {
-    $error[] = ERROR_CONNECTION_FAILED;
-    die($error[0]);
+	$error[] = ERROR_CONNECTION_FAILED;
+	die($error[0]);
 }
 
 if($result->num_rows == 0) {
-    $query = "INSERT INTO likes (like_user_id, like_post_id) VALUES (?, ?)";
-    $stmt = $connect->prepare($query);
-    $stmt->bind_param('ii', $user_id, $post_id);
-    $stmt->execute();
+	$query = "INSERT INTO likes (like_user_id, like_post_id) VALUES (?, ?)";
+	$stmt = $connect->prepare($query);
+	$stmt->bind_param('ii', $user_id, $post_id);
+	$stmt->execute();
 
-    if($stmt->error) {
-        $error[] = ERROR_CONNECTION_FAILED;
-        die($error[0]);
-    }
+	if($stmt->error) {
+		$error[] = ERROR_CONNECTION_FAILED;
+		die($error[0]);
+	}
 
-    echo 'true';
+	echo 'true';
 } else {
-    $query = "DELETE FROM likes WHERE like_user_id=? AND like_post_id=?";
-    $stmt = $connect->prepare($query);
-    $stmt->bind_param('ii', $user_id, $post_id);
-    $stmt->execute();
+	$query = "DELETE FROM likes WHERE like_user_id=? AND like_post_id=?";
+	$stmt = $connect->prepare($query);
+	$stmt->bind_param('ii', $user_id, $post_id);
+	$stmt->execute();
 
-    if($stmt->error) {
-        $error[] = ERROR_CONNECTION_FAILED;
-        die($error[0]);
-    }
+	if($stmt->error) {
+		$error[] = ERROR_CONNECTION_FAILED;
+		die($error[0]);
+	}
 
-    echo 'true';
+	echo 'true';
 }
 
 ?>
