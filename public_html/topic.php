@@ -11,7 +11,7 @@ include_once TEMPLATES_PATH . '/header.php';
 
 date_default_timezone_set(TIMEZONE);
 
-$query = "SELECT * FROM topics WHERE topic_id=?";
+$query = "SELECT * FROM topics WHERE topic_id=?" . (!(isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1) ? " AND topic_visible=\"TRUE\"" : "");
 $stmt = $connect->prepare($query);
 $stmt->bind_param('i', $_GET['topic_id']);
 $stmt->execute();
@@ -29,10 +29,10 @@ if(!$stmt) {
         echo '<div class="container">';
 
         while($row = $result->fetch_assoc()) {
-            if($row['topic_visible'] || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1) || DEVELOPMENT_MODE) {
+            if($row['topic_visible'] || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1) || $_SESSION['user_id'] == $row['topic_by']) {
 
                 // `Delete` button. Put in separate variable because otherwise, the `if` statement would be wayyyy too long, even with indents.
-                $buttondata = '<button onclick="deleteTopic(\'' . $row['topic_id'] . '\', \'' . $row['topic_by'] . '\', \'' . $_SESSION['csrf_token'] . '\', \'' . htmlspecialchars($row['topic_cat']) . '\')" class="button small primary-button-color" style="float: right !important;">' . SHORT_TOPIC_DELETE . '</button>';
+                $buttondata = '<button onclick="deleteTopic(\'' . $row['topic_visible'] . '\', \'' . $row['topic_id'] . '\', \'' . $row['topic_by'] . '\', \'' . $_SESSION['csrf_token'] . '\', \'' . htmlspecialchars($row['topic_cat']) . '\')" class="button small primary-button-color" style="float: right !important;">' . ($row['topic_visible'] == "TRUE" ? SHORT_TOPIC_DELETE : SHORT_TOPIC_UNDELETE) . '</button>';
                 // Really complicated `if` statement in one line to check if the button is allowed to echo
                 echo ($row['topic_visible'] && (DEVELOPMENT_MODE || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_id'] == $row['topic_by']) || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1)) ? $buttondata : '');
                 echo '<div class="header">';
@@ -113,7 +113,7 @@ if(!$stmt) {
                 echo '<div class="status-bar post-header primary-color">
                         <p>' . str_replace('%noun%', $posts, str_replace('%posts%', $totalPosts, MESSAGE_TOPIC_POSTS)) . '</p>
                       </div>';
-                echo '<div class="topic-box faded-color">';
+                echo '<div class="topic-box faded-color"'  . ($row['topic_visible'] == "TRUE" ? '' : ' style="background-color: #ffa1a1 !important"') .  '>';
 
                 while($row = $result->fetch_assoc()) {
                     if($row['post_visible'] == 'TRUE' || (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] && $_SESSION['user_level'] == 1) || DEVELOPMENT_MODE) {
@@ -121,7 +121,7 @@ if(!$stmt) {
                         if($row['user_level'] == 0) $user_level = SHORT_USER_MEMBER;
                         else $user_level = SHORT_USER_ADMIN;
 
-                        echo '<div class="post inverted-color">';
+                        echo '<div class="post inverted-color"' . ($row['topic_visible'] == "TRUE" ? '' : ' style="background-color: #ffa1a1 !important"') . '>';
                                         // `Delete` button. Put in separate variable because otherwise, the `if` statement would be wayyyy too long, even with indents.
                         $buttondata = '<button onclick="deletePost(\'' . $row['post_id'] . '\', \'' . $row['post_by'] . '\', \'' . $_SESSION['csrf_token'] . '\', \'' . htmlspecialchars($row['post_topic']) . '\')" class="button small primary-button-color" style="float: right">' . SHORT_TOPIC_DELETE . '</button>';
                         // Really complicated `if` statement in one line to check if the button is allowed to echo

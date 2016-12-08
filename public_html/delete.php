@@ -23,6 +23,13 @@ date_default_timezone_set(TIMEZONE);
  */
 
 $type = $_POST['type'];
+$value = $_POST['value'];
+if(!(isset($value) || ($value != "TRUE" && $value != "FALSE")))
+    $value = "TRUE";
+if($value == "TRUE")
+    $value = "FALSE";
+else
+    $value = "TRUE";
 $a_very_painful_death = ERROR_INVALID_DATA;
 
 if(!(isset($type) && is_numeric($type) && $type >= 1 && $type <= 4)) // change to set the range
@@ -63,8 +70,8 @@ if(!$stmt) {
         echo str_replace('%type%', $type, MESSAGE_MISC_NONEXISTANT);
     } else {
         while($row = $result->fetch_assoc()) {
-            if($_SESSION['user_level'] == 1 || DEVELOPMENT_MODE || $_SESSION['user_id'] == $row['user_id']) {
-                $query = 'UPDATE `' . $type . 's` SET `' . $type . '_visible`="FALSE" WHERE `' . $type . '_id`=?';
+            if($_SESSION['user_level'] == 1 || $_SESSION['user_id'] == $row['user_id']) {
+                $query = 'UPDATE `' . $type . 's` SET `' . $type . '_visible`="' . $value . '" WHERE `' . $type . '_id`=?';
                 $stmt = $connect->prepare($query);
                 $stmt->bind_param('i', $_POST[$type . '_id']);
                 $stmt->execute();

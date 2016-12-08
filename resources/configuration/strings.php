@@ -82,6 +82,7 @@ define('SHORT_CATEGORY_ADD', 'Add Category');
 
 define('SHORT_TOPIC_CREATE', 'Create a Topic');
 define('SHORT_TOPIC_DELETE', 'Delete');
+define('SHORT_TOPIC_UNDELETE', 'Restore');
 define('SHORT_TOPIC_BUTTON', 'Create Topic');
 define('SHORT_TOPIC_SUBJECT', 'Topic subject');
 define('SHORT_TOPIC_SINGULAR', 'topic');

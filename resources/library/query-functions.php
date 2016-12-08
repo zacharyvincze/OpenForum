@@ -6,7 +6,7 @@ Functions for getting results from database
 
 //Getting topic count using cat_id
 function getTopicCount($cat_id) {
-    $query = "SELECT COUNT(*) FROM topics WHERE topic_cat=?";
+    $query = "SELECT COUNT(*) FROM topics WHERE topic_cat=? AND topic_visible=\"TRUE\"";
     $stmt = $GLOBALS["connect"]->prepare($query);
     $stmt->bind_param('i', $cat_id);
     $stmt->execute();
@@ -21,7 +21,7 @@ function getTopicCount($cat_id) {
 function getPostCount($topic_id) {
     $query = "SELECT COUNT(*)
                 FROM posts
-                WHERE post_topic=?";
+                WHERE post_topic=? AND post_visible=\"TRUE\"";
     $stmt = $GLOBALS["connect"]->prepare($query);
 
     $stmt->bind_param('i', $topic_id);

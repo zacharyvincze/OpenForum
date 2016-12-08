@@ -49,7 +49,7 @@ while($row = $stmt->fetch_assoc()) {
         echo '</td>';
         echo '<td class="rightpart" id="last-topic">';
             if(isset($row['topic_id'])) {
-                echo '<a href="topic.php?topic_id=' . $row['topic_id'] . '&page=1">' . htmlspecialchars($row['topic_subject']) . '<br></a><p class="small-text"> at ' . date('g:i a', strtotime($row['topic_date'])) . ' on ' . date('d M, Y', strtotime($row['topic_date'])) . '</p>';
+                echo '<a href="topic.php?topic_id=' . $row['topic_id'] . '&page=1">' . htmlspecialchars($row['topic_subject']) . '<br></a><p class="small-text"> at ' . date('g:i A', strtotime($row['topic_date'])) . ' on ' . date('M d', strtotime($row['topic_date'])) . '</p>';
             }
         echo '</td>';
     echo '</tr>';
