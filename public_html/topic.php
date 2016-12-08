@@ -123,7 +123,7 @@ if(!$stmt) {
 
                         echo '<div class="post inverted-color">';
                                         // `Delete` button. Put in separate variable because otherwise, the `if` statement would be wayyyy too long, even with indents.
-                        $buttondata = '<button onclick="deletePost(\'' . $row['post_id'] . '\', \'' . $row['post_by'] . '\', \'' . $_SESSION['csrf_token'] . '\', \'' . htmlspecialchars($row['post_cat']) . '\')" class="button small primary-button-color" style="float: right">' . SHORT_TOPIC_DELETE . '</button>';
+                        $buttondata = '<button onclick="deletePost(\'' . $row['post_id'] . '\', \'' . $row['post_by'] . '\', \'' . $_SESSION['csrf_token'] . '\', \'' . htmlspecialchars($row['post_topic']) . '\')" class="button small primary-button-color" style="float: right">' . SHORT_TOPIC_DELETE . '</button>';
                         // Really complicated `if` statement in one line to check if the button is allowed to echo
                         echo '<div class="mobile-profile-info">
                                   <img class="profile-picture tiny" src="/img/content/profile-pictures/' . $row['user_icon'] . '">

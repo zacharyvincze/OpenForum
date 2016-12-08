@@ -1,14 +1,17 @@
 <?php
-
 /*
  * This file contains the majority of the backend code used for deleting topics/posts/categories/users
  */
-
-include_once '../resourses/configuration/config.php';
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+include_once '../resources/configuration/config.php';
 include_once LIBRARY_PATH . '/connect.php';
 include LIBRARY_PATH . '/functions.php';
 
-date_default_timezone_set(TIMESTAMP);
+sec_session_start();
+
+date_default_timezone_set(TIMEZONE);
 
 /*
  * type is the object that is deleted
@@ -41,8 +44,7 @@ switch($type) {
         break;
 }
 
-$query = "SELECT * FROM ' . $type . 's WHERE ' . $type . '_id=?";
-$stmt = $connect->prepare($query);
+$stmt = $connect->prepare('SELECT * FROM ' . $type . 's WHERE ' . $type . '_id=?');
 $stmt->bind_param('i', $_POST[$type . '_id']);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -62,8 +64,7 @@ if(!$stmt) {
     } else {
         while($row = $result->fetch_assoc()) {
             if($_SESSION['user_level'] == 1 || DEVELOPMENT_MODE || $_SESSION['user_id'] == $row['user_id']) {
-                $query = 'UPDATE `' . $type . '` SET `' . $type . '_visible`=\'FALSE\' WHERE `' . $type . '_id`=?';
-                // Commenting out this query, but it shouldn't actually delete them. Just make them not visible. "DELETE FROM topics WHERE topic_id=?"; // It doesn't *actually* delete them, just hides them.
+                $query = 'UPDATE `' . $type . 's` SET `' . $type . '_visible`="FALSE" WHERE `' . $type . '_id`=?';
                 $stmt = $connect->prepare($query);
                 $stmt->bind_param('i', $_POST[$type . '_id']);
                 $stmt->execute();

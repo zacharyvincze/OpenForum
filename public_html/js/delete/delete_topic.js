@@ -1,7 +1,7 @@
 function deleteTopic(topic_id, user_id, csrf_token, topic_cat) {
     $.ajax( {
         type: 'post',
-        url: '/delete.php',
+        url: 'delete.php',
         data: {
             type: 1, // refer to /delete.php for information about this POST data.
             topic_id: topic_id,
@@ -10,7 +10,7 @@ function deleteTopic(topic_id, user_id, csrf_token, topic_cat) {
         },
         success: function(html) {
             if(html == 'true') {
-                window.location.replace('/category.php?cat_id=' + topic_cat);
+                window.location.replace('category.php?cat_id=' + topic_cat);
             } else {
                 alert(html);
             }
