@@ -18,14 +18,13 @@ FROM categories c
 LEFT JOIN (
 		SELECT topic_subject, topic_id, topic_cat, MAX(topic_date) latest
 		FROM topics
+		WHERE topic_visible=\"TRUE\"
 		GROUP BY topic_id DESC
 		LIMIT 1
 	  ) as t
 ON c.cat_id = t.topic_cat
 ORDER BY c.cat_id";
-$stmt = $connect->query($query);
-
-echo (DEVELOPMENT_MODE ? $connect->error : ERROR_CONNECTION_FAILED);
+$stmt = $connect->query($query) or die((DEVELOPMENT_MODE ? $connect->error : ERROR_CONNECTION_FAILED));
 
 echo '<div class="container">';
 echo '<table>';

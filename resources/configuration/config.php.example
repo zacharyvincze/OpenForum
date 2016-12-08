@@ -13,7 +13,7 @@ define('FORUM_DESCRIPTION', 'An example forum'); /// the description of the foru
 define('FORUM_KEYWORDS', ''); // SEO keywords comma-space separated (ex. ', ')
 define('FORUM_LANGUAGE', 'en'); // content language code (default:en)
 define('PUBLIC_HOST', '127.0.0.1'); // set this to the public facing address, if any.
-define('DEVELOPMENT_MODE', TRUE); // development mode will make all users temporarily admin, disable email verification, and enable logging later
+define('DEVELOPMENT_MODE', FALSE); // development mode will make all users temporarily admin, disable email verification, and enable logging later
 
 // Database Configuration
 define('HOST', '127.0.0.1'); // database host

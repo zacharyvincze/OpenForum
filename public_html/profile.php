@@ -73,7 +73,7 @@ if($numrows == 0) {
 		</div>
 		<div class="joined">
 		<p class="small-text inverted-text-color bold">' . SHORT_USER_JOINED . '</p>
-		<p class="small-text inverted-text-color">'.date('j F, Y', strtotime($user_date)).'</p>
+		<p class="small-text inverted-text-color">'.date('F j, Y', strtotime($user_date)).'</p>
 		</div>
 		</div>';
 
