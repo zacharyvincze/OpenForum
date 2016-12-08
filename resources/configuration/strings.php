@@ -69,7 +69,7 @@ define('SHORT_USER_CONFIRM', 'Confirm Password');
 define('SHORT_USER_EMAIL', 'Email');
 define('SHORT_USER_EITHER', 'Username or Email');
 define('SHORT_USER_DESCRIPTION', 'Settings');
-define('SHORT_USER_OVERVIEW', 'Profile Overview');
+define('SHORT_USER_OVERVIEW', 'Profile');
 define('SHORT_USER_SIGNOUT', 'Sign Out');
 define('SHORT_USER_POSTS', 'Post Count');
 define('SHORT_USER_JOINED', 'Joined');
