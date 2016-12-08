@@ -11,7 +11,7 @@ function deletePost(value, post_id, user_id, csrf_token) {
         },
         success: function(html) {
             if(html == 'true') {
-                // Later make it remove the comment from the page WITHOUT reloading?
+                $("body").load(window.location.href);
             } else {
                 alert(html);
             }
