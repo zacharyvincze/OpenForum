@@ -1,4 +1,4 @@
 function logout() {
-    $.get('/logout.php');
+    $.get('logout.php');
     window.location.reload();
 }

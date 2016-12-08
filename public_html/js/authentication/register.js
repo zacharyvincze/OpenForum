@@ -3,7 +3,7 @@ $(document).ready(function() {
     $("#register-form").on('submit', function(e) {
         $.ajax({
             type: 'post',
-            url: '/ajax_register.php',
+            url: 'ajax_register.php',
             data: $("#register-form").serialize(),
             success: function(html) {
                 if(html == 'true') {

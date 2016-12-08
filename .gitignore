@@ -1,6 +1,5 @@
-
 resources/configuration/config.php
-
 public_html/img/content/profile-pictures/*
-
 !public_html/img/content/profile-pictures/default.png
+public_html/start.sh
+start.sh

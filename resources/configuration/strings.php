@@ -29,10 +29,10 @@ define('MESSAGE_USER_NONEXISTANT', 'That user doesn\'t exist.');
 define('MESSAGE_USER_SENT', 'Email was sent.');
 define('MESSAGE_USER_VERIFIED', 'You have been verified %user%.  Welcome to the forums!'); // %user% is replaced by the username
 define('MESSAGE_USER_SIGNOUT', 'You must be <a href="signin.php">signed in</a> to do that.');
-define('MESSAGE_USER_SIGNIN', 'You are already signed in, you can <a href="/signout.php">sign out</a> if you want to switch users.');
+define('MESSAGE_USER_SIGNIN', 'You are already signed in, you can <a href="signout.php">sign out</a> if you want to switch users.');
 define('MESSAGE_USER_POSTS', '%posts%'); // %posts% is replaced with the number of user posts
 
-define('MESSAGE_CATEGORY_EMPTY', 'There are no topics in this category yet.');
+define('MESSAGE_CATEGORY_NONE', 'There are no topics in this category yet.');
 define('MESSAGE_CATEGORY_SIGNOUT', 'Admins must be <a href="signin.php">signed in</a> to create a category.');
 define('MESSAGE_CATEGORY_UNAUTHORIZED', 'You must be an admin to create a category.');
 define('MESSAGE_CATEGORY_EXISTS', 'There is already a category with that name.');
@@ -68,7 +68,7 @@ define('SHORT_USER_PASSWORD', 'Password');
 define('SHORT_USER_CONFIRM', 'Confirm Password');
 define('SHORT_USER_EMAIL', 'Email');
 define('SHORT_USER_EITHER', 'Username or Email');
-define('SHORT_USER_DESCRIPTION', 'Edit Profile');
+define('SHORT_USER_DESCRIPTION', 'Settings');
 define('SHORT_USER_OVERVIEW', 'Profile Overview');
 define('SHORT_USER_SIGNOUT', 'Sign Out');
 define('SHORT_USER_POSTS', 'Post Count');

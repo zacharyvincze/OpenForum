@@ -4,7 +4,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'post',
-            url: '/ajax_signin.php',
+            url: 'ajax_signin.php',
             data: $('#login-form').serialize(),
             success: function(html) {
                 if(html == 'true') {

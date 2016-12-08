@@ -70,10 +70,10 @@ sec_session_start();
 if(isset($_SESSION['signed_in']) && $_SESSION['signed_in']) {
     echo '<img class="profile-picture icon" src="img/content/profile-pictures/' . $_SESSION['user_icon'] . '">
           <div class="dropdown">
-            <button class="dropbtn">' . $_SESSION['user_name'] . '</button>
+            <button class="dropbtn">' . htmlspecialchars($_SESSION['user_name']) . '</button>
             <div id="user-dropdown" class="dropdown-content">
               <a class="block-link" href="#">' . SHORT_USER_DESCRIPTION . '</a>
-              <a class="block-link" href="profile.php?user_id='.$_SESSION['user_id'].'">' . SHORT_USER_OVERVIEW . '</a>
+              <a class="block-link" href="profile.php?user_id=' . $_SESSION['user_id'] . '">' . SHORT_USER_OVERVIEW . '</a>
               <a class="block-link" onclick="logout()">' . SHORT_USER_SIGNOUT . '</a>
             </div>
           </div>';
